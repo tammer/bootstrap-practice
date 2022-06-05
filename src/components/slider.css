@@ -1,0 +1,15 @@
+.rc-slider-handle {
+  background-color: black;
+  border: solid 2px black;
+  border-radius: 70%;
+  opacity: 1;
+}
+
+.rc-slider-mark-text {
+  color: black;
+}
+
+.foo {
+  position: absolute;
+  text-align: center;
+}
