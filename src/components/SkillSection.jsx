@@ -29,7 +29,7 @@ const skills = [
   { id: 3, name: "React" },
   { id: 4, name: "Node.js" },
   { id: 5, name: "C++" },
-  { id: 6, name: "DynamboDB" },
+  { id: 6, name: "DynamoDB" },
   { id: 7, name: "Postgres" },
 ];
 
