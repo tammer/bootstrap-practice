@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Spec from "./pages/spec";
 import Home from "./pages/home";
 import Skills from "./pages/skills";
+import Cred from "./pages/cred";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
           <Route path="spec" element={<Spec />} />
           <Route path="skills" element={<Skills />} />
           <Route path="home" element={<Home />} />
+          <Route path="cred" element={<Cred />} />
         </Route>
       </Routes>
     </BrowserRouter>
