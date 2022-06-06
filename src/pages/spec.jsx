@@ -23,19 +23,7 @@ function Spec() {
         </Row>
         <Row>
           <Col sm={4}>
-            <div className="left-pane">
-              <pre>
-                <code>
-                  match is true if:
-                  <br />
-                  spec.roles contains jd.roles
-                  <br />
-                  AND
-                  <br />
-                  spec.work_model contains jd.work_model
-                </code>
-              </pre>
-            </div>
+            <div className="left-pane"></div>
           </Col>
           <Col sm={8}>
             <Row>

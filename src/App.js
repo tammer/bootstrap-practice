@@ -19,7 +19,7 @@ function App() {
           <Nav.Link href="/skills">Skills</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/cred">Credability</Nav.Link>
+          <Nav.Link href="/cred">Calibration</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="disabled" disabled>
