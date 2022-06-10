@@ -19,7 +19,7 @@ const Cred = () => {
               skills
             </li>
             <li>You share a calibration link with them</li>
-            <li>They confirm your skill level relative to theirs</li>
+            <li>They confirm your assessment</li>
             <li>
               your (and your peer's) credibility on this platform increases
             </li>

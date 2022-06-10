@@ -161,6 +161,7 @@ function Spec() {
             <div>Hello there is much to discuss today. many, many things.</div>
           </Col> */}
         </Row>
+        text box: what else should be here? I'm open to adjescnt technologies.
       </Container>
     </>
   );

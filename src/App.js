@@ -8,9 +8,13 @@ import Nav from "react-bootstrap/Nav";
 function App() {
   return (
     <>
-      <Nav className="navbar-dark bg-dark" activeKey="/home">
+      <Nav
+        className="navbar-light"
+        style={{ backgroundColor: "#e3f2fd" }}
+        activeKey="/home"
+      >
         <Nav.Item>
-          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link href="/home">Landing Page</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/spec">Spec</Nav.Link>
@@ -22,9 +26,7 @@ function App() {
           <Nav.Link href="/cred">Calibration</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
-          </Nav.Link>
+          <Nav.Link href="/loggedin-home">Loggedin Home</Nav.Link>
         </Nav.Item>
       </Nav>
       <Outlet />

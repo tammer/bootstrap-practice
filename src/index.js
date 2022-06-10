@@ -9,6 +9,7 @@ import Spec from "./pages/spec";
 import Home from "./pages/home";
 import Skills from "./pages/skills";
 import Cred from "./pages/cred";
+import LoggedinHome from "./pages/loggedinHome";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
           <Route path="spec" element={<Spec />} />
           <Route path="skills" element={<Skills />} />
           <Route path="home" element={<Home />} />
+          <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
         </Route>
       </Routes>
