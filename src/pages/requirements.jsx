@@ -24,8 +24,19 @@ const Requirements = () => {
       <Requirement
         title="Technology Stack"
         selector={<Selector options={techStack} />}
-        helper="Enter all the technologies you like to work with"
+        helper="Enter all the technologies you like to work with. If anything is missing from the list, you can type it in."
       />
+      <Requirement
+        title="Org Size"
+        selector={<Selector options={sizes} simple={true} />}
+        helper="Enter the upperbound for the org's size"
+      />
+      <Requirement
+        title="Org Characteristics"
+        selector={<Selector options={characteristics} />}
+        helper="Enter the types of organizations you would consider"
+      />
+      <div style={{ marginBottom: "300px" }}></div>
     </Container>
   );
 };
@@ -47,6 +58,24 @@ const roles = [
 
 const models = quickMake(["On-site", "Hybrid", "Remote", "All-Remote"]);
 const tenures = quickMake(["Permanent", "Contract"]);
+
+const sizes = quickMake([
+  "< 10 employees",
+  "< 100 employees",
+  "< 1000 employees",
+  "< 10,000 employees",
+]);
+
+const characteristics = quickMake([
+  "publicly traded",
+  "government",
+  "not for profit",
+  "charity",
+  "early stage startup",
+  "growth stage startup startup",
+  "late stage startup",
+]);
+
 const techStack = quickMake([
   ".NET",
   ".NET CLR",
