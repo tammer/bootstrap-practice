@@ -1,15 +1,8 @@
-import {
-  Row,
-  Col,
-  Form,
-  Tooltip,
-  OverlayTrigger,
-  Button,
-} from "react-bootstrap";
+import { Row, Col, Form, Tooltip, OverlayTrigger } from "react-bootstrap";
 import React, { useState } from "react";
 import { QuestionCircle } from "react-bootstrap-icons";
 
-const Requirement = ({ title, selector, helper }) => {
+const Requirement = ({ title, selector, helper, togglable }) => {
   const [isActive, setActive] = useState(true);
   const [isHover, setHover] = useState(false);
 
@@ -27,6 +20,7 @@ const Requirement = ({ title, selector, helper }) => {
             paddingTop: "10px",
             marginLeft: "27px",
             fontSize: "0.7em",
+            color: "gray",
           }}
         >
           Doesn't Matter
@@ -55,7 +49,8 @@ const Requirement = ({ title, selector, helper }) => {
             style={{
               fontWeight: "bold",
               fontSize: "0.9em",
-              paddingLeft: "17px",
+              paddingLeft: "10px",
+              color: isActive ? "black" : "gray",
             }}
           >
             {title}
@@ -82,6 +77,7 @@ const Requirement = ({ title, selector, helper }) => {
           <Col>{isActive ? selector : noMatter()}</Col>
           <Col sm="auto" style={{ paddingTop: "7px", paddingLeft: "4px" }}>
             <Form.Check
+              disabled={togglable ? false : true}
               onChange={toggleAction}
               defaultChecked={isActive}
               type="switch"
@@ -92,6 +88,10 @@ const Requirement = ({ title, selector, helper }) => {
       </div>
     </>
   );
+};
+
+Requirement.defaultProps = {
+  togglable: true,
 };
 
 export default Requirement;

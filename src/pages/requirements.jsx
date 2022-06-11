@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Requirement from "../components/Requirement";
+import SalarySelector from "../components/SalarySelector";
 // import Select from "react-select";
 import Selector from "../components/Selector";
 
@@ -10,21 +11,53 @@ const Requirements = () => {
         <Col sm="9">
           <Requirement
             title="Role(s)"
+            togglable={false}
             selector={<Selector options={roles} />}
             helper="Enter all the roles your would consider"
           />
-          <Requirement
-            title="Work Model"
-            selector={<Selector options={models} />}
-            helper="Enter all the work models your would consider"
-          />
-          <Requirement
-            title="Tenure"
-            selector={<Selector options={tenures} />}
-            helper="Enter the tenure structures you would consider"
-          />
+
+          <Row>
+            <Col>
+              <Requirement
+                title="Work Model"
+                selector={<Selector options={models} />}
+                helper="Enter all the work models your would consider"
+              />
+            </Col>
+            <Col>
+              <Requirement
+                title="Workplace Language"
+                togglable={false}
+                selector={
+                  <Selector options={languages} selectedOption={languages[0]} />
+                }
+                helper="Enter the (human) languages you can work in"
+              />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              {" "}
+              <Requirement
+                title="Tenure"
+                selector={<Selector options={tenures} />}
+                helper="Enter the tenure structures you would consider"
+              />
+            </Col>
+            <Col>
+              <Requirement
+                title="Min Salary"
+                togglable={false}
+                selector={<SalarySelector />}
+                helper="Enter the minimum salary you would consider"
+              />
+            </Col>
+          </Row>
+
           <Requirement
             title="Technology Stack"
+            togglable={false}
             selector={<Selector options={techStack} />}
             helper="Enter all the technologies you like to work with. If anything is missing from the list, you can type it in."
           />
@@ -68,6 +101,7 @@ const roles = [
 
 const models = quickMake(["On-site", "Hybrid", "Remote", "All-Remote"]);
 const tenures = quickMake(["Permanent", "Contract"]);
+const languages = quickMake(["English", "Deutsch", "Francis", "Dansk"]);
 
 const sizes = quickMake([
   "< 10 employees",

@@ -1,4 +1,3 @@
-import Section from "./Section";
 import Creatable, { useCreatable } from "react-select/creatable";
 
 const styles = {
