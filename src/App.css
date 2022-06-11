@@ -3,8 +3,11 @@ body {
 }
 
 .row {
-  background-color: #f6f8fa;
-  padding: 5px;
+  padding: 0px;
+  margin: 0px;
+}
+.col {
+  padding: 0px;
 }
 .section-inner {
   background-color: white;
@@ -34,4 +37,8 @@ body {
 
 .instructions {
   padding: 12px;
+}
+
+.debug {
+  background-color: aqua;
 }

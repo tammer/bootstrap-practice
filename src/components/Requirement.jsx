@@ -1,5 +1,13 @@
-import { Row, Col, Form } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Form,
+  Tooltip,
+  OverlayTrigger,
+  Button,
+} from "react-bootstrap";
 import React, { useState } from "react";
+import { QuestionCircle } from "react-bootstrap-icons";
 
 const Requirement = ({ title, selector, helper }) => {
   const [isActive, setActive] = useState(true);
@@ -12,40 +20,73 @@ const Requirement = ({ title, selector, helper }) => {
   function noMatter() {
     return (
       <>
-        <h6>Doesn't Matter</h6>
+        <div
+          style={{
+            marginBottom: "11px",
+            marginLeft: "0px",
+            paddingTop: "10px",
+            marginLeft: "27px",
+            fontSize: "0.7em",
+          }}
+        >
+          Doesn't Matter
+        </div>
       </>
     );
   }
 
+  const renderTooltip = (props) => <Tooltip {...props}>{helper}</Tooltip>;
   return (
     <>
       <div
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        style={{ marginBottom: "30px" }}
+        style={{
+          backgroundColor: "white",
+          marginBottom: "5px",
+          border: "1px",
+          borderStyle: "solid",
+          borderColor: "#d0d7de",
+          //   borderColor: "black",
+          paddingBottom: "6px",
+        }}
       >
         <Row>
-          <Col sm="4"></Col>
-          <Col sm="auto">
-            <h5>{title}</h5>
+          <Col
+            sm="auto"
+            style={{
+              fontWeight: "bold",
+              fontSize: "0.9em",
+              paddingLeft: "17px",
+            }}
+          >
+            {title}
           </Col>
-          <Col>
+          <Col style={{ paddingRight: "3px", paddingTop: "3px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "right",
+                justifyContent: "right",
+              }}
+            >
+              <OverlayTrigger
+                placement="left"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <QuestionCircle />
+              </OverlayTrigger>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>{isActive ? selector : noMatter()}</Col>
+          <Col sm="auto" style={{ paddingTop: "7px", paddingLeft: "4px" }}>
             <Form.Check
               onChange={toggleAction}
               defaultChecked={isActive}
               type="switch"
               id="custom-switch"
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col sm="4">
-            <div style={{ fontSize: "0.8em" }}>
-              {isActive && isHover ? helper : ""}
-            </div>
-          </Col>
-          <Col sm="8">
-            <div>{isActive ? selector : noMatter()}</div>
           </Col>
         </Row>
       </div>

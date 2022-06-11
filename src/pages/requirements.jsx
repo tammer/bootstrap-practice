@@ -1,41 +1,51 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Requirement from "../components/Requirement";
 // import Select from "react-select";
 import Selector from "../components/Selector";
 
 const Requirements = () => {
   return (
-    <Container fluid>
-      <Requirement
-        title="Role(s)"
-        selector={<Selector options={roles} />}
-        helper="Enter all the roles your would consider"
-      />
-      <Requirement
-        title="Work Model"
-        selector={<Selector options={models} />}
-        helper="Enter all the work models your would consider"
-      />
-      <Requirement
-        title="Tenure"
-        selector={<Selector options={tenures} />}
-        helper="Enter the tenure structures you would consider"
-      />
-      <Requirement
-        title="Technology Stack"
-        selector={<Selector options={techStack} />}
-        helper="Enter all the technologies you like to work with. If anything is missing from the list, you can type it in."
-      />
-      <Requirement
-        title="Org Size"
-        selector={<Selector options={sizes} simple={true} />}
-        helper="Enter the upperbound for the org's size"
-      />
-      <Requirement
-        title="Org Characteristics"
-        selector={<Selector options={characteristics} />}
-        helper="Enter the types of organizations you would consider"
-      />
+    <Container fluid style={{ paddingTop: "20px" }}>
+      <Row>
+        <Col sm="9">
+          <Requirement
+            title="Role(s)"
+            selector={<Selector options={roles} />}
+            helper="Enter all the roles your would consider"
+          />
+          <Requirement
+            title="Work Model"
+            selector={<Selector options={models} />}
+            helper="Enter all the work models your would consider"
+          />
+          <Requirement
+            title="Tenure"
+            selector={<Selector options={tenures} />}
+            helper="Enter the tenure structures you would consider"
+          />
+          <Requirement
+            title="Technology Stack"
+            selector={<Selector options={techStack} />}
+            helper="Enter all the technologies you like to work with. If anything is missing from the list, you can type it in."
+          />
+          <Row>
+            <Col>
+              <Requirement
+                title="Org Size"
+                selector={<Selector options={sizes} simple={true} />}
+                helper="Enter the upperbound for the org's size"
+              />
+            </Col>
+            <Col>
+              <Requirement
+                title="Org Characteristics"
+                selector={<Selector options={characteristics} />}
+                helper="Enter the types of organizations you would consider"
+              />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
       <div style={{ marginBottom: "300px" }}></div>
     </Container>
   );
