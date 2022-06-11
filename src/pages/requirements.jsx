@@ -52,7 +52,7 @@ const Requirements = () => {
                 title="Min Salary"
                 togglable={false}
                 selector={<SalarySelector />}
-                helper="Enter the minimum salary you would consider"
+                helper="Enter the minimum salary you would consider. If you love your current job, put a high number in here!"
               />
             </Col>
           </Row>
@@ -60,8 +60,23 @@ const Requirements = () => {
           <Requirement
             title="Technology Stack"
             togglable={false}
-            selector={<Selector options={techStack} />}
-            helper="Enter all the technologies you like to work with. If anything is missing from the list, you can type it in."
+            selector={
+              <Selector
+                options={techStack}
+                placeholder="List all the technologies you want to work with"
+              />
+            }
+            helper="Any job spec whose tech stack is the same as or a subset of what is listed here constritutes a match on this field. Do not by bound by what is offered in the dropdown; a new attributes is automatically created if you type something unique."
+          />
+          <Requirement
+            title="Technology Anti-Stack"
+            selector={
+              <Selector
+                options={techStack}
+                placeholder="List any technologies that would disqualify a role if they were a major part of the job spec."
+              />
+            }
+            helper="Any job spec that matches any one technology listed here is disqualified"
           />
           <Row>
             <Col>
@@ -81,6 +96,9 @@ const Requirements = () => {
           </Row>
         </Col>
       </Row>
+      TODO: Location, Industry, Experiential question mark should open large
+      explaining box, espeically for the tech section anti tech stack should
+      start turned off
       <div style={{ marginBottom: "300px" }}></div>
     </Container>
   );
