@@ -10,7 +10,7 @@ const Requirements = () => {
       <Row>
         <Col sm="9">
           <Requirement
-            title="Role(s)"
+            title="Role"
             togglable={false}
             selector={<Selector options={roles} />}
             helper="Enter all the roles your would consider"
@@ -21,7 +21,7 @@ const Requirements = () => {
               <Requirement
                 title="Work Model"
                 selector={<Selector options={models} />}
-                helper="Enter all the work models your would consider"
+                helper="Enter all the work models you would consider. Remote = you are remote; All-Remote = every employee is remote"
               />
             </Col>
             <Col>
@@ -41,7 +41,9 @@ const Requirements = () => {
               {" "}
               <Requirement
                 title="Tenure"
-                selector={<Selector options={tenures} />}
+                selector={
+                  <Selector options={tenures} selectedOption={tenures[0]} />
+                }
                 helper="Enter the tenure structures you would consider"
               />
             </Col>
