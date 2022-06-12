@@ -7,13 +7,9 @@ import Selector from "../components/Selector";
 const Requirements = () => {
   const [formState, setFormState] = useState(defaultStates);
   function updateState(id, values) {
-    console.log("in", formState);
     let temp = { ...formState };
     temp[id] = values;
     setFormState(temp);
-  }
-  function getState(id) {
-    return formState[0][id];
   }
   return (
     <Container fluid style={{ paddingTop: "20px" }}>
@@ -51,6 +47,7 @@ const Requirements = () => {
                     id="Model"
                     handler={updateState}
                     options={models}
+                    selectedOption={formState["Model"]}
                     placeholder="On-site? Hybrid?"
                   />
                 }
@@ -65,7 +62,7 @@ const Requirements = () => {
                   <Selector
                     id="Language"
                     options={languages}
-                    selectedOption={getState("Language")}
+                    selectedOption={formState["Language"]}
                     handler={updateState}
                   />
                 }
@@ -84,7 +81,7 @@ const Requirements = () => {
                     id="Tenure"
                     handler={updateState}
                     options={tenures}
-                    selectedOption={getState("Tenure")}
+                    selectedOption={formState["Tenure"]}
                   />
                 }
                 helper="Enter the tenure structures you would consider"
@@ -105,7 +102,10 @@ const Requirements = () => {
             togglable={false}
             selector={
               <Selector
+                id="TechStack"
+                handler={updateState}
                 options={techStack}
+                selectedOption={formState["TechStack"]}
                 placeholder="List the technologies you want to work with"
               />
             }
@@ -115,7 +115,10 @@ const Requirements = () => {
             title="Technology Anti-Stack"
             selector={
               <Selector
+                id="TechAntiStack"
+                handler={updateState}
                 options={techStack}
+                selectedOption={formState["TechAntiStack"]}
                 placeholder="List any technologies that would disqualify a role if they were a major part of the job spec."
               />
             }
@@ -125,14 +128,29 @@ const Requirements = () => {
             <Col>
               <Requirement
                 title="Org Size"
-                selector={<Selector options={sizes} simple={true} />}
+                selector={
+                  <Selector
+                    id="OrgSize"
+                    handler={updateState}
+                    options={sizes}
+                    selectedOption={formState["OrgSize"]}
+                    simple={true}
+                  />
+                }
                 helper="Enter the upperbound for the org's size"
               />
             </Col>
             <Col>
               <Requirement
                 title="Org Characteristics"
-                selector={<Selector options={characteristics} />}
+                selector={
+                  <Selector
+                    id="OrgChars"
+                    handler={updateState}
+                    options={characteristics}
+                    selectedOption={formState["OrgChars"]}
+                  />
+                }
                 helper="Enter the types of organizations you would consider"
               />
             </Col>
@@ -140,7 +158,13 @@ const Requirements = () => {
           <Requirement
             title="Industry"
             selector={
-              <Selector options={industries} placeholder="Industry sectors" />
+              <Selector
+                id="Industry"
+                handler={updateState}
+                options={industries}
+                selectedOption={formState["Industry"]}
+                placeholder="Industry sectors"
+              />
             }
             helper="What industries would you consider"
           />
@@ -456,4 +480,4 @@ const senior_roles = [
 
 const roles = quickMake([...roles_, ...senior_roles]);
 
-const defaultStates = [{ Language: [languages[0]], Tenure: [tenures[0]] }];
+const defaultStates = { Language: [languages[0]], Tenure: [tenures[0]] };
