@@ -23,7 +23,7 @@ const SalarySelector = () => {
           onChange={(e) => handleInput(e)}
         />
       </Col>
-      <Col sm="4" style={{ paddingLeft: "2px" }}>
+      <Col style={{ paddingLeft: "2px" }}>
         <Select
           defaultValue={quickMake(["USD"])}
           options={quickMake(["USD", "CAD", "EUR", "GBP", "Yen"])}

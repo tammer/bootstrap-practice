@@ -16,7 +16,14 @@ const styles = {
 //
 // Here is the function
 //
-const Selector = ({ options, selectedOption, placeholder, simple }) => {
+const Selector = ({
+  id,
+  options,
+  selectedOption,
+  placeholder,
+  simple,
+  handler,
+}) => {
   const makeID = (string) => {
     return "secid-".concat(string.replace(/[^a-zA-Z]/g, ""));
   };
@@ -45,7 +52,7 @@ const Selector = ({ options, selectedOption, placeholder, simple }) => {
       closeMenuOnSelect={simple ? true : false}
       isMulti={simple ? false : true}
       defaultValue={selectedOption}
-      //   onChange={setSelectedOption}
+      onChange={(e) => handler(id, e)}
       options={options}
       hideSelectedOptions={true}
       placeholder={placeholder}
