@@ -46,3 +46,11 @@ body {
 .debug2 {
   background-color: palegreen;
 }
+
+.code-indent {
+  margin-left: 20px;
+}
+
+.attribute {
+  background-color: lemonchiffon;
+}

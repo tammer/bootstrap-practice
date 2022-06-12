@@ -11,6 +11,37 @@ const Requirements = () => {
     temp[id] = values;
     setFormState(temp);
   }
+
+  const cond = {
+    Role: { suffix: "role", comparison: "is_one_of" },
+    Model: { suffix: "work_model", comparison: "is_one_of" },
+    Tenure: { suffix: "tenure", comparison: "is_one_of" },
+    TechStack: { suffix: "tech_stack", comparison: "smart_match" },
+  };
+  function makeCondition(id) {
+    if (!formState[id]) {
+      return <div>nothing</div>;
+    }
+    const listItems = formState[id].slice(0, 3).map((e) => (
+      <span>
+        <span className="attribute">{e["label"]}</span>,&nbsp;
+      </span>
+    ));
+    return (
+      <>
+        <div>
+          jd.
+          {cond[id]["suffix"] + " " + cond[id]["comparison"] + " {"}
+          {listItems}
+          {formState[id].length > 3 ? "..." : ""}
+          {"}"}
+          <br />
+          AND
+        </div>
+      </>
+    );
+  }
+
   return (
     <Container fluid style={{ paddingTop: "20px" }}>
       <Row>
@@ -173,7 +204,42 @@ const Requirements = () => {
       TODO: Location, Industry, Experiential question mark should open large
       explaining box, espeically for the tech section anti tech stack should
       start turned off
-      <div style={{ marginBottom: "300px" }}></div>
+      <div style={{ marginBottom: "100px" }}></div>
+      <Row>
+        <Col>
+          <code>
+            <div className="code-indent"></div>
+            Each day:
+            <div className="code-indent">
+              jd_list = fetchNewJobSpecs()
+              <br />
+              for each jd in jd_list:
+              <div className="code-indent">
+                if:
+                <div className="code-indent">{makeCondition("Role")}</div>
+                <div className="code-indent">{makeCondition("Model")}</div>
+                <div className="code-indent">{makeCondition("Tenure")}</div>
+                <div className="code-indent">{makeCondition("TechStack")}</div>
+                then:
+                <div className="code-indent">
+                  send_email(to: you, subj: "are you interested?", content:
+                  jd.job_description){" "}
+                </div>
+                <div className="code-indent">
+                  if you.interested() === true:
+                  <div className="code-indent">
+                    introduce(you, jd.contact_person)
+                  </div>
+                  else:
+                  <div className="code-indent">
+                    nil // ie you're not interested, nothing more to do
+                  </div>
+                </div>
+              </div>
+            </div>
+          </code>
+        </Col>
+      </Row>
     </Container>
   );
 };
