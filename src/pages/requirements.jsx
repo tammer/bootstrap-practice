@@ -248,11 +248,8 @@ const Requirements = () => {
       <Row>
         <Col></Col>
       </Row>
-      <Link to="/signup" state={formState}>
-        Signup
-      </Link>
       <Row>
-        <Col sm="12">
+        <Col sm="8">
           <div className="d-flex justify-content-center">
             <OverlayTrigger
               show={!formGood()}
@@ -263,7 +260,10 @@ const Requirements = () => {
               }
             >
               <span>
-                <Button disabled={formGood() ? false : true} href="/signup">
+                <Button
+                  disabled={formGood() ? false : true}
+                  onClick={() => navigate("/signup", { state: formState })}
+                >
                   Next
                 </Button>
               </span>

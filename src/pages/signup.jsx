@@ -29,7 +29,7 @@ const SignUp = () => {
       return <div></div>;
     }
     console.log("id", id);
-    const listItems = formState[id]["attributes"].slice(0, 2).map((e) => (
+    const listItems = formState[id]["attributes"].slice(0, 3).map((e) => (
       <span>
         <span className="attribute">{e["label"]}</span>,&nbsp;
       </span>
@@ -69,7 +69,7 @@ const SignUp = () => {
     <>
       <Container>
         <Row>
-          <Col sm="8">
+          <Col sm="10">
             <h3>Now Activate Background Process</h3>
             <p>Your filter is configured! Here's what happens on activation:</p>
 
@@ -135,16 +135,14 @@ const SignUp = () => {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Activate your Background Process:</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" placeholder="email" />
                 <Form.Text className="text-muted">
                   You will need to click a confirmation link to complete
                   activation
                 </Form.Text>
               </Form.Group>
 
-              <Button variant="secondary" type="submit">
-                Revise Spec
-              </Button>
+              <Button variant="secondary">Revise Spec</Button>
               <Button variant="primary" type="submit">
                 Activate
               </Button>
