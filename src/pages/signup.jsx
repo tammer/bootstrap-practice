@@ -131,22 +131,23 @@ const SignUp = () => {
                 </div>
               </div>
             </code>
+            <div>
+              <Form>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Activate Background Process:</Form.Label>
+                  <Form.Control type="email" placeholder="email" />
+                  <Form.Text className="text-muted">
+                    You will need to click a confirmation link to complete
+                    activation
+                  </Form.Text>
+                </Form.Group>
 
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Activate your Background Process:</Form.Label>
-                <Form.Control type="email" placeholder="email" />
-                <Form.Text className="text-muted">
-                  You will need to click a confirmation link to complete
-                  activation
-                </Form.Text>
-              </Form.Group>
-
-              <Button variant="secondary">Revise Spec</Button>
-              <Button variant="primary" type="submit">
-                Activate
-              </Button>
-            </Form>
+                <Button variant="secondary">Revise Spec</Button>
+                <Button variant="primary" type="submit">
+                  Activate
+                </Button>
+              </Form>
+            </div>
           </Col>
         </Row>
       </Container>
