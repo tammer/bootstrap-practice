@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   Container,
   Row,
@@ -12,6 +14,7 @@ import React, { useState } from "react";
 import Selector from "../components/Selector";
 
 const Requirements = () => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState(defaultStates);
   function updateState(id, values) {
     let temp = { ...formState };
@@ -27,58 +30,6 @@ const Requirements = () => {
   }
   function getAttributes(field) {
     return !formState[field] ? [] : formState[field]["attributes"];
-  }
-
-  const cond = {
-    Role: { suffix: "role", comparison: "∈" },
-    Model: { suffix: "work_model", comparison: "∈" },
-    Tenure: { suffix: "tenure", comparison: "∈" },
-    TechStack: { suffix: "tech_stack", comparison: "⊇" },
-    Industry: { suffix: "industry", comparison: "∈" },
-    Salary: { suffix: "salary", comparison: ">=" },
-  };
-  function makeCondition(id, isLast = false) {
-    if (
-      !formState[id] ||
-      !formState[id]["active"] ||
-      formState[id]["attributes"].length === 0
-    ) {
-      return <div></div>;
-    }
-    const listItems = formState[id]["attributes"].slice(0, 3).map((e) => (
-      <span>
-        <span className="attribute">{e["label"]}</span>,&nbsp;
-      </span>
-    ));
-    if (id === "Salary") {
-      return (
-        <div>
-          jd.salary >= ${formState[id]["attributes"][0]["label"]}
-          <br />
-          AND
-        </div>
-      );
-    }
-
-    return (
-      <>
-        <div>
-          jd.
-          {cond[id]["suffix"] + " " + cond[id]["comparison"] + " {"}
-          {listItems}
-          {formState[id]["attributes"].length > 3 ? "..." : ""}
-          {"}"}
-          {!isLast ? (
-            <>
-              <br />
-              AND
-            </>
-          ) : (
-            ""
-          )}
-        </div>
-      </>
-    );
   }
 
   function formGood() {
@@ -293,44 +244,12 @@ const Requirements = () => {
           />
         </Col>
       </Row>
-      <div style={{ marginBottom: "100px" }}></div>
       <Row>
-        <Col>
-          <code>
-            <div className="code-indent"></div>
-            Each day:
-            <div className="code-indent">
-              jd_list = fetchNewJobDescriptions()
-              <br />
-              for each jd in jd_list:
-              <div className="code-indent">
-                if({makeCondition("Role")}
-                <div className="code-indent">{makeCondition("Role")}</div>
-                <div className="code-indent">{makeCondition("Salary")}</div>
-                <div className="code-indent">{makeCondition("Model")}</div>
-                <div className="code-indent">{makeCondition("Tenure")}</div>
-                <div className="code-indent">{makeCondition("TechStack")}</div>
-                <div className="code-indent">
-                  {makeCondition("Industry", true)}
-                </div>
-                ) THEN:
-                <div className="code-indent">
-                  send_email(to: you, subj: "are you interested?", content:
-                  jd.full_description){" "}
-                </div>
-                <div className="code-indent">
-                  if you.interested() === true:
-                  <div className="code-indent">
-                    introduce(you, jd.contact_person)
-                  </div>
-                  else:
-                  <div className="code-indent">nil</div>
-                </div>
-              </div>
-            </div>
-          </code>
-        </Col>
+        <Col></Col>
       </Row>
+      <Link to="/signup" state={formState}>
+        Signup
+      </Link>
       <Row>
         <Col sm="12">
           <div className="d-flex justify-content-center">
@@ -351,6 +270,7 @@ const Requirements = () => {
           </div>
         </Col>
       </Row>
+      <div style={{ marginBottom: "100px" }}></div>
     </Container>
   );
 };

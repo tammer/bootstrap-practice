@@ -48,9 +48,31 @@ body {
 }
 
 .code-indent {
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .attribute {
-  background-color: lemonchiffon;
+  background-color: white;
+  color: #4b6a88;
+  font-weight: bold;
+}
+
+.filter-code {
+  background-color: #1e1e1d;
+  color: #dcdcab;
+  font-size: 12px;
+  padding: 20px;
+  padding-right: 0px;
+}
+
+.code-color-1 {
+  color: pink;
+}
+
+.code-color-2 {
+  color: orange;
+}
+
+.code-color-3 {
+  color: greenyellow;
 }
