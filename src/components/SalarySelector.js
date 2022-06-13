@@ -2,7 +2,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Select from "react-select";
 
-const SalarySelector = ({ id, handler }) => {
+const SalarySelector = ({ id, handler, selectedOption }) => {
   function handleInput(e) {
     let temp = e.target.value.replace(/\D/g, "");
     if (temp.length > 6) {
@@ -21,6 +21,7 @@ const SalarySelector = ({ id, handler }) => {
           maxLength="7"
           size="7"
           type="text"
+          value={selectedOption[0] ? selectedOption[0]["label"] : ""}
           onChange={(e) => handleInput(e)}
         />
       </Col>

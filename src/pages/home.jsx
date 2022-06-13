@@ -9,9 +9,9 @@ const Home = () => {
           <Col sm="8">
             <div style={{ textAlign: "center", marginTop: "40px" }}>
               <h1 className="display-6">Welcome to</h1>
-              <h8>(the protype of)</h8>
+              <h5>(the protype of)</h5>
               <h1 className="display-1">Background Process</h1>
-              <p class="lead">
+              <p className="lead">
                 The Job Opportunity Management System for Developers{" "}
               </p>
               <h5>

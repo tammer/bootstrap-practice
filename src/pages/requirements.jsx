@@ -139,11 +139,17 @@ const Requirements = () => {
             </Col>
             <Col>
               <Requirement
-                id="tbd"
+                id="Salary"
                 handleActive={updateActive}
                 title="Min Salary"
                 togglable={false}
-                selector={<SalarySelector id="Salary" handler={updateState} />}
+                selector={
+                  <SalarySelector
+                    id="Salary"
+                    handler={updateState}
+                    selectedOption={getAttributes("Salary")}
+                  />
+                }
                 helper="Enter the minimum salary you would consider. If you love your current job, put a high number in here!"
               />
             </Col>
@@ -233,15 +239,15 @@ const Requirements = () => {
           />
 
           <Requirement
-            id="Experential"
+            id="Experentials"
             handleActive={updateActive}
             title="Experential"
             selector={
               <Selector
-                id="Experential"
+                id="Experentials"
                 handler={updateState}
                 options={experiences}
-                selectedOption={getAttributes("Experential")}
+                selectedOption={getAttributes("Experentials")}
                 placeholder="Must have experential factors go here."
               />
             }
@@ -604,5 +610,6 @@ const defaultStates = {
   OrgSize: { active: true, attributes: [] },
   OrgChars: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
-  Salary: { active: true, attributes: [] },
+  Experentials: { active: true, attributes: [] },
+  Salary: { active: true, attributes: [{ label: "100,000" }] },
 };

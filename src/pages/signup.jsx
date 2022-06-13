@@ -19,7 +19,7 @@ const SignUp = () => {
       Salary: { suffix: "salary", comparison: ">=" },
       OrgChars: { suffix: "org_chars", comparison: "∈" },
       OrgSize: { suffix: "org_size", comparison: "" },
-      Experential: { suffix: "experentials", comparison: "⊇" },
+      Experentials: { suffix: "experentials", comparison: "⊇" },
     };
 
     if (
@@ -37,7 +37,7 @@ const SignUp = () => {
     if (id === "Salary") {
       return (
         <div>
-          {JD}.salary >= ${formState[id]["attributes"][0]["label"]}
+          {JD}.salary &gt;= ${formState[id]["attributes"][0]["label"]}
           &nbsp;&amp;&amp;
         </div>
       );
