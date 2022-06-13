@@ -23,11 +23,11 @@ const Requirements = () => {
   }
 
   const cond = {
-    Role: { suffix: "role", comparison: "is_one_of" },
-    Model: { suffix: "work_model", comparison: "is_one_of" },
-    Tenure: { suffix: "tenure", comparison: "is_one_of" },
-    TechStack: { suffix: "tech_stack", comparison: "resembles" },
-    Industry: { suffix: "industry", comparison: "is_one_of" },
+    Role: { suffix: "role", comparison: "∈" },
+    Model: { suffix: "work_model", comparison: "∈" },
+    Tenure: { suffix: "tenure", comparison: "∈" },
+    TechStack: { suffix: "tech_stack", comparison: "⊇" },
+    Industry: { suffix: "industry", comparison: "∈" },
   };
   function makeCondition(id, isLast = false) {
     if (
