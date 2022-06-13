@@ -14,28 +14,30 @@ const Home = () => {
               <p class="lead">
                 The Job Opportunity Management System for Developers{" "}
               </p>
+              <h5>
+                Background Process is a filtering system for the job market
+              </h5>
             </div>
-            <h5>
-              Background Process is a filtering system for the entire job
-              market:
-            </h5>
-            <ol>
-              <li>
-                You spec a series of parameters (role, tech stack, salary, ...).
-              </li>
-              <li>
-                Recruiters and hiring orgs submit job requisites to the
-                platform.
-              </li>
-              <li>
-                When (and only when) a job opportunity meets your criteria, we
-                show it to you.
-              </li>
-              <li>
-                If (and only if) you like what you see, we connect you to the
-                hiring organization.
-              </li>
-            </ol>
+            <div className="d-flex justify-content-center">
+              <ol>
+                <li>
+                  You spec a series of parameters (role, tech stack, salary,
+                  ...).
+                </li>
+                <li>
+                  Recruiters and hiring orgs submit job requisites to the
+                  platform.
+                </li>
+                <li>
+                  When (and only when) a job opportunity meets your criteria, we
+                  show it to you.
+                </li>
+                <li>
+                  If (and only if) you like what you see, we connect you to the
+                  hiring organization.
+                </li>
+              </ol>
+            </div>
             <h1 style={{ textAlign: "center" }}>Benefits</h1>
             <dl className="row">
               <dt className="col-sm-3">Effecient</dt>

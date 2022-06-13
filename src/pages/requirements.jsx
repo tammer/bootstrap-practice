@@ -83,10 +83,9 @@ const Requirements = () => {
               Using the form below, spec the job opportunities you would want to
               see.
             </li>
-            <li>You are basically creating a filter.</li>
             <li>
-              Opportunities that meet all your criteria will make it to your
-              inbox. The rest don't.
+              You are creating a filter: opportunities that meet all your
+              criteria will make it to your inbox.
             </li>
           </ul>
         </Col>
@@ -269,10 +268,10 @@ const Requirements = () => {
                 handler={updateState}
                 options={experiences}
                 selectedOption={getAttributes("Experential")}
-                placeholder="Experential factors go here"
+                placeholder="Must have experential factors go here."
               />
             }
-            helper="Experential factors that the job must offer"
+            helper="What are the experiences that the job MUST offer?"
           />
         </Col>
       </Row>
@@ -328,11 +327,15 @@ const models = quickMake(["On-site", "Hybrid", "Remote", "All-Remote"]);
 const tenures = quickMake(["Permanent", "Contract"]);
 const languages = quickMake(["English", "Deutsch", "Francis", "Dansk"]);
 const experiences = quickMake([
-  "Female-led",
-  "Child-care",
-  "On-site Fitness Facilities",
+  "female-led",
+  "child-care",
+  "on-site fitness facilities",
   "pet friendly",
   "unlimited vacation",
+  "snacks",
+  "healthy snacks",
+  "meals",
+  "free shuttles to/from office",
 ]);
 
 const industries = quickMake([
