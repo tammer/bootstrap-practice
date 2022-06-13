@@ -16,7 +16,8 @@ import Selector from "../components/Selector";
 const Requirements = () => {
   const navigate = useNavigate();
   const [formState, setFormState] = useState(defaultStates);
-  function updateState(id, values) {
+  function updateState(id, values_) {
+    let values = Array.isArray(values_) ? values_ : [values_];
     let temp = { ...formState };
     temp[id]
       ? (temp[id]["attributes"] = values)
@@ -64,7 +65,7 @@ const Requirements = () => {
           <Requirement
             id="Role"
             handleActive={updateActive}
-            title="Role"
+            title="Role (aka Job Title)"
             togglable={false}
             selector={
               <Selector

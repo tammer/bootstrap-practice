@@ -1,10 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const SignUp = () => {
   const location = useLocation();
   const formState = location.state;
-  console.log("formState", formState);
 
   const JD = <span className="code-color-2">jd</span>;
 
@@ -14,8 +13,12 @@ const SignUp = () => {
       Model: { suffix: "work_model", comparison: "∈" },
       Tenure: { suffix: "tenure", comparison: "∈" },
       TechStack: { suffix: "tech_stack", comparison: "⊇" },
+      TechAntiStack: { suffix: "tech_stack", comparison: "∉" },
       Industry: { suffix: "industry", comparison: "∈" },
       Salary: { suffix: "salary", comparison: ">=" },
+      OrgChars: { suffix: "org_chars", comparison: "∈" },
+      OrgSize: { suffix: "org_size", comparison: "" },
+      Experential: { suffix: "experentials", comparison: "⊇" },
     };
 
     if (
@@ -25,6 +28,7 @@ const SignUp = () => {
     ) {
       return <div></div>;
     }
+    console.log("id", id);
     const listItems = formState[id]["attributes"].slice(0, 2).map((e) => (
       <span>
         <span className="attribute">{e["label"]}</span>,&nbsp;
@@ -34,6 +38,15 @@ const SignUp = () => {
       return (
         <div>
           {JD}.salary >= ${formState[id]["attributes"][0]["label"]}
+          &nbsp;&amp;&amp;
+        </div>
+      );
+    }
+
+    if (id === "OrgSize") {
+      return (
+        <div>
+          {JD}.org_size {formState[id]["attributes"][0]["label"]}
           &nbsp;&amp;&amp;
         </div>
       );
@@ -56,9 +69,10 @@ const SignUp = () => {
     <>
       <Container>
         <Row>
-          <Col sm="5">Explain everyghing</Col>
-          <Col sm="7">
-            <h4>Here's what runs each day</h4>
+          <Col sm="8">
+            <h3>Now Activate Background Process</h3>
+            <p>Your filter is configured! Here's what happens on activation:</p>
+
             <code>
               <div className="filter-code">
                 <div className="code-indent"></div>
@@ -81,7 +95,19 @@ const SignUp = () => {
                       {makeCondition("TechStack")}
                     </div>
                     <div className="code-indent">
+                      {makeCondition("TechAntiStack")}
+                    </div>
+                    <div className="code-indent">
                       {makeCondition("Industry", true)}
+                    </div>
+                    <div className="code-indent">
+                      {makeCondition("OrgSize")}
+                    </div>
+                    <div className="code-indent">
+                      {makeCondition("OrgChars")}
+                    </div>
+                    <div className="code-indent">
+                      {makeCondition("Experentials")}
                     </div>
                     <span className="code-color-1">THEN:</span>
                     <div className="code-indent">
@@ -93,7 +119,8 @@ const SignUp = () => {
                       <span className="code-color-1">IF:</span> you.interested()
                       === true:
                       <div className="code-indent">
-                        <span className="code-color-3">introduce</span>(you,
+                        <span className="code-color-3">introduce</span>(you
+                        &gt;&lt;&nbsp;
                         {JD}.contact_person
                         <span className="code-color-3">)</span>
                       </div>
@@ -104,6 +131,24 @@ const SignUp = () => {
                 </div>
               </div>
             </code>
+
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Activate your Background Process:</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Text className="text-muted">
+                  You will need to click a confirmation link to complete
+                  activation
+                </Form.Text>
+              </Form.Group>
+
+              <Button variant="secondary" type="submit">
+                Revise Spec
+              </Button>
+              <Button variant="primary" type="submit">
+                Activate
+              </Button>
+            </Form>
           </Col>
         </Row>
       </Container>
