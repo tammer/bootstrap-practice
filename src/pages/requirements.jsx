@@ -1,4 +1,11 @@
-import { Container, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import Requirement from "../components/Requirement";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState } from "react";
@@ -52,6 +59,7 @@ const Requirements = () => {
         </div>
       );
     }
+
     return (
       <>
         <div>
@@ -71,6 +79,16 @@ const Requirements = () => {
         </div>
       </>
     );
+  }
+
+  function formGood() {
+    if (
+      formState["Role"]["attributes"].length === 0 ||
+      formState["TechStack"]["attributes"].length === 0
+    ) {
+      return false;
+    }
+    return true;
   }
 
   return (
@@ -311,6 +329,26 @@ const Requirements = () => {
               </div>
             </div>
           </code>
+        </Col>
+      </Row>
+      <Row>
+        <Col sm="12">
+          <div className="d-flex justify-content-center">
+            <OverlayTrigger
+              show={!formGood()}
+              placement="top"
+              delay={{ show: 250, hide: 400 }}
+              overlay={
+                <Tooltip>Role and Tech Stack fields must be set.</Tooltip>
+              }
+            >
+              <span>
+                <Button disabled={formGood() ? false : true} href="/review">
+                  Next
+                </Button>
+              </span>
+            </OverlayTrigger>
+          </div>
         </Col>
       </Row>
     </Container>

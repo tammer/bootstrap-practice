@@ -34,7 +34,7 @@ const Home = () => {
                 </li>
                 <li>
                   If (and only if) you like what you see, we connect you to the
-                  hiring organization.
+                  submitter.
                 </li>
               </ol>
             </div>
