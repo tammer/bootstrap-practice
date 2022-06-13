@@ -26,11 +26,16 @@ const Requirements = () => {
     Role: { suffix: "role", comparison: "is_one_of" },
     Model: { suffix: "work_model", comparison: "is_one_of" },
     Tenure: { suffix: "tenure", comparison: "is_one_of" },
-    TechStack: { suffix: "tech_stack", comparison: "smart_match" },
+    TechStack: { suffix: "tech_stack", comparison: "resembles" },
+    Industry: { suffix: "industry", comparison: "is_one_of" },
   };
-  function makeCondition(id) {
-    if (!formState[id]) {
-      return <div>nothing</div>;
+  function makeCondition(id, isLast = false) {
+    if (
+      !formState[id] ||
+      !formState[id]["active"] ||
+      formState[id]["attributes"].length === 0
+    ) {
+      return <div></div>;
     }
     const listItems = formState[id]["attributes"].slice(0, 3).map((e) => (
       <span>
@@ -45,8 +50,14 @@ const Requirements = () => {
           {listItems}
           {formState[id]["attributes"].length > 3 ? "..." : ""}
           {"}"}
-          <br />
-          AND
+          {!isLast ? (
+            <>
+              <br />
+              AND
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </>
     );
@@ -250,6 +261,9 @@ const Requirements = () => {
                 <div className="code-indent">{makeCondition("Model")}</div>
                 <div className="code-indent">{makeCondition("Tenure")}</div>
                 <div className="code-indent">{makeCondition("TechStack")}</div>
+                <div className="code-indent">
+                  {makeCondition("Industry", true)}
+                </div>
                 then:
                 <div className="code-indent">
                   send_email(to: you, subj: "are you interested?", content:
@@ -578,6 +592,13 @@ const roles = quickMake([...roles_, ...senior_roles]);
 
 // const defaultStates = { Language: [languages[0]], Tenure: [tenures[0]] };
 const defaultStates = {
+  Role: { active: true, attributes: [] },
+  Model: { active: true, attributes: [] },
   Language: { active: true, attributes: [languages[0]] },
   Tenure: { active: true, attributes: [tenures[0]] },
+  TechStack: { active: true, attributes: [] },
+  TechAntiStack: { active: false, attributes: [] },
+  OrgSize: { active: true, attributes: [] },
+  OrgChars: { active: true, attributes: [] },
+  Industry: { active: true, attributes: [] },
 };
