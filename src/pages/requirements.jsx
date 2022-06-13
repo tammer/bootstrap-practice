@@ -259,25 +259,21 @@ const Requirements = () => {
         <Col></Col>
       </Row>
       <Row>
-        <Col sm="8">
-          <div className="d-flex justify-content-center">
-            <OverlayTrigger
-              show={!formGood()}
-              placement="top"
-              delay={{ show: 250, hide: 400 }}
-              overlay={
-                <Tooltip>Role and Tech Stack fields must be set.</Tooltip>
-              }
+        <Col sm="9">
+          <div style={{ textAlign: "center" }}>
+            <Button
+              disabled={formGood() ? false : true}
+              onClick={() => navigate("/signup", { state: formState })}
             >
-              <span>
-                <Button
-                  disabled={formGood() ? false : true}
-                  onClick={() => navigate("/signup", { state: formState })}
-                >
-                  Next
-                </Button>
-              </span>
-            </OverlayTrigger>
+              Next
+            </Button>
+            {formGood() ? (
+              ""
+            ) : (
+              <div className="alert alert-warning">
+                Role, Tech Stack and Salary fields must have values
+              </div>
+            )}
           </div>
         </Col>
       </Row>
