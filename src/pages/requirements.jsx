@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   Container,
@@ -14,8 +14,11 @@ import React, { useState } from "react";
 import Selector from "../components/Selector";
 
 const Requirements = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const [formState, setFormState] = useState(defaultStates);
+  const [formState, setFormState] = useState(
+    location.state ? location.state : defaultStates
+  );
   function updateState(id, values_) {
     let values = Array.isArray(values_) ? values_ : [values_];
     let temp = { ...formState };
@@ -72,6 +75,7 @@ const Requirements = () => {
                 id="Role"
                 handler={updateState}
                 options={roles}
+                selectedOption={getAttributes("Role")}
                 placeholder="Enter the roles you would consider"
               />
             }
@@ -165,7 +169,7 @@ const Requirements = () => {
             id="TechAntiStack"
             handleActive={updateActive}
             title="Technology Anti-Stack"
-            disabled
+            disabled={formState["TechAntiStack"]["active"] ? false : true}
             selector={
               <Selector
                 id="TechAntiStack"
@@ -188,7 +192,7 @@ const Requirements = () => {
                     id="OrgSize"
                     handler={updateState}
                     options={sizes}
-                    selectedOption={getAttributes("orgSize")}
+                    selectedOption={getAttributes("OrgSize")}
                     simple={true}
                   />
                 }
@@ -205,7 +209,7 @@ const Requirements = () => {
                     id="OrgChars"
                     handler={updateState}
                     options={characteristics}
-                    selectedOption={getAttributes("orgChars")}
+                    selectedOption={getAttributes("OrgChars")}
                   />
                 }
                 helper="Enter the types of organizations you would consider"

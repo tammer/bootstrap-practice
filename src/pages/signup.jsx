@@ -1,8 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const SignUp = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const formState = location.state;
 
   const JD = <span className="code-color-2">jd</span>;
@@ -28,7 +29,6 @@ const SignUp = () => {
     ) {
       return <div></div>;
     }
-    console.log("id", id);
     const listItems = formState[id]["attributes"].slice(0, 3).map((e) => (
       <span>
         <span className="attribute">{e["label"]}</span>,&nbsp;
@@ -142,7 +142,14 @@ const SignUp = () => {
                   </Form.Text>
                 </Form.Group>
 
-                <Button variant="secondary">Revise Spec</Button>
+                <Button
+                  variant="secondary"
+                  onClick={() =>
+                    navigate("/requirements", { state: formState })
+                  }
+                >
+                  Revise Spec
+                </Button>
                 <Button variant="primary" type="submit">
                   Activate
                 </Button>
