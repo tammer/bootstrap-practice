@@ -76,12 +76,19 @@ const Requirements = () => {
   return (
     <Container fluid style={{ paddingTop: "20px" }}>
       <Row>
-        <Col style={{ paddingLeft: "15px" }}>
+        <Col sm="8" style={{ paddingLeft: "15px" }}>
           <h5>Job Spec</h5>
-          <p>
-            Use the form below to specify the types of opportunities you will
-            consider.
-          </p>
+          <ul>
+            <li>
+              Using the form below, spec the job opportunities you would want to
+              see.
+            </li>
+            <li>You are basically creating a filter.</li>
+            <li>
+              Opportunities that meet all your criteria will make it to your
+              inbox. The rest don't.
+            </li>
+          </ul>
         </Col>
       </Row>
       <Row>
@@ -189,6 +196,7 @@ const Requirements = () => {
             id="TechAntiStack"
             handleActive={updateActive}
             title="Technology Anti-Stack"
+            disabled
             selector={
               <Selector
                 id="TechAntiStack"
@@ -250,11 +258,24 @@ const Requirements = () => {
             }
             helper="What industries would you consider"
           />
+
+          <Requirement
+            id="Experential"
+            handleActive={updateActive}
+            title="Experential"
+            selector={
+              <Selector
+                id="Experential"
+                handler={updateState}
+                options={experiences}
+                selectedOption={getAttributes("Experential")}
+                placeholder="Experential factors go here"
+              />
+            }
+            helper="Experential factors that the job must offer"
+          />
         </Col>
       </Row>
-      TODO: Location, Industry, Experiential question mark should open large
-      explaining box, espeically for the tech section anti tech stack should
-      start turned off
       <div style={{ marginBottom: "100px" }}></div>
       <Row>
         <Col>
@@ -306,6 +327,13 @@ function quickMake(y) {
 const models = quickMake(["On-site", "Hybrid", "Remote", "All-Remote"]);
 const tenures = quickMake(["Permanent", "Contract"]);
 const languages = quickMake(["English", "Deutsch", "Francis", "Dansk"]);
+const experiences = quickMake([
+  "Female-led",
+  "Child-care",
+  "On-site Fitness Facilities",
+  "pet friendly",
+  "unlimited vacation",
+]);
 
 const industries = quickMake([
   "Crytpto",

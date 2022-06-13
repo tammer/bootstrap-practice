@@ -9,8 +9,9 @@ const Requirement = ({
   helper,
   togglable,
   handleActive,
+  disabled,
 }) => {
-  const [isActive, setActive] = useState(true);
+  const [isActive, setActive] = useState(!disabled);
   // const [isHover, setHover] = useState(false);
 
   function toggleAction() {
