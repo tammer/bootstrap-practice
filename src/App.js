@@ -16,13 +16,13 @@ function App() {
         <Nav.Item>
           <Nav.Link href="/home">Landing Page</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link href="/spec">Spec</Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         <Nav.Item>
           <Nav.Link href="/requirements">Requirements</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link href="/skills">Skills</Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -30,7 +30,7 @@ function App() {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/loggedin-home">Loggedin Home</Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </Nav>
       <Outlet />
     </>

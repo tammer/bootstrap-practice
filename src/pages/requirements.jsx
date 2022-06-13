@@ -343,7 +343,7 @@ const Requirements = () => {
               }
             >
               <span>
-                <Button disabled={formGood() ? false : true} href="/review">
+                <Button disabled={formGood() ? false : true} href="/signup">
                   Next
                 </Button>
               </span>
