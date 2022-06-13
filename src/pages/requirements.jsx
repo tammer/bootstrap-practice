@@ -28,6 +28,7 @@ const Requirements = () => {
     Tenure: { suffix: "tenure", comparison: "∈" },
     TechStack: { suffix: "tech_stack", comparison: "⊇" },
     Industry: { suffix: "industry", comparison: "∈" },
+    Salary: { suffix: "salary", comparison: ">=" },
   };
   function makeCondition(id, isLast = false) {
     if (
@@ -42,6 +43,15 @@ const Requirements = () => {
         <span className="attribute">{e["label"]}</span>,&nbsp;
       </span>
     ));
+    if (id === "Salary") {
+      return (
+        <div>
+          jd.salary >= ${formState[id]["attributes"][0]["label"]}
+          <br />
+          AND
+        </div>
+      );
+    }
     return (
       <>
         <div>
@@ -153,7 +163,7 @@ const Requirements = () => {
                 handleActive={updateActive}
                 title="Min Salary"
                 togglable={false}
-                selector={<SalarySelector />}
+                selector={<SalarySelector id="Salary" handler={updateState} />}
                 helper="Enter the minimum salary you would consider. If you love your current job, put a high number in here!"
               />
             </Col>
@@ -252,22 +262,23 @@ const Requirements = () => {
             <div className="code-indent"></div>
             Each day:
             <div className="code-indent">
-              jd_list = fetchNewJobSpecs()
+              jd_list = fetchNewJobDescriptions()
               <br />
               for each jd in jd_list:
               <div className="code-indent">
-                if:
+                if({makeCondition("Role")}
                 <div className="code-indent">{makeCondition("Role")}</div>
+                <div className="code-indent">{makeCondition("Salary")}</div>
                 <div className="code-indent">{makeCondition("Model")}</div>
                 <div className="code-indent">{makeCondition("Tenure")}</div>
                 <div className="code-indent">{makeCondition("TechStack")}</div>
                 <div className="code-indent">
                   {makeCondition("Industry", true)}
                 </div>
-                then:
+                ) THEN:
                 <div className="code-indent">
                   send_email(to: you, subj: "are you interested?", content:
-                  jd.job_description){" "}
+                  jd.full_description){" "}
                 </div>
                 <div className="code-indent">
                   if you.interested() === true:
@@ -275,9 +286,7 @@ const Requirements = () => {
                     introduce(you, jd.contact_person)
                   </div>
                   else:
-                  <div className="code-indent">
-                    nil // ie you're not interested, nothing more to do
-                  </div>
+                  <div className="code-indent">nil</div>
                 </div>
               </div>
             </div>
@@ -601,4 +610,5 @@ const defaultStates = {
   OrgSize: { active: true, attributes: [] },
   OrgChars: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
+  Salary: { active: true, attributes: [] },
 };

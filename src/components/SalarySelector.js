@@ -2,16 +2,17 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Select from "react-select";
 
-function handleInput(e) {
-  let temp = e.target.value.replace(/\D/g, "");
-  if (temp.length > 6) {
-    temp = temp.slice(0, -1);
+const SalarySelector = ({ id, handler }) => {
+  function handleInput(e) {
+    let temp = e.target.value.replace(/\D/g, "");
+    if (temp.length > 6) {
+      temp = temp.slice(0, -1);
+    }
+    temp = temp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    e.target.value = temp;
+    handler(id, [{ label: temp, value: temp }]);
   }
-  temp = temp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  e.target.value = temp;
-}
 
-const SalarySelector = () => {
   return (
     <Row>
       <Col sm="auto" style={{ paddingRight: "0px" }}>
