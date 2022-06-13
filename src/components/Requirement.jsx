@@ -2,11 +2,19 @@ import { Row, Col, Form, Tooltip, OverlayTrigger } from "react-bootstrap";
 import React, { useState } from "react";
 import { QuestionCircle } from "react-bootstrap-icons";
 
-const Requirement = ({ title, selector, helper, togglable }) => {
+const Requirement = ({
+  id,
+  title,
+  selector,
+  helper,
+  togglable,
+  handleActive,
+}) => {
   const [isActive, setActive] = useState(true);
-  const [isHover, setHover] = useState(false);
+  // const [isHover, setHover] = useState(false);
 
   function toggleAction() {
+    handleActive(id, !isActive);
     setActive(!isActive);
   }
 

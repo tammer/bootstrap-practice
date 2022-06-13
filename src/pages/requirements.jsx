@@ -8,8 +8,18 @@ const Requirements = () => {
   const [formState, setFormState] = useState(defaultStates);
   function updateState(id, values) {
     let temp = { ...formState };
-    temp[id] = values;
+    temp[id]
+      ? (temp[id]["attributes"] = values)
+      : (temp[id] = { attributes: values });
     setFormState(temp);
+  }
+  function updateActive(id, status) {
+    let temp = { ...formState };
+    temp[id] ? (temp[id]["active"] = status) : (temp[id] = { active: status });
+    setFormState(temp);
+  }
+  function getAttributes(field) {
+    return !formState[field] ? [] : formState[field]["attributes"];
   }
 
   const cond = {
@@ -22,7 +32,7 @@ const Requirements = () => {
     if (!formState[id]) {
       return <div>nothing</div>;
     }
-    const listItems = formState[id].slice(0, 3).map((e) => (
+    const listItems = formState[id]["attributes"].slice(0, 3).map((e) => (
       <span>
         <span className="attribute">{e["label"]}</span>,&nbsp;
       </span>
@@ -33,7 +43,7 @@ const Requirements = () => {
           jd.
           {cond[id]["suffix"] + " " + cond[id]["comparison"] + " {"}
           {listItems}
-          {formState[id].length > 3 ? "..." : ""}
+          {formState[id]["attributes"].length > 3 ? "..." : ""}
           {"}"}
           <br />
           AND
@@ -56,6 +66,8 @@ const Requirements = () => {
       <Row>
         <Col sm="9">
           <Requirement
+            id="Role"
+            handleActive={updateActive}
             title="Role"
             togglable={false}
             selector={
@@ -72,13 +84,15 @@ const Requirements = () => {
           <Row>
             <Col>
               <Requirement
+                id="Model"
+                handleActive={updateActive}
                 title="Work Model"
                 selector={
                   <Selector
                     id="Model"
                     handler={updateState}
                     options={models}
-                    selectedOption={formState["Model"]}
+                    selectedOption={getAttributes("Model")}
                     placeholder="On-site? Hybrid?"
                   />
                 }
@@ -87,13 +101,15 @@ const Requirements = () => {
             </Col>
             <Col>
               <Requirement
+                id="Language"
+                handleActive={updateActive}
                 title="Workplace Language"
                 togglable={false}
                 selector={
                   <Selector
                     id="Language"
                     options={languages}
-                    selectedOption={formState["Language"]}
+                    selectedOption={getAttributes("Language")}
                     handler={updateState}
                   />
                 }
@@ -106,13 +122,15 @@ const Requirements = () => {
             <Col>
               {" "}
               <Requirement
+                id="Tenure"
+                handleActive={updateActive}
                 title="Tenure"
                 selector={
                   <Selector
                     id="Tenure"
                     handler={updateState}
                     options={tenures}
-                    selectedOption={formState["Tenure"]}
+                    selectedOption={getAttributes("Tenure")}
                   />
                 }
                 helper="Enter the tenure structures you would consider"
@@ -120,6 +138,8 @@ const Requirements = () => {
             </Col>
             <Col>
               <Requirement
+                id="tbd"
+                handleActive={updateActive}
                 title="Min Salary"
                 togglable={false}
                 selector={<SalarySelector />}
@@ -129,6 +149,8 @@ const Requirements = () => {
           </Row>
 
           <Requirement
+            id="TechStack"
+            handleActive={updateActive}
             title="Technology Stack"
             togglable={false}
             selector={
@@ -136,20 +158,22 @@ const Requirements = () => {
                 id="TechStack"
                 handler={updateState}
                 options={techStack}
-                selectedOption={formState["TechStack"]}
+                selectedOption={getAttributes("TechStack")}
                 placeholder="List the technologies you want to work with"
               />
             }
             helper="Do not by bound by what is offered in the dropdown; a new attributes is automatically created if you type something unique."
           />
           <Requirement
+            id="TechAntiStack"
+            handleActive={updateActive}
             title="Technology Anti-Stack"
             selector={
               <Selector
                 id="TechAntiStack"
                 handler={updateState}
                 options={techStack}
-                selectedOption={formState["TechAntiStack"]}
+                selectedOption={getAttributes("TechAntiStack")}
                 placeholder="List any technologies that would disqualify a role if they were a major part of the job spec."
               />
             }
@@ -158,13 +182,15 @@ const Requirements = () => {
           <Row>
             <Col>
               <Requirement
+                id="OrgSize"
+                handleActive={updateActive}
                 title="Org Size"
                 selector={
                   <Selector
                     id="OrgSize"
                     handler={updateState}
                     options={sizes}
-                    selectedOption={formState["OrgSize"]}
+                    selectedOption={getAttributes("orgSize")}
                     simple={true}
                   />
                 }
@@ -173,13 +199,15 @@ const Requirements = () => {
             </Col>
             <Col>
               <Requirement
+                id="OrgChars"
+                handleActive={updateActive}
                 title="Org Characteristics"
                 selector={
                   <Selector
                     id="OrgChars"
                     handler={updateState}
                     options={characteristics}
-                    selectedOption={formState["OrgChars"]}
+                    selectedOption={getAttributes("orgChars")}
                   />
                 }
                 helper="Enter the types of organizations you would consider"
@@ -187,13 +215,15 @@ const Requirements = () => {
             </Col>
           </Row>
           <Requirement
+            id="Industry"
+            handleActive={updateActive}
             title="Industry"
             selector={
               <Selector
                 id="Industry"
                 handler={updateState}
                 options={industries}
-                selectedOption={formState["Industry"]}
+                selectedOption={getAttributes("Industry")}
                 placeholder="Industry sectors"
               />
             }
@@ -546,4 +576,8 @@ const senior_roles = [
 
 const roles = quickMake([...roles_, ...senior_roles]);
 
-const defaultStates = { Language: [languages[0]], Tenure: [tenures[0]] };
+// const defaultStates = { Language: [languages[0]], Tenure: [tenures[0]] };
+const defaultStates = {
+  Language: { active: true, attributes: [languages[0]] },
+  Tenure: { active: true, attributes: [tenures[0]] },
+};
