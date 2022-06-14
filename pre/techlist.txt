@@ -119,13 +119,10 @@ jQuery
 Node.js
 React
 {{Languages}}
-CoffeeScript
 A.NET (A#/A sharp)
-A-0 System
 A+
 ABAP
 ABC
-ABC ALGOL
 ACC
 Accent
 Ace DASL
@@ -142,14 +139,9 @@ AIMMS
 Aldor
 Alef
 ALF
-ALGOL 58
-ALGOL 60
-ALGOL 68
-ALGOL W
-Alice (Alice ML)
-Alma-0
+ALGOL 
+Alice
 AmbientTalk
-Amiga E
 AMOS
 AMPL
 Analitik
@@ -166,10 +158,7 @@ Argus
 Assembly language
 AutoHotkey
 AutoIt
-AutoLISP
-Visual LISP
 Averest
-AWK
 Axum
 B
 Babbage
@@ -186,14 +175,9 @@ BlooP
 Boo
 Boomerang
 Bosque
-C –
-C--
 C++
 C*
 C#
-C/AL
-Caché ObjectScript
-C Shell
 Caml
 Cayenne
 CDuce
@@ -210,7 +194,6 @@ CHILL
 CHIP-8
 ChucK
 Cilk
-Control Language
 Claire
 Clarion
 Clean
@@ -579,25 +562,12 @@ Pike
 PILOT
 Pipelines
 Pizza
-PL-11
-PL/0
-PL/B
-PL/C
-PL/I
-PL/M
-PL/P
-PL/S
-PL/SQL
-PL360
 PLANC
-Plankalkül
 Planner
 PLEX
 PLEXIL
 Plus
-POP-11
 POP-2
-PostScript
 PortablE
 POV-Ray SDL
 Powerhouse
@@ -606,7 +576,6 @@ PowerShell
 PPL
 Processing.js
 Prograph
-Project Verona
 Prolog
 PROMAL
 Promela
