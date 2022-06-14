@@ -308,7 +308,8 @@ const Requirements = () => {
           <Button
             variant="primary"
             onClick={() => {
-              // handleClose();
+              window.scrollTo(0, 0);
+              handleClose();
               navigate("/skills", { state: formState });
             }}
           >
