@@ -115,6 +115,8 @@ body {
   background-color: rgb(192, 185, 230);
   color: black;
   border: 1px solid gray;
+  display: flex;
+  align-items: center;
   text-align: right;
 }
 .skill-summary-right {
@@ -123,4 +125,6 @@ body {
   border: 1px solid gray;
   border-left: none;
   font-weight: bold;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
 }
