@@ -139,15 +139,6 @@ const SignUp = () => {
             </code>
             <div>
               <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Activate Background Process:</Form.Label>
-                  <Form.Control type="email" placeholder="email" />
-                  <Form.Text className="text-muted">
-                    You will need to click a confirmation link to complete
-                    activation
-                  </Form.Text>
-                </Form.Group>
-
                 <Button
                   variant="secondary"
                   onClick={() =>
@@ -156,8 +147,11 @@ const SignUp = () => {
                 >
                   Revise Spec
                 </Button>
-                <Button variant="primary" type="submit">
-                  Activate
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/skills", { state: formState })}
+                >
+                  Next
                 </Button>
               </Form>
             </div>

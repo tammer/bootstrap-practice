@@ -1,33 +1,52 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import SkillSection from "../components/SkillSection";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Container, Row, Col, Table } from "react-bootstrap";
-
 import curve from "./../assets/curve.png";
 
-const someSkills = [
-  "Python",
-  "React",
-  "Javascript",
-  "jQuery",
-  "Django",
-  "Bootstrap",
-];
-
 const Skills = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const formState = location.state;
+
+  function skillList() {
+    let x = 1;
+    console.log(formState["TechStack"]["attributes"]);
+    return formState["TechStack"]["attributes"].map((att) => ({
+      id: x++,
+      name: att["label"],
+    }));
+  }
+
   return (
     <>
       <Container fluid>
         <Row>
           <Col>
-            <h1>Self-Quantification</h1>
+            <h1>Skill Quantification</h1>
             <p>Please quantify your skill level for the following:</p>
           </Col>
         </Row>
         <Row>
           <Col sm="7">
-            <SkillSection />
+            <SkillSection skills={skillList()} />
+
+            <Form>
+              <Button
+                variant="secondary"
+                onClick={() => navigate("/requirements", { state: formState })}
+              >
+                Revise Spec
+              </Button>
+              {/* <Button
+                variant="primary"
+                onClick={() => navigate("/skills", { state: formState })}
+              >
+                Next
+              </Button> */}
+            </Form>
           </Col>
           <Col sm="5">
             <div style={{ fontSize: "0.7em" }}>

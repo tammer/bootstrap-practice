@@ -23,58 +23,50 @@ const noMarks = {
   100: " ",
 };
 
-const skills = [
-  { id: 1, name: "Python" },
-  { id: 2, name: "Javascript" },
-  { id: 3, name: "React" },
-  { id: 4, name: "Node.js" },
-  { id: 5, name: "C++" },
-  { id: 6, name: "DynamoDB" },
-  { id: 7, name: "Postgres" },
-];
-
 const labels = [
-  ["14%", "Novice"],
-  ["24%", "Capable"],
-  ["34%", "Proficient"],
-  ["44%", "Expert"],
-  ["54%", "Authority"],
+  ["23%", "Novice"],
+  ["30%", "Capable"],
+  ["38%", "Proficient"],
+  ["45%", "Expert"],
+  ["53%", "Authority"],
 ];
 
-const SkillSection = () => {
+const SkillSection = ({ skills }) => {
   return (
     <Container fluid>
       <Row>
+        <Col></Col>
         <Col>
-          <h3>Skills</h3>
-        </Col>
-        <Col>
-          {labels.map((l) => (
-            <span
-              id={l[1]}
-              style={{
-                position: "absolute",
-                left: l[0],
-                transform: `translateX(-50%)`,
-              }}
-            >
-              {l[1]}
-            </span>
-          ))}
+          <div className="skills-container">
+            {labels.map((l) => (
+              <span
+                id={l[1]}
+                style={{
+                  position: "absolute",
+                  left: l[0],
+                  transform: `translateX(-50%)`,
+                }}
+              >
+                {l[1]}
+              </span>
+            ))}
+          </div>
         </Col>
       </Row>
       {skills.map((skill) => (
-        <Row key={skill.id}>
-          <Col sm="2">
-            <div style={{ textAlign: "right" }}>{skill.name}</div>
+        <Row key={skill.id} style={{ marginBottom: "10px" }}>
+          <Col sm="4">
+            <div class="slider-label">{skill.name}</div>
           </Col>
-          <Col sm="10">
-            <Slider
-              marks={noMarks}
-              step={null}
-              defaultValue={50}
-              included={false}
-            />
+          <Col sm="8">
+            <div className="slider-div">
+              <Slider
+                marks={noMarks}
+                step={null}
+                defaultValue={50}
+                included={false}
+              />
+            </div>
           </Col>
         </Row>
       ))}
