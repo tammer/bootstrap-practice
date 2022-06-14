@@ -270,7 +270,9 @@ const Requirements = () => {
           <div style={{ textAlign: "center" }}>
             <Button
               disabled={formGood() ? false : true}
-              onClick={() => navigate("/signup", { state: formState })}
+              onClick={() =>
+                navigate("/requirementsreview", { state: formState })
+              }
             >
               Next
             </Button>

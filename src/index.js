@@ -9,7 +9,7 @@ import Spec from "./pages/spec";
 import Home from "./pages/home";
 import Skills from "./pages/skills";
 import Cred from "./pages/cred";
-import Signup from "./pages/signup";
+import RequirementsReview from "./pages/requirementsReview";
 import LoggedinHome from "./pages/loggedinHome";
 import Requirements from "./pages/requirements";
 
@@ -21,7 +21,7 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="spec" element={<Spec />} />
           <Route path="requirements" element={<Requirements />} />
-          <Route path="signup" element={<Signup />} />
+          <Route path="requirementsreview" element={<RequirementsReview />} />
           <Route path="skills" element={<Skills />} />
           <Route path="home" element={<Home />} />
           <Route path="loggedin-home" element={<LoggedinHome />} />

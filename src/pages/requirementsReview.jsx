@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
-const SignUp = () => {
+const RequirementsReview = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const formState = location.state;
@@ -162,4 +162,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default RequirementsReview;
