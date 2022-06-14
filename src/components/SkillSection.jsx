@@ -32,26 +32,32 @@ const labels = [
 ];
 
 const SkillSection = ({ skills }) => {
+  function renderLabels() {
+    return (
+      <>
+        <div className="skills-container">
+          {labels.map((l) => (
+            <span
+              id={l[1]}
+              style={{
+                position: "absolute",
+                left: l[0],
+                transform: `translateX(-50%)`,
+              }}
+            >
+              {l[1]}
+            </span>
+          ))}
+        </div>
+      </>
+    );
+  }
+
   return (
     <Container fluid>
       <Row>
         <Col></Col>
-        <Col>
-          <div className="skills-container">
-            {labels.map((l) => (
-              <span
-                id={l[1]}
-                style={{
-                  position: "absolute",
-                  left: l[0],
-                  transform: `translateX(-50%)`,
-                }}
-              >
-                {l[1]}
-              </span>
-            ))}
-          </div>
-        </Col>
+        <Col>{renderLabels()}</Col>
       </Row>
       {skills.map((skill) => (
         <Row key={skill.id} style={{ marginBottom: "10px" }}>
@@ -70,6 +76,10 @@ const SkillSection = ({ skills }) => {
           </Col>
         </Row>
       ))}
+      <Row>
+        <Col></Col>
+        <Col>{skills.length > 8 ? renderLabels() : ""}</Col>
+      </Row>
     </Container>
   );
 };
