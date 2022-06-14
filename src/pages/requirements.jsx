@@ -27,6 +27,17 @@ const Requirements = () => {
   const [formState, setFormState] = useState(
     location.state ? location.state : defaultStates
   );
+
+  function makeComplete(formState) {
+    formState["TechStack"]["attributes"] = formState["TechStack"][
+      "attributes"
+    ].map((att) => ({
+      ...att,
+      level: att["level"] ? att["level"] : "proficient",
+    }));
+    return formState;
+  }
+
   function updateState(id, values_) {
     let values = Array.isArray(values_) ? values_ : [values_];
     let temp = { ...formState };
@@ -310,7 +321,7 @@ const Requirements = () => {
             onClick={() => {
               window.scrollTo(0, 0);
               handleClose();
-              navigate("/skills", { state: formState });
+              navigate("/skills", { state: makeComplete(formState) });
             }}
           >
             Next
@@ -398,6 +409,7 @@ const sizes = quickMake([
 
 const characteristics = quickMake([
   "publicly traded",
+  "private",
   "government",
   "not for profit",
   "charity",

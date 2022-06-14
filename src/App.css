@@ -106,3 +106,20 @@ body {
   max-width: 100%;
   background-color: pink;
 }
+
+.skill-row {
+  margin-bottom: 3px;
+}
+
+.skill-summary-left {
+  background-color: rgb(192, 185, 230);
+  color: black;
+  border: 1px solid gray;
+  text-align: right;
+}
+.skill-summary-right {
+  color: gray;
+  background-color: white;
+  border: 1px solid gray;
+  border-left: none;
+}

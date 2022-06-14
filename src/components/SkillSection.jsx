@@ -31,14 +31,41 @@ const labels = [
   ["53%", "Authority"],
 ];
 
-const SkillSection = ({ skills }) => {
+const SkillSection = ({ skills, handleChange }) => {
+  function translate(x) {
+    if (x == 37) {
+      return "capable+";
+    }
+    if (x == 62) {
+      return "proficient+";
+    }
+    return marks[x];
+  }
+  function itranslate(level) {
+    if (!level) {
+      return 50;
+    }
+    if (level === "proficient+") {
+      return 62;
+    }
+    if (level === "capable+") {
+      return 37;
+    }
+    let rv = -1;
+    Object.keys(marks).forEach((key) => {
+      if (marks[key] === level) {
+        rv = key;
+      }
+    });
+    return rv;
+  }
   function renderLabels() {
     return (
       <>
         <div className="skills-container">
           {labels.map((l) => (
             <span
-              id={l[1]}
+              key={l[1]}
               style={{
                 position: "absolute",
                 left: l[0],
@@ -69,8 +96,9 @@ const SkillSection = ({ skills }) => {
               <Slider
                 marks={noMarks}
                 step={null}
-                defaultValue={50}
+                defaultValue={(e) => itranslate(skill["level"])}
                 included={false}
+                onChange={(e) => handleChange(skill.id, translate(e))}
               />
             </div>
           </Col>

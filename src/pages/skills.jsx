@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import SkillSection from "../components/SkillSection";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import React, { useState } from "react";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,15 +10,22 @@ import curve from "./../assets/curve.png";
 const Skills = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const formState = location.state;
+
+  const [formState, setFormState] = useState(location.state);
 
   function skillList() {
-    let x = 1;
-    console.log(formState["TechStack"]["attributes"]);
+    let x = 0;
     return formState["TechStack"]["attributes"].map((att) => ({
       id: x++,
       name: att["label"],
+      level: att["level"],
     }));
+  }
+
+  function handleChange(id, level) {
+    let temp = { ...formState };
+    temp["TechStack"]["attributes"][id]["level"] = level;
+    setFormState(temp);
   }
 
   return (
@@ -31,7 +39,7 @@ const Skills = () => {
         </Row>
         <Row>
           <Col sm="7">
-            <SkillSection skills={skillList()} />
+            <SkillSection skills={skillList()} handleChange={handleChange} />
 
             <Form>
               <Button

@@ -14,7 +14,7 @@ function App() {
         activeKey="/home"
       >
         <Nav.Item>
-          <Nav.Link href="/home">Landing Page</Nav.Link>
+          <Nav.Link href="/home">backgroundprocess.com</Nav.Link>
         </Nav.Item>
         {/* <Nav.Item>
           <Nav.Link href="/spec">Spec</Nav.Link>
