@@ -37,7 +37,10 @@ const SignUp = () => {
     if (id === "Salary") {
       return (
         <div>
-          {JD}.salary &gt;= ${formState[id]["attributes"][0]["label"]}
+          {JD}.salary &gt;={" "}
+          <span className="attribute">
+            ${formState[id]["attributes"][0]["label"]}
+          </span>
           &nbsp;&amp;&amp;
         </div>
       );
@@ -46,9 +49,9 @@ const SignUp = () => {
     if (id === "OrgSize") {
       return (
         <div>
-          {JD}.org_size{" "}
+          {JD}.org_size &lt;&nbsp;
           <span className="attribute">
-            {formState[id]["attributes"][0]["label"]}
+            {formState[id]["attributes"][0]["label"].substring(2)}
           </span>
           &nbsp;&amp;&amp;
         </div>
