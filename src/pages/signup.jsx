@@ -46,7 +46,10 @@ const SignUp = () => {
     if (id === "OrgSize") {
       return (
         <div>
-          {JD}.org_size {formState[id]["attributes"][0]["label"]}
+          {JD}.org_size{" "}
+          <span className="attribute">
+            {formState[id]["attributes"][0]["label"]}
+          </span>
           &nbsp;&amp;&amp;
         </div>
       );
