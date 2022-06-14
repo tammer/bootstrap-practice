@@ -50,11 +50,11 @@ const Skills = () => {
           </Col>
           <Col sm="5">
             <div style={{ fontSize: "0.7em" }}>
-              <h4>Definitions</h4>
-              <h5>Learning Curve</h5>
+              <h4 className="text-center">Label Definitions</h4>
               <div style={{ textAlign: "center" }}>
                 <img src={curve} width="300px" alt="" />
               </div>
+              <p className="text-center">Learning Curve</p>
               <dl className="row">
                 <dt className="col-sm-3">Novice</dt>
                 <dd className="col-sm-9">
