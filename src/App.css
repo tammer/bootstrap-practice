@@ -62,6 +62,10 @@ body {
   margin-bottom: 40px;
 }
 
+.code-color-0 {
+  color: #dcdcab;
+}
+
 .code-color-1 {
   color: pink;
 }
@@ -95,4 +99,10 @@ body {
   font-size: 11px;
   margin-bottom: 40px;
   font-weight: bold;
+}
+
+.modal-90w {
+  width: 65%;
+  max-width: 100%;
+  background-color: pink;
 }

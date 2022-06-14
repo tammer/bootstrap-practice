@@ -68,7 +68,7 @@ const Spec = ({ formState }) => {
       <code>
         <div className="filter-code">
           <div className="code-indent"></div>
-          <span className="code-color-1">Each day:</span>
+          <span className="code-color-1">While(true):</span>
           <div className="code-indent">
             <span className="code-color-2">jd_list</span> ={" "}
             <span className="code-color-3">fetchNewJobDescriptions()</span>
@@ -109,6 +109,10 @@ const Spec = ({ formState }) => {
                 <div className="code-indent">nil</div>
               </div>
             </div>
+            <span className="code-color-3">
+              sleep(
+              <span className="code-color-0">24 hours</span>)
+            </span>
           </div>
         </div>
       </code>

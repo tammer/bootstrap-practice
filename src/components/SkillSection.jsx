@@ -62,7 +62,7 @@ const SkillSection = ({ skills }) => {
       {skills.map((skill) => (
         <Row key={skill.id} style={{ marginBottom: "10px" }}>
           <Col sm="4">
-            <div class="slider-label">{skill.name}</div>
+            <div className="slider-label">{skill.name}</div>
           </Col>
           <Col sm="8">
             <div className="slider-div">

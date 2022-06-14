@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   Container,
+  Modal,
   Row,
   Col,
   Button,
@@ -13,8 +14,14 @@ import Requirement from "../components/Requirement";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState } from "react";
 import Selector from "../components/Selector";
+import Spec from "../components/Spec";
 
 const Requirements = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const location = useLocation();
   const navigate = useNavigate();
   const [formState, setFormState] = useState(
@@ -268,12 +275,7 @@ const Requirements = () => {
       <Row>
         <Col sm="9">
           <div style={{ textAlign: "center" }}>
-            <Button
-              disabled={formGood() ? false : true}
-              onClick={() =>
-                navigate("/requirementsreview", { state: formState })
-              }
-            >
+            <Button disabled={formGood() ? false : true} onClick={handleShow}>
               Next
             </Button>
             {formGood() ? (
@@ -286,6 +288,35 @@ const Requirements = () => {
           </div>
         </Col>
       </Row>
+
+      <Modal
+        // animation={false}
+        show={show}
+        onHide={handleClose}
+        dialogClassName="modal-90w"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>This is your Background Process</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Spec formState={formState} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Continue Editing
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              // handleClose();
+              navigate("/skills", { state: formState });
+            }}
+          >
+            Next
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <div style={{ marginBottom: "100px" }}></div>
     </Container>
   );
