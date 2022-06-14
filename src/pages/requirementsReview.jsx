@@ -76,8 +76,8 @@ const RequirementsReview = () => {
       <Container>
         <Row>
           <Col sm="10">
-            <h3>Now Activate Background Process</h3>
-            <p>Your filter is configured! Here's what happens on activation:</p>
+            <h3>Your Filter is Configured</h3>
+            <p>Here's what happens on activation:</p>
 
             <code>
               <div className="filter-code">
