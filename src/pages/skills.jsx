@@ -40,12 +40,12 @@ const Skills = () => {
               >
                 Revise Spec
               </Button>
-              {/* <Button
+              <Button
                 variant="primary"
-                onClick={() => navigate("/skills", { state: formState })}
+                onClick={() => navigate("/join", { state: formState })}
               >
                 Next
-              </Button> */}
+              </Button>
             </Form>
           </Col>
           <Col sm="5">

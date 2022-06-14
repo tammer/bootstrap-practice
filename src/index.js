@@ -12,6 +12,7 @@ import Cred from "./pages/cred";
 import RequirementsReview from "./pages/requirementsReview";
 import LoggedinHome from "./pages/loggedinHome";
 import Requirements from "./pages/requirements";
+import Join from "./pages/join";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,6 +24,7 @@ root.render(
           <Route path="requirements" element={<Requirements />} />
           <Route path="requirementsreview" element={<RequirementsReview />} />
           <Route path="skills" element={<Skills />} />
+          <Route path="join" element={<Join />} />
           <Route path="home" element={<Home />} />
           <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
