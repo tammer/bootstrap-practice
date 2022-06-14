@@ -60,6 +60,12 @@ const Requirements = () => {
               You are creating a filter: opportunities that meet all your
               criteria will make it to your inbox.
             </li>
+            <li>
+              If you leave any field blank (or disable it) it will not be used
+              as part of your filter. (For example, if you are indifferent to
+              the size of an organization, just leave the "Org Size" field
+              blank.)
+            </li>
           </ul>
         </Col>
       </Row>
