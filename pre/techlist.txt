@@ -5,6 +5,11 @@
 ###devop tools
 ###testing tools
 ###Libraries like backbone.js maybe? OAuth SSH
+{{New}}
+C
+Amazon Web Services (AWS)
+Google Cloud Platform (GCP)
+Microsoft Azure
 {{Frameworks}}
 C
 Angular
