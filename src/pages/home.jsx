@@ -59,9 +59,9 @@ const Home = () => {
               </dd>
               <dt className="col-sm-3">Unobtrusive</dt>
               <dd className="col-sm-9">
-                The platform is, literally, in the background. Occationally it
-                alerts you to opportunities that are exactly what you told it to
-                flag.
+                Like the name says, the platform is in the background.
+                Occationally it alerts you to opportunities that are exactly
+                what you told it to flag.
               </dd>
             </dl>
             <div style={{ textAlign: "center" }}>
