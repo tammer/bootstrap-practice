@@ -8,7 +8,16 @@ const Join = () => {
   const formState = location.state;
   console.log(formState);
 
+  function makeList(level) {
+    return formState["TechStack"]["attributes"]
+      .filter((att) => att["level"] === level)
+      .map((att) => att["label"]);
+  }
+
   function skillRow(level, color, skills) {
+    if (skills.length == 0) {
+      return "";
+    }
     return (
       <Row className="skill-row">
         <Col
@@ -19,7 +28,7 @@ const Join = () => {
           {level}
         </Col>
         <Col sm="10" className="skill-summary-right">
-          {skills.map((item) => item + ", ")}
+          {skills.join(", ")}
         </Col>
       </Row>
     );
@@ -35,7 +44,13 @@ const Join = () => {
               <h1 className="display-4">Activation</h1>
               <h2>
                 Your Process&nbsp;
-                <Button variant="secondary" className="btn-sm">
+                <Button
+                  variant="secondary"
+                  className="btn-sm"
+                  onClick={() => {
+                    navigate("/requirements", { state: formState });
+                  }}
+                >
                   Revise
                 </Button>
               </h2>
@@ -44,17 +59,26 @@ const Join = () => {
               </div>
               <h2>
                 Your Quantification&nbsp;
-                <Button variant="secondary" className="btn-sm">
+                <Button
+                  variant="secondary"
+                  className="btn-sm"
+                  onClick={() => {
+                    navigate("/skills", { state: formState });
+                  }}
+                >
                   Revise
                 </Button>
               </h2>
-              {skillRow("Authority", "#dcffcc", ["one", "two"])}
-              {skillRow("Expert", "#dcefcc", ["one", "two"])}
-              {skillRow("Proficient+", "#dcefcc", ["one", "two"])}
-              {skillRow("Proficient", "#dcdfcc", ["one", "two"])}
-              {skillRow("Capable+", "#dccfcc", ["one", "two"])}
-              {skillRow("Capable", "#dcbfcc", ["one", "two"])}
-              {skillRow("Novice", "#dcafcc", ["one", "two"])}
+              {[
+                "authority",
+                "expert",
+                "proficient+",
+                "proficient",
+                "capable+",
+                "capable",
+                "novice",
+              ].map((level) => skillRow(level, "green", makeList(level)))}
+
               <h2>Activation</h2>
               <div className="alert alert-success text-center" role="alert">
                 You can now activate Background Process

@@ -118,8 +118,9 @@ body {
   text-align: right;
 }
 .skill-summary-right {
-  color: gray;
+  color: black;
   background-color: white;
   border: 1px solid gray;
   border-left: none;
+  font-weight: bold;
 }
