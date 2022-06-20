@@ -13,6 +13,7 @@ import RequirementsReview from "./pages/requirementsReview";
 import LoggedinHome from "./pages/loggedinHome";
 import Requirements from "./pages/requirements";
 import Join from "./pages/join";
+import Login from "./pages/login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -28,6 +29,7 @@ root.render(
           <Route path="home" element={<Home />} />
           <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
