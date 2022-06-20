@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
-  const [sessionid, setSessionid] = useState();
+  const [sessionid, setSessionid] = useState(localStorage.getItem("sessionid"));
 
   async function loginUser(creds) {
     return fetch("http://localhost:8000/login/", {
@@ -21,6 +21,7 @@ const Login = () => {
     const res = await loginUser({ username: username, password: password });
     if (res.ok) {
       res.json().then((j) => {
+        localStorage.setItem("sessionid", j["sessionid"]);
         setSessionid(j["sessionid"]);
       });
     } else {
