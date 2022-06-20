@@ -77,7 +77,8 @@ const Skills = () => {
                   in a professional setting. When working with the technology
                   you probably make frequent use of internet resources to
                   continue to learn it and to overcome obsticles, but you are
-                  nonetheless able to use the technology productively.
+                  nonetheless able to use the technology to achieve your
+                  objectives.
                 </dd>
                 <dt className="col-sm-3">Proficient</dt>
                 <dd className="col-sm-9">
