@@ -21,6 +21,11 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
       return;
     }
     update(id, newState);
+    if (id === "new") {
+      newState["level"] = selectedSkill;
+      newState["skill"] = selectedLevel;
+      setState(newState);
+    }
   }
 
   const loadTechOptions = (inputValue) => {
@@ -35,7 +40,7 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
 
   return (
     <>
-      <Container>
+      <Container hidden={state === "dead" ? true : false}>
         <Row style={{ margin: "20px" }}>
           <Col>
             <AsyncSelect
@@ -45,8 +50,9 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
               getOptionLabel={(e) => e["name"]}
               getOptionValue={(e) => e["id"]}
               loadOptions={loadTechOptions}
-              placeholder="type something"
-              defaultValue={{ name: selectedSkill }}
+              placeholder={"Type a technology"}
+              defaultOptions
+              value={state["skill"] ? { name: state["skill"] } : null}
               onChange={(e) => updateState("skill", e)}
             />
             <AsyncSelect
@@ -57,7 +63,7 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
               getOptionLabel={(e) => e["name"]}
               getOptionValue={(e) => e["id"]}
               loadOptions={loadLevelOptions}
-              defaultValue={{ name: selectedLevel }}
+              value={state["level"] ? { name: state["level"] } : null}
               placeholder="Set Level"
               onChange={(e) => updateState("level", e)}
             />
@@ -69,7 +75,10 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
               <div>
                 <Button
                   className="btn btn-sm btn-danger"
-                  onClick={(e) => destroy(id)}
+                  onClick={(e) => {
+                    setState("dead");
+                    destroy(id);
+                  }}
                 >
                   Delete
                 </Button>

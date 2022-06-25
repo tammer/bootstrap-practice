@@ -5,18 +5,19 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 const Assessment = () => {
   const [skillList, setSkillList] = useState();
 
+  async function fetchList() {
+    const z = await fetch(`http://localhost:8000/assessments/`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
+      },
+    });
+    const y = await z.json();
+    setSkillList(y);
+  }
+
   useEffect(() => {
-    async function fetchList(url, updateFunction) {
-      const z = await fetch(`http://localhost:8000/assessments/`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
-        },
-      });
-      const y = await z.json();
-      setSkillList(y);
-    }
     fetchList();
   }, []);
 
@@ -28,7 +29,7 @@ const Assessment = () => {
         "Content-Type": "application/json",
         Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
       },
-    });
+    }).then((e) => fetchList());
   }
 
   function update(id, state) {
@@ -45,7 +46,7 @@ const Assessment = () => {
         },
         body: JSON.stringify(state),
       }
-    );
+    ).then((e) => fetchList());
   }
 
   function renderItems() {
