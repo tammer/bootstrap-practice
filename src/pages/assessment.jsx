@@ -20,21 +20,32 @@ const Assessment = () => {
     fetchList();
   }, []);
 
-  function update(id, field, value) {
-    if (!value) {
-      return;
-    }
-    let info = {};
-    info[field] = value["name"];
+  function destroy(id) {
     fetch(`http://localhost:8000/assessment/${id}`, {
-      method: "PUT",
+      method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
       },
-      body: JSON.stringify(info),
     });
+  }
+
+  function update(id, state) {
+    fetch(
+      id === "new"
+        ? "http://localhost:8000/assessments/"
+        : `http://localhost:8000/assessment/${id}`,
+      {
+        method: id === "new" ? "POST" : "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
+        },
+        body: JSON.stringify(state),
+      }
+    );
   }
 
   function renderItems() {
@@ -47,8 +58,17 @@ const Assessment = () => {
             selectedSkill={item["skill"]}
             selectedLevel={item["level"]}
             update={update}
+            destroy={destroy}
           />
         ))}
+        New:
+        <Skill
+          key={"new"}
+          id={"new"}
+          // selectedSkill={item["skill"]}
+          // selectedLevel={item["level"]}
+          update={update}
+        />
       </>
     );
   }
