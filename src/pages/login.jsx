@@ -3,10 +3,10 @@ import React, { useState } from "react";
 const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
-  const [sessionid, setSessionid] = useState(localStorage.getItem("sessionid"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   async function loginUser(creds) {
-    return fetch("http://localhost:8000/login/", {
+    return fetch("http://localhost:8000/api-token-auth/", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -21,12 +21,12 @@ const Login = () => {
     const res = await loginUser({ username: username, password: password });
     if (res.ok) {
       res.json().then((j) => {
-        localStorage.setItem("sessionid", j["sessionid"]);
-        setSessionid(j["sessionid"]);
+        localStorage.setItem("token", j["token"]);
+        setToken(j["token"]);
       });
     } else {
       res.json().then((j) => {
-        setSessionid(j["non_field_errors"][0]);
+        setToken(j["non_field_errors"][0]);
       });
     }
   };
@@ -49,7 +49,9 @@ const Login = () => {
           <button type="submit">Submit</button>
         </div>
       </form>
-      {sessionid}
+      <a href="http://localhost:3000/skills2">Skills</a>
+      <br />
+      {token}
     </>
   );
 };

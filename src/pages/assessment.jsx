@@ -3,6 +3,7 @@ import Skill from "../components/Skill";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const Assessment = () => {
+  const token = localStorage.getItem("token");
   const [skillList, setSkillList] = useState();
 
   async function fetchList() {
@@ -10,7 +11,7 @@ const Assessment = () => {
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
+        Authorization: `Token ${token}`,
       },
     });
     const y = await z.json();
@@ -27,7 +28,7 @@ const Assessment = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
+        Authorization: `Token ${token}`,
       },
     }).then((e) => fetchList());
   }
