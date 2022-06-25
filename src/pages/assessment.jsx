@@ -43,7 +43,7 @@ const Assessment = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: "Token 34ee690514522faae3fa01f8792c71eb9bacd561",
+          Authorization: `Token ${token}`,
         },
         body: JSON.stringify(state),
       }
