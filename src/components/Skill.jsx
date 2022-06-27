@@ -1,6 +1,7 @@
-import AsyncSelect from "react-select/async";
 import React, { useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
+import SkillSelector from "./SkillSelector";
+import LevelSelector from "./LevelSelector";
 
 const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
   const [state, setState] = useState({
@@ -21,6 +22,7 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
       return;
     }
     update(id, newState);
+    // If this a is the "new" input section, clear the values because we've just submitted the previous input
     if (id === "new") {
       newState["level"] = selectedSkill;
       newState["skill"] = selectedLevel;
@@ -28,44 +30,18 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
     }
   }
 
-  const loadTechOptions = (inputValue) => {
-    return fetch(`http://localhost:8000/skills/${inputValue}`).then((res) =>
-      res.json()
-    );
-  };
-
-  const loadLevelOptions = (inputValue) => {
-    return fetch(`http://localhost:8000/levels/`).then((res) => res.json());
-  };
-
   return (
     <>
       <Container hidden={state === "dead" ? true : false}>
         <Row style={{ margin: "20px" }}>
           <Col>
-            <AsyncSelect
-              closeMenuOnSelect={true}
-              cacheOptions
-              isClearable
-              getOptionLabel={(e) => e["name"]}
-              getOptionValue={(e) => e["id"]}
-              loadOptions={loadTechOptions}
-              placeholder={"Type a technology"}
-              defaultOptions
-              value={state["skill"] ? { name: state["skill"] } : null}
-              onChange={(e) => updateState("skill", e)}
+            <SkillSelector
+              value={state["skill"]}
+              handleChange={(e) => updateState("skill", e)}
             />
-            <AsyncSelect
-              closeMenuOnSelect
-              isSearchable={false}
-              cacheOptions
-              defaultOptions
-              getOptionLabel={(e) => e["name"]}
-              getOptionValue={(e) => e["id"]}
-              loadOptions={loadLevelOptions}
-              value={state["level"] ? { name: state["level"] } : null}
-              placeholder="Set Level"
-              onChange={(e) => updateState("level", e)}
+            <LevelSelector
+              value={state["level"]}
+              handleChange={(e) => updateState("level", e)}
             />
           </Col>
           <Col>
