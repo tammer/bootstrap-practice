@@ -6,6 +6,8 @@ import Nav from "react-bootstrap/Nav";
 // !!! I wish I knew what activeKey did
 
 function App() {
+  const userName = localStorage.getItem("userName");
+
   return (
     <>
       <Nav
@@ -16,6 +18,7 @@ function App() {
         <Nav.Item>
           <Nav.Link href="/home">backgroundprocess.com</Nav.Link>
         </Nav.Item>
+        <Nav.Item>({userName})</Nav.Item>
         {/* <Nav.Item>
           <Nav.Link href="/spec">Spec</Nav.Link>
         </Nav.Item> */}
