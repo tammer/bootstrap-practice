@@ -22,6 +22,7 @@ const Login = () => {
     if (res.ok) {
       res.json().then((j) => {
         localStorage.setItem("token", j["token"]);
+        localStorage.setItem("userName", username);
         setToken(j["token"]);
       });
     } else {
