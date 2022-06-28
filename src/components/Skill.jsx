@@ -24,8 +24,8 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
     update(id, newState);
     // If this a is the "new" input section, clear the values because we've just submitted the previous input
     if (id === "new") {
-      newState["level"] = selectedSkill;
-      newState["skill"] = selectedLevel;
+      newState["level"] = selectedLevel;
+      newState["skill"] = selectedSkill;
       setState(newState);
     }
   }
