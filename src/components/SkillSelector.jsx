@@ -13,7 +13,7 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
         closeMenuOnSelect={true}
         defaultOptions
         cacheOptions
-        isClearable
+        // isClearable
         getOptionLabel={(e) => e["name"]}
         getOptionValue={(e) => e["id"]}
         isMulti={isMulti}

@@ -22,12 +22,6 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
       return;
     }
     update(id, newState);
-    // If this a is the "new" input section, clear the values because we've just submitted the previous input
-    if (id === "new") {
-      newState["level"] = selectedLevel;
-      newState["skill"] = selectedSkill;
-      setState(newState);
-    }
   }
 
   return (
@@ -37,17 +31,15 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
           <Col>
             <SkillSelector
               value={state["skill"]}
-              // defaultValue={{ name: state["skill"] }}
               handleChange={(e) => updateState("skill", e)}
             />
             <LevelSelector
               value={state["level"]}
-              // defaultValue={{ name: state["level"] }}
               handleChange={(e) => updateState("level", e)}
             />
           </Col>
           <Col>
-            {id === "new" ? (
+            {id < 1 ? (
               ""
             ) : (
               <div>

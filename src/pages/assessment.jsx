@@ -15,6 +15,12 @@ const Assessment = () => {
       },
     });
     const y = await z.json();
+    // const x = {
+    //   id: Math.random(),
+    //   skill: undefined,
+    //   level: undefined,
+    // };
+    // setSkillList([...y, x]);
     setSkillList(y);
   }
 
@@ -35,11 +41,11 @@ const Assessment = () => {
 
   function update(id, state) {
     fetch(
-      id === "new"
+      id < 1
         ? "http://localhost:8000/assessments/"
         : `http://localhost:8000/assessment/${id}`,
       {
-        method: id === "new" ? "POST" : "PUT",
+        method: id < 1 ? "POST" : "PUT",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -65,8 +71,8 @@ const Assessment = () => {
         ))}
         New:
         <Skill
-          key={"new"}
-          id={"new"}
+          key={Math.random()}
+          id={Math.random()}
           // selectedSkill={item["skill"]}
           // selectedLevel={item["level"]}
           update={update}
