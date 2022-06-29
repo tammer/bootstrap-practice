@@ -1,25 +1,26 @@
 import AsyncSelect from "react-select/async";
 
-const loadTechOptions = (inputValue) => {
-  return fetch(`http://localhost:8000/skills/${inputValue}`).then((res) =>
-    res.json()
-  );
-};
+const SkillSelector = ({ handleChange, value, isMulti }) => {
+  const loadTechOptions = (inputValue) => {
+    return fetch(`http://localhost:8000/skills/${inputValue}`).then((res) =>
+      res.json()
+    );
+  };
 
-const SkillSelector = ({ value, handleChange }) => {
   return (
     <>
       <AsyncSelect
         closeMenuOnSelect={true}
+        defaultOptions
         cacheOptions
         isClearable
         getOptionLabel={(e) => e["name"]}
         getOptionValue={(e) => e["id"]}
+        isMulti={isMulti}
         loadOptions={loadTechOptions}
         placeholder={"Type a technology"}
-        defaultOptions
-        value={value ? { name: value } : null}
-        onChange={(e) => handleChange(e)}
+        value={value}
+        onChange={handleChange}
       />
     </>
   );
