@@ -13,12 +13,12 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
     let newState = {};
     newState["level"] = state["level"];
     newState["skill"] = state["skill"];
-    newState[name] = value["name"];
-    setState(newState);
+    newState[name] = value;
     if (
       (typeof newState["skill"] === "undefined") |
       (typeof newState["level"] === "undefined")
     ) {
+      setState(newState);
       return;
     }
     update(id, newState);
@@ -37,10 +37,12 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
           <Col>
             <SkillSelector
               value={state["skill"]}
+              // defaultValue={{ name: state["skill"] }}
               handleChange={(e) => updateState("skill", e)}
             />
             <LevelSelector
               value={state["level"]}
+              // defaultValue={{ name: state["level"] }}
               handleChange={(e) => updateState("level", e)}
             />
           </Col>
