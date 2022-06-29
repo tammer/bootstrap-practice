@@ -53,11 +53,13 @@ const NewAnchor = ({ onSuccess }) => {
           />
         </label>
         <SkillSelector
-          value={skill}
+          //   value={skill}
+          //   isMulti={true}
           handleChange={(e) => setSkill(e["name"])}
+          //   handleChange={(e) => setSkill(e.map((item) => item["name"]))}
         />
         <LevelSelector
-          value={level}
+          //   value={level}
           handleChange={(e) => setLevel(e["name"])}
         />
         <div>
