@@ -5,7 +5,7 @@ import LevelSelector from "./LevelSelector";
 const NewAnchor = ({ onSuccess }) => {
   const token = localStorage.getItem("token");
   const [receiverEmail, setReceiverEmail] = useState();
-  const [skill, setSkill] = useState();
+  const [skills, setSkills] = useState();
   const [level, setLevel] = useState();
   const [message, setMessage] = useState();
 
@@ -24,21 +24,21 @@ const NewAnchor = ({ onSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await postAnchor({
-      receiver_email: receiverEmail,
-      skill: skill,
-      level: level,
-    });
-    if (res.ok) {
-      res.json().then((j) => {
-        setMessage("Success");
-        onSuccess();
-      });
-    } else {
-      res.json().then((j) => {
-        setMessage(j);
-      });
-    }
+    skills.map((skill) =>
+      postAnchor({
+        receiver_email: receiverEmail,
+        skill: skill,
+        level: level,
+      }).then(
+        (res) => {
+          setMessage(res.status === 201 ? "Success" : "Error");
+          onSuccess();
+        },
+        (res) => {
+          setMessage(res);
+        }
+      )
+    );
   };
 
   return (
@@ -53,15 +53,10 @@ const NewAnchor = ({ onSuccess }) => {
           />
         </label>
         <SkillSelector
-          //   value={skill}
-          //   isMulti={true}
-          handleChange={(e) => setSkill(e["name"])}
-          //   handleChange={(e) => setSkill(e.map((item) => item["name"]))}
+          isMulti={true}
+          handleChange={(e) => setSkills(e.map((item) => item["name"]))}
         />
-        <LevelSelector
-          //   value={level}
-          handleChange={(e) => setLevel(e["name"])}
-        />
+        <LevelSelector handleChange={(e) => setLevel(e["name"])} />
         <div>
           <button type="submit">Submit</button>
         </div>
