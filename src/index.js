@@ -16,6 +16,7 @@ import Join from "./pages/join";
 import Login from "./pages/login";
 import Assessment from "./pages/assessment";
 import Anchors from "./pages/anchors";
+import Sandbox from "./pages/sandbox";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -34,6 +35,7 @@ root.render(
           <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
           <Route path="login" element={<Login />} />
+          <Route path="sandbox" element={<Sandbox />} />
         </Route>
       </Routes>
     </BrowserRouter>
