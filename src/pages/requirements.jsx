@@ -1,4 +1,3 @@
-import { technologies } from "./../data/attributeLists";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
@@ -15,6 +14,7 @@ import SalarySelector from "../components/SalarySelector";
 import React, { useState } from "react";
 import Selector from "../components/Selector";
 import Spec from "../components/Spec";
+import SkillSelector from "../components/SkillSelector";
 
 const Requirements = () => {
   const [show, setShow] = useState(false);
@@ -186,17 +186,15 @@ const Requirements = () => {
             title="Technology Stack"
             togglable={false}
             selector={
-              <Selector
-                id="TechStack"
-                handler={updateState}
-                options={techStack}
-                selectedOption={getAttributes("TechStack")}
-                placeholder="List the technologies you want to work with"
+              <SkillSelector
+                isMulti={true}
+                value={formState["TechStack"]["attributes"]}
+                handleChange={(e) => updateState("TechStack", e)}
               />
             }
             helper="Do not by bound by what is offered in the dropdown; a new attributes is automatically created if you type something unique."
           />
-          <Requirement
+          {/* <Requirement
             id="TechAntiStack"
             handleActive={updateActive}
             title="Technology Anti-Stack"
@@ -211,7 +209,7 @@ const Requirements = () => {
               />
             }
             helper="Any job spec that matches any one technology listed here is disqualified"
-          />
+          /> */}
           <Row>
             <Col>
               <Requirement
@@ -417,8 +415,6 @@ const characteristics = quickMake([
   "growth stage startup startup",
   "late stage startup",
 ]);
-
-const techStack = technologies();
 
 const roles_ = [
   "Full Stack Developer",
