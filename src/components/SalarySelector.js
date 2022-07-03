@@ -39,15 +39,12 @@ const SalarySelector = ({ handleChange, value }) => {
           maxLength="7"
           size="7"
           type="text"
-          // value={selectedOption[0] ? selectedOption[0]["label"] : ""}
           value={state["amount"]}
           onChange={(e) => handleInput(e)}
         />
       </Col>
       <Col style={{ paddingLeft: "2px" }}>
         <Select
-          // defaultValue={quickMake(["USD"])}
-          // dont forget to make it a simple dropdown
           options={quickMake(["USD", "CAD", "EUR", "GBP", "JPY"])}
           closeMenuOnSelect={true}
           getOptionLabel={(e) => e["name"]}
