@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import Privilaged from "../components/Privilaged";
 
 import {
   Container,
@@ -66,135 +67,137 @@ const Requirements = () => {
   }
 
   return (
-    <Container fluid style={{ paddingTop: "20px" }}>
-      <Row>
-        <Col sm="8" style={{ paddingLeft: "15px" }}>
-          <h5>Job Spec</h5>
-          <ul>
-            <li>
-              Using the form below, spec the job opportunities you would want to
-              see.
-            </li>
-            <li>
-              You are creating a filter: opportunities that meet all your
-              criteria will make it to your inbox.
-            </li>
-            <li>
-              If you leave any field blank (or disable it) it will not be used
-              as part of your filter. (For example, if you are indifferent to
-              the size of an organization, just leave the "Org Size" field
-              blank.)
-            </li>
-          </ul>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="9">
-          <Requirement
-            id="Role"
-            handleActive={updateActive}
-            title="Role (aka Job Title)"
-            togglable={false}
-            selector={
-              <Selector
+    <>
+      <Privilaged>
+        <Container fluid style={{ paddingTop: "20px" }}>
+          <Row>
+            <Col sm="8" style={{ paddingLeft: "15px" }}>
+              <h5>Job Spec</h5>
+              <ul>
+                <li>
+                  Using the form below, spec the job opportunities you would
+                  want to see.
+                </li>
+                <li>
+                  You are creating a filter: opportunities that meet all your
+                  criteria will make it to your inbox.
+                </li>
+                <li>
+                  If you leave any field blank (or disable it) it will not be
+                  used as part of your filter. (For example, if you are
+                  indifferent to the size of an organization, just leave the
+                  "Org Size" field blank.)
+                </li>
+              </ul>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm="9">
+              <Requirement
                 id="Role"
-                handler={updateState}
-                options={roles}
-                selectedOption={getAttributes("Role")}
-                placeholder="Enter the roles you would consider"
-              />
-            }
-            helper="Enter all the roles your would consider"
-          />
-
-          <Row>
-            <Col>
-              <Requirement
-                id="Model"
                 handleActive={updateActive}
-                title="Work Model"
+                title="Role (aka Job Title)"
+                togglable={false}
                 selector={
                   <Selector
+                    id="Role"
+                    handler={updateState}
+                    options={roles}
+                    selectedOption={getAttributes("Role")}
+                    placeholder="Enter the roles you would consider"
+                  />
+                }
+                helper="Enter all the roles your would consider"
+              />
+
+              <Row>
+                <Col>
+                  <Requirement
                     id="Model"
-                    handler={updateState}
-                    options={models}
-                    selectedOption={getAttributes("Model")}
-                    placeholder="On-site? Hybrid?"
+                    handleActive={updateActive}
+                    title="Work Model"
+                    selector={
+                      <Selector
+                        id="Model"
+                        handler={updateState}
+                        options={models}
+                        selectedOption={getAttributes("Model")}
+                        placeholder="On-site? Hybrid?"
+                      />
+                    }
+                    helper="Enter all the work models you would consider. Remote = you are remote; All-Remote = every employee is remote"
                   />
-                }
-                helper="Enter all the work models you would consider. Remote = you are remote; All-Remote = every employee is remote"
-              />
-            </Col>
-            <Col>
-              <Requirement
-                id="Language"
-                handleActive={updateActive}
-                title="Workplace Language"
-                togglable={false}
-                selector={
-                  <Selector
+                </Col>
+                <Col>
+                  <Requirement
                     id="Language"
-                    options={languages}
-                    selectedOption={getAttributes("Language")}
-                    handler={updateState}
+                    handleActive={updateActive}
+                    title="Workplace Language"
+                    togglable={false}
+                    selector={
+                      <Selector
+                        id="Language"
+                        options={languages}
+                        selectedOption={getAttributes("Language")}
+                        handler={updateState}
+                      />
+                    }
+                    helper="Enter the (human) languages you can work in"
                   />
-                }
-                helper="Enter the (human) languages you can work in"
-              />
-            </Col>
-          </Row>
+                </Col>
+              </Row>
 
-          <Row>
-            <Col>
-              {" "}
-              <Requirement
-                id="Tenure"
-                handleActive={updateActive}
-                title="Tenure"
-                selector={
-                  <Selector
+              <Row>
+                <Col>
+                  {" "}
+                  <Requirement
                     id="Tenure"
-                    handler={updateState}
-                    options={tenures}
-                    selectedOption={getAttributes("Tenure")}
+                    handleActive={updateActive}
+                    title="Tenure"
+                    selector={
+                      <Selector
+                        id="Tenure"
+                        handler={updateState}
+                        options={tenures}
+                        selectedOption={getAttributes("Tenure")}
+                      />
+                    }
+                    helper="Enter the tenure structures you would consider"
                   />
-                }
-                helper="Enter the tenure structures you would consider"
-              />
-            </Col>
-            <Col>
+                </Col>
+                <Col>
+                  <Requirement
+                    id="Salary"
+                    handleActive={updateActive}
+                    title="Min Salary"
+                    togglable={false}
+                    selector={
+                      <SalarySelector
+                        id="Salary"
+                        handler={updateState}
+                        selectedOption={getAttributes("Salary")}
+                      />
+                    }
+                    helper="Enter the minimum salary you would consider. If you love your current job, put a high number in here!"
+                  />
+                </Col>
+              </Row>
+
               <Requirement
-                id="Salary"
+                id="TechStack"
                 handleActive={updateActive}
-                title="Min Salary"
+                title="Technology Stack"
                 togglable={false}
                 selector={
-                  <SalarySelector
-                    id="Salary"
-                    handler={updateState}
-                    selectedOption={getAttributes("Salary")}
+                  <SkillSelector
+                    isMulti={true}
+                    value={formState["TechStack"]["attributes"]}
+                    handleChange={(e) => updateState("TechStack", e)}
                   />
                 }
-                helper="Enter the minimum salary you would consider. If you love your current job, put a high number in here!"
+                helper="Do not by bound by what is offered in the dropdown; a new attributes is automatically created if you type something unique."
               />
-            </Col>
-          </Row>
-
-          <Requirement
-            id="TechStack"
-            handleActive={updateActive}
-            title="Technology Stack"
-            togglable={false}
-            selector={
-              <SkillSelector
-                isMulti={true}
-                value={formState["TechStack"]["attributes"]}
-                handleChange={(e) => updateState("TechStack", e)}
-              />
-            }
-            helper="Do not by bound by what is offered in the dropdown; a new attributes is automatically created if you type something unique."
-          />
-          {/* <Requirement
+              {/* <Requirement
             id="TechAntiStack"
             handleActive={updateActive}
             title="Technology Anti-Stack"
@@ -210,125 +213,130 @@ const Requirements = () => {
             }
             helper="Any job spec that matches any one technology listed here is disqualified"
           /> */}
-          <Row>
-            <Col>
-              <Requirement
-                id="OrgSize"
-                handleActive={updateActive}
-                title="Org Size"
-                selector={
-                  <Selector
+              <Row>
+                <Col>
+                  <Requirement
                     id="OrgSize"
-                    handler={updateState}
-                    options={sizes}
-                    selectedOption={getAttributes("OrgSize")}
-                    simple={true}
+                    handleActive={updateActive}
+                    title="Org Size"
+                    selector={
+                      <Selector
+                        id="OrgSize"
+                        handler={updateState}
+                        options={sizes}
+                        selectedOption={getAttributes("OrgSize")}
+                        simple={true}
+                      />
+                    }
+                    helper="Enter the upperbound for the org's size"
                   />
-                }
-                helper="Enter the upperbound for the org's size"
-              />
-            </Col>
-            <Col>
+                </Col>
+                <Col>
+                  <Requirement
+                    id="OrgChars"
+                    handleActive={updateActive}
+                    title="Org Characteristics"
+                    selector={
+                      <Selector
+                        id="OrgChars"
+                        handler={updateState}
+                        options={characteristics}
+                        selectedOption={getAttributes("OrgChars")}
+                      />
+                    }
+                    helper="Enter the types of organizations you would consider"
+                  />
+                </Col>
+              </Row>
               <Requirement
-                id="OrgChars"
+                id="Industry"
                 handleActive={updateActive}
-                title="Org Characteristics"
+                title="Industry"
                 selector={
                   <Selector
-                    id="OrgChars"
+                    id="Industry"
                     handler={updateState}
-                    options={characteristics}
-                    selectedOption={getAttributes("OrgChars")}
+                    options={industries}
+                    selectedOption={getAttributes("Industry")}
+                    placeholder="Industry sectors"
                   />
                 }
-                helper="Enter the types of organizations you would consider"
+                helper="What industries would you consider"
+              />
+
+              <Requirement
+                id="Experentials"
+                handleActive={updateActive}
+                title="Experential"
+                selector={
+                  <Selector
+                    id="Experentials"
+                    handler={updateState}
+                    options={experiences}
+                    selectedOption={getAttributes("Experentials")}
+                    placeholder="Must have experential factors go here."
+                  />
+                }
+                helper="What are the experiences that the job MUST offer?"
               />
             </Col>
           </Row>
-          <Requirement
-            id="Industry"
-            handleActive={updateActive}
-            title="Industry"
-            selector={
-              <Selector
-                id="Industry"
-                handler={updateState}
-                options={industries}
-                selectedOption={getAttributes("Industry")}
-                placeholder="Industry sectors"
-              />
-            }
-            helper="What industries would you consider"
-          />
-
-          <Requirement
-            id="Experentials"
-            handleActive={updateActive}
-            title="Experential"
-            selector={
-              <Selector
-                id="Experentials"
-                handler={updateState}
-                options={experiences}
-                selectedOption={getAttributes("Experentials")}
-                placeholder="Must have experential factors go here."
-              />
-            }
-            helper="What are the experiences that the job MUST offer?"
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col></Col>
-      </Row>
-      <Row>
-        <Col sm="9">
-          <div style={{ textAlign: "center" }}>
-            <Button disabled={formGood() ? false : true} onClick={handleShow}>
-              Next
-            </Button>
-            {formGood() ? (
-              ""
-            ) : (
-              <div className="alert alert-warning">
-                Role, Tech Stack and Salary fields must have values
+          <Row>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col sm="9">
+              <div style={{ textAlign: "center" }}>
+                <Button
+                  disabled={formGood() ? false : true}
+                  onClick={handleShow}
+                >
+                  Next
+                </Button>
+                {formGood() ? (
+                  ""
+                ) : (
+                  <div className="alert alert-warning">
+                    Role, Tech Stack and Salary fields must have values
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </Col>
-      </Row>
+            </Col>
+          </Row>
 
-      <Modal
-        // animation={false}
-        show={show}
-        onHide={handleClose}
-        dialogClassName="modal-90w"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>This is your Background Process</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Spec formState={formState} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Continue Editing
-          </Button>
-          <Button
-            variant="primary"
-            onClick={() => {
-              window.scrollTo(0, 0);
-              handleClose();
-              navigate("/skills", { state: makeComplete(formState) });
-            }}
+          <Modal
+            // animation={false}
+            show={show}
+            onHide={handleClose}
+            dialogClassName="modal-90w"
           >
-            Next
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            <Modal.Header closeButton>
+              <Modal.Title>This is your Background Process</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Spec formState={formState} />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Continue Editing
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  handleClose();
+                  navigate("/skills", { state: makeComplete(formState) });
+                }}
+              >
+                Next
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
-      <div style={{ marginBottom: "100px" }}></div>
-    </Container>
+          <div style={{ marginBottom: "100px" }}></div>
+        </Container>
+      </Privilaged>
+    </>
   );
 };
 
