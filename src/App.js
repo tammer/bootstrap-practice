@@ -1,12 +1,28 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { Outlet, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 // !!! I wish I knew what activeKey did
 
 function App() {
   const userName = localStorage.getItem("userName");
+  const navigate = useNavigate();
+
+  function logout() {
+    const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userName");
+    fetch("http://localhost:8000/logout/", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Token ${token}`,
+      },
+    });
+    return;
+  }
 
   return (
     <>
@@ -18,7 +34,24 @@ function App() {
         <Nav.Item>
           <Nav.Link href="/home">backgroundprocess.com</Nav.Link>
         </Nav.Item>
-        <Nav.Item>({userName})</Nav.Item>
+        <Nav.Item>
+          {localStorage.getItem("token") ? (
+            <>
+              <Button
+                className="btn btn-sm"
+                onClick={(e) => {
+                  logout();
+                  navigate("/login");
+                }}
+              >
+                Logout ({userName})
+              </Button>
+              <span>{localStorage.getItem("token")}</span>
+            </>
+          ) : (
+            <Nav.Link href="/login">Login</Nav.Link>
+          )}
+        </Nav.Item>
         {/* <Nav.Item>
           <Nav.Link href="/spec">Spec</Nav.Link>
         </Nav.Item> */}
