@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const navigate = useNavigate();
 
   async function loginUser(creds) {
     return fetch("http://localhost:8000/api-token-auth/", {
@@ -24,6 +26,11 @@ const Login = () => {
         localStorage.setItem("token", j["token"]);
         localStorage.setItem("userName", username);
         setToken(j["token"]);
+        if (localStorage.getItem("next")) {
+          const n = localStorage.getItem("next");
+          localStorage.removeItem("next");
+          navigate(n);
+        }
       });
     } else {
       res.json().then((j) => {
@@ -50,7 +57,6 @@ const Login = () => {
           <button type="submit">Submit</button>
         </div>
       </form>
-      <a href="http://localhost:3000/skills2">Skills</a>
       <br />
       {token}
     </>

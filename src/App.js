@@ -34,6 +34,22 @@ function App() {
         <Nav.Item>
           <Nav.Link href="/home">backgroundprocess.com</Nav.Link>
         </Nav.Item>
+
+        {/* <Nav.Item>
+          <Nav.Link href="/spec">Spec</Nav.Link>
+        </Nav.Item> */}
+        <Nav.Item>
+          <Nav.Link href="/requirements">Requirements</Nav.Link>
+        </Nav.Item>
+        {/* <Nav.Item>
+          <Nav.Link href="/skills">Skills</Nav.Link>
+        </Nav.Item> */}
+        {/* <Nav.Item>
+          <Nav.Link href="/cred">Calibration</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/loggedin-home">Loggedin Home</Nav.Link>
+        </Nav.Item> */}
         <Nav.Item>
           {localStorage.getItem("token") ? (
             <>
@@ -46,27 +62,12 @@ function App() {
               >
                 Logout ({userName})
               </Button>
-              <span>{localStorage.getItem("token")}</span>
+              {/* <span>{localStorage.getItem("token")}</span> */}
             </>
           ) : (
             <Nav.Link href="/login">Login</Nav.Link>
           )}
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link href="/spec">Spec</Nav.Link>
-        </Nav.Item> */}
-        {/* <Nav.Item>
-          <Nav.Link href="/requirements">Requirements</Nav.Link>
-        </Nav.Item> */}
-        {/* <Nav.Item>
-          <Nav.Link href="/skills">Skills</Nav.Link>
-        </Nav.Item> */}
-        {/* <Nav.Item>
-          <Nav.Link href="/cred">Calibration</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/loggedin-home">Loggedin Home</Nav.Link>
-        </Nav.Item> */}
       </Nav>
       <Outlet />
     </>

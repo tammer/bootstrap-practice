@@ -5,7 +5,13 @@ const Privilaged = (props) => {
   const [authorized, setAuthorized] = useState(
     localStorage.getItem("token") ? true : false
   );
-  return <>{authorized ? props.children : <Navigate to="/login" />}</>;
+
+  function redirect() {
+    localStorage.setItem("next", window.location.pathname);
+    return <Navigate to="/login" />;
+  }
+
+  return <>{authorized ? props.children : redirect()}</>;
 };
 
 export default Privilaged;
