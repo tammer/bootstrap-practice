@@ -255,12 +255,12 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Org Size"
                     selector={
-                      <Selector
-                        id="OrgSize"
-                        handler={updateState}
-                        options={sizes}
-                        selectedOption={getAttributes("OrgSize")}
-                        simple={true}
+                      <AttributeSelector
+                        category="OrgSize"
+                        handleChange={(e) => updateState("OrgSize", e)}
+                        isMulti={false}
+                        value={formState["OrgSize"]["attributes"]}
+                        placeholder="Input org size limit"
                       />
                     }
                     helper="Enter the upperbound for the org's size"
@@ -272,11 +272,12 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Org Characteristics"
                     selector={
-                      <Selector
-                        id="OrgChars"
-                        handler={updateState}
-                        options={characteristics}
-                        selectedOption={getAttributes("OrgChars")}
+                      <AttributeSelector
+                        category="OrgType"
+                        handleChange={(e) => updateState("OrgChars", e)}
+                        isMulti={true}
+                        value={formState["OrgChars"]["attributes"]}
+                        placeholder="Input desired org types"
                       />
                     }
                     helper="Enter the types of organizations you would consider"
@@ -288,12 +289,12 @@ const Requirements = () => {
                 handleActive={updateActive}
                 title="Industry"
                 selector={
-                  <Selector
-                    id="Industry"
-                    handler={updateState}
-                    options={industries}
-                    selectedOption={getAttributes("Industry")}
-                    placeholder="Industry sectors"
+                  <AttributeSelector
+                    category="Industry"
+                    handleChange={(e) => updateState("Industry", e)}
+                    isMulti={true}
+                    value={formState["Industry"]["attributes"]}
+                    placeholder="Input desired industries"
                   />
                 }
                 helper="What industries would you consider"
@@ -304,12 +305,12 @@ const Requirements = () => {
                 handleActive={updateActive}
                 title="Experential"
                 selector={
-                  <Selector
-                    id="Experentials"
-                    handler={updateState}
-                    options={experiences}
-                    selectedOption={getAttributes("Experentials")}
-                    placeholder="Must have experential factors go here."
+                  <AttributeSelector
+                    category="Experiential"
+                    handleChange={(e) => updateState("Experentials", e)}
+                    isMulti={true}
+                    value={formState["Experentials"]["attributes"]}
+                    placeholder="Input desired experiential factors"
                   />
                 }
                 helper="What are the experiences that the job MUST offer?"
@@ -377,229 +378,11 @@ const Requirements = () => {
 
 export default Requirements;
 
-function quickMake(y) {
-  return y.map((e) => ({ value: e, label: e }));
-}
-
-const models = quickMake(["On-site", "Hybrid", "Remote", "All-Remote"]);
-const tenures = quickMake(["Permanent", "Contract"]);
-const languages = quickMake(["English", "Deutsch", "Francis", "Dansk"]);
-const experiences = quickMake([
-  "female-led",
-  "child-care",
-  "on-site fitness facilities",
-  "pet friendly",
-  "unlimited vacation",
-  "snacks",
-  "healthy snacks",
-  "meals",
-  "free shuttles to/from office",
-]);
-
-const industries = quickMake([
-  "Crytpto",
-  "Blockchain",
-  "DeFi",
-  "NFT",
-  "Fintech",
-  "Edtech",
-  "Proptech",
-  "Insurtech",
-  "Regtech",
-  "Legaltech",
-  "Femtech",
-  "Foodtech",
-  "Cleantech",
-  "Biotech",
-  "Healthtech",
-  "Medtech",
-  "Agritech",
-  "eCommerce",
-  "Telecom",
-  "Computer hardware",
-  "Internet gaming",
-  "Pharma",
-  "Cannabis",
-  "Banking",
-  "Investment banking",
-  "Finance",
-  "Financial data",
-  "Asset Management",
-  "Insurance",
-  "Health care",
-  "Real estate",
-  "Oil and gas",
-  "Auto",
-  "Casinos and Gambling",
-  "Aerospace",
-  "Defense",
-  "Marine transportation",
-  "Aviation",
-  "Mining",
-  "Wearables",
-]);
-
-const sizes = quickMake([
-  "< 10 employees",
-  "< 100 employees",
-  "< 500 employees",
-  "< 1000 employees",
-  "< 5000 employees",
-  "< 10,000 employees",
-]);
-
-const characteristics = quickMake([
-  "publicly traded",
-  "private",
-  "government",
-  "not for profit",
-  "charity",
-  "early stage startup",
-  "growth stage startup startup",
-  "late stage startup",
-]);
-
-const roles_ = [
-  "Full Stack Developer",
-  "Back-End Developer",
-  "Front-End Developer",
-  "Android Developer",
-  "Software Engineer",
-  "iOS Developer",
-  "Lead Developer",
-  "Development Manager",
-  "Director of Development",
-  "VP Engineering",
-  "CTO",
-  "Technical Co-founder",
-  "Mobile Developer",
-  "Systems Developer",
-  "Lead Software Architect",
-  "API Developer",
-  "Cloud Architect",
-  "Embedded Systems Engineer",
-  "Growth Engineer",
-  "Software Architect",
-  "Desktop App Developer",
-  "Analytics Engineer",
-  "Blockchain Developer",
-  "Performance Engineer",
-  "Data Scientist",
-  "Machine Learning Engineer",
-  "Big Data Engineer",
-  "Data Engineer",
-  "Lead Data Engineer",
-  "Lead Data Scientist",
-  "Director of Data Science",
-  "VP of Data Science",
-  "ETL Developer",
-  "NLP Engineer",
-  "Business Systems Analyst",
-  "Data Analyst",
-  "Decision Scientist",
-  "Machine Learning Scientist",
-  "DevOps Engineer",
-  "Site Reliability Engineer",
-  "Database Administrator",
-  "DevOps Lead",
-  "Security Engineer",
-  "Database Engineer",
-  "Build Automation Engineer",
-  "Infrastructure Engineer",
-  "Network Engineer",
-  "Release Manager",
-  "System Administrator",
-  "Database Architect",
-  "QA Engineer",
-  "SDET",
-  "Director of QA",
-  "QA Manager",
-  "Security Test Engineer",
-  "Build Automation Engineer",
-  "Mobile Test Engineer",
-  "Performance Test Engineer",
-  "Test Automation Engineer",
-  "Game Tester",
-  "Product Manager",
-  "Program Manager",
-  "Technical Product Manager",
-  "Video Game Producer",
-  "Product Management Lead",
-  "Director of Product Management",
-  "VP Product",
-  "CPO",
-  "Product Designer",
-  "UX Designer",
-  "UX Design Manager",
-  "Director of UX",
-  "Mobile UX Designer",
-  "Web Designer",
-  "Graphic Designer",
-];
-
-const senior_roles = [
-  "Senior Full Stack Developer",
-  "Senior Back-End Developer",
-  "Senior Front-End Developer",
-  "Senior Android Developer",
-  "Senior Software Engineer",
-  "Senior iOS Developer",
-  "Senior Developer",
-  "Senior Mobile Developer",
-  "Senior Systems Developer",
-  "Senior API Developer",
-  "Senior Embedded Systems Engineer",
-  "Senior Growth Engineer",
-  "Senior Software Architect",
-  "Senior Desktop App Developer",
-  "Senior Analytics Engineer",
-  "Senior Blockchain Developer",
-  "Senior Performance Engineer",
-  "Senior Data Scientist",
-  "Senior Machine Learning Engineer",
-  "Senior Big Data Engineer",
-  "Senior Data Engineer",
-  "Senior ETL Developer",
-  "Senior NLP Engineer",
-  "Senior Business Systems Analyst",
-  "Senior Data Analyst",
-  "Senior Decision Scientist",
-  "Senior Machine Learning Scientist",
-  "Senior DevOps Engineer",
-  "Senior Site Reliability Engineer",
-  "Senior Database Administrator",
-  "Senior Security Engineer",
-  "Senior Database Engineer",
-  "Senior Build Automation Engineer",
-  "Senior Infrastructure Engineer",
-  "Senior Network Engineer",
-  "Senior Database Architect",
-  "Senior QA Engineer",
-  "Senior SDET",
-  "Senior QA Manager",
-  "Senior Security Test Engineer",
-  "Senior Mobile Test Engineer",
-  "Senior Performance Test Engineer",
-  "Senior Test Automation Engineer",
-  "Senior Product Manager",
-  "Senior Program Manager",
-  "Senior Technical Product Manager",
-  "Senior Video Game Producer",
-  "Senior Product Designer",
-  "Senior UX Designer",
-  "Senior Mobile UX Designer",
-  "Senior Web Designer",
-  "Senior Graphic Designer",
-];
-
-const roles = quickMake([...roles_, ...senior_roles]);
-
-// const defaultStates = { Language: [languages[0]], Tenure: [tenures[0]] };
 const defaultStates = {
   Role: { active: true, attributes: [] },
   Model: { active: true, attributes: [] },
-  Language: { active: true, attributes: [languages[0]] },
-  Tenure: { active: true, attributes: [tenures[0]] },
+  Language: { active: true, attributes: [] },
+  Tenure: { active: true, attributes: [] },
   TechStack: { active: true, attributes: [] },
   TechAntiStack: { active: false, attributes: [] },
   OrgSize: { active: true, attributes: [] },
