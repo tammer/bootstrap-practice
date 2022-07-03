@@ -1,8 +1,26 @@
+import { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Select from "react-select";
 
-const SalarySelector = ({ id, handler, selectedOption }) => {
+const SalarySelector = ({ handleChange, value }) => {
+  const [state, setState] = useState(value);
+  useEffect(() => {
+    setState(value);
+  });
+
+  function handleAmountChange(amount) {
+    const newState = { amount: amount, ccy: state["ccy"] };
+    setState(newState);
+    return handleChange(newState);
+  }
+
+  function handleCcyChange(ccy) {
+    const newState = { amount: state["amount"], ccy: ccy["id"] };
+    setState(newState);
+    return handleChange(newState);
+  }
+
   function handleInput(e) {
     let temp = e.target.value.replace(/\D/g, "");
     if (temp.length > 6) {
@@ -10,7 +28,7 @@ const SalarySelector = ({ id, handler, selectedOption }) => {
     }
     temp = temp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     e.target.value = temp;
-    handler(id, [{ label: temp, value: temp }]);
+    return handleAmountChange(temp);
   }
 
   return (
@@ -21,14 +39,22 @@ const SalarySelector = ({ id, handler, selectedOption }) => {
           maxLength="7"
           size="7"
           type="text"
-          value={selectedOption[0] ? selectedOption[0]["label"] : ""}
+          // value={selectedOption[0] ? selectedOption[0]["label"] : ""}
+          value={state["amount"]}
           onChange={(e) => handleInput(e)}
         />
       </Col>
       <Col style={{ paddingLeft: "2px" }}>
         <Select
-          defaultValue={quickMake(["USD"])}
-          options={quickMake(["USD", "CAD", "EUR", "GBP", "Yen"])}
+          // defaultValue={quickMake(["USD"])}
+          // dont forget to make it a simple dropdown
+          options={quickMake(["USD", "CAD", "EUR", "GBP", "JPY"])}
+          closeMenuOnSelect={true}
+          getOptionLabel={(e) => e["name"]}
+          getOptionValue={(e) => e["id"]}
+          placeholder={"Select currency"}
+          value={{ id: state["ccy"], name: state["ccy"] }}
+          onChange={handleCcyChange}
         />
       </Col>
     </Row>
@@ -38,5 +64,5 @@ const SalarySelector = ({ id, handler, selectedOption }) => {
 export default SalarySelector;
 
 function quickMake(y) {
-  return y.map((e) => ({ value: e, label: e }));
+  return y.map((e) => ({ id: e, name: e }));
 }

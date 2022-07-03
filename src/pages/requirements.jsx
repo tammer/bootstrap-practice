@@ -13,7 +13,6 @@ import {
 import Requirement from "../components/Requirement";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
-import Selector from "../components/Selector";
 import Spec from "../components/Spec";
 import SkillSelector from "../components/SkillSelector";
 import AttributeSelector from "../components/AttributeSelector";
@@ -29,16 +28,6 @@ const Requirements = () => {
   const [formState, setFormState] = useState(
     location.state ? location.state : defaultStates
   );
-
-  function makeComplete(formState) {
-    formState["TechStack"]["attributes"] = formState["TechStack"][
-      "attributes"
-    ].map((att) => ({
-      ...att,
-      level: att["level"] ? att["level"] : "proficient",
-    }));
-    return formState;
-  }
 
   function updateState(id, values_) {
     let values = Array.isArray(values_) ? values_ : [values_];
@@ -208,9 +197,8 @@ const Requirements = () => {
                     togglable={false}
                     selector={
                       <SalarySelector
-                        id="Salary"
-                        handler={updateState}
-                        selectedOption={getAttributes("Salary")}
+                        value={formState["Salary"]["attributes"][0]}
+                        handleChange={(e) => updateState("Salary", e)}
                       />
                     }
                     helper="Enter the minimum salary you would consider. If you love your current job, put a high number in here!"
@@ -389,5 +377,5 @@ const defaultStates = {
   OrgChars: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
   Experentials: { active: true, attributes: [] },
-  Salary: { active: true, attributes: [{ label: "100,000" }] },
+  Salary: { active: true, attributes: [{ amount: "1", ccy: "JPY" }] },
 };
