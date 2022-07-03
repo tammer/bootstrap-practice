@@ -89,8 +89,10 @@ const Requirements = () => {
         Authorization: `Token ${localStorage.getItem("token")}`,
       },
     })
-      .then((res) => res.json())
-      .then((raw) => setFormState(JSON.parse(raw["spec"])));
+      .then((res) => (res.status == 200 ? res.json() : null))
+      .then((raw) => {
+        if (raw) setFormState(JSON.parse(raw["spec"]));
+      });
   }
 
   useEffect(() => {
