@@ -12,10 +12,11 @@ import {
 } from "react-bootstrap";
 import Requirement from "../components/Requirement";
 import SalarySelector from "../components/SalarySelector";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Selector from "../components/Selector";
 import Spec from "../components/Spec";
 import SkillSelector from "../components/SkillSelector";
+import AttributeSelector from "../components/AttributeSelector";
 
 const Requirements = () => {
   const [show, setShow] = useState(false);
@@ -66,6 +67,36 @@ const Requirements = () => {
     return true;
   }
 
+  function update() {
+    const y = { spec: JSON.stringify(formState) };
+    fetch("http://localhost:8000/profile/", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(y),
+    });
+  }
+
+  function formFromServer() {
+    fetch("http://localhost:8000/profile/", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((raw) => setFormState(JSON.parse(raw["spec"])));
+  }
+
+  useEffect(() => {
+    formFromServer();
+  }, []);
+
   return (
     <>
       <Privilaged>
@@ -99,12 +130,11 @@ const Requirements = () => {
                 title="Role (aka Job Title)"
                 togglable={false}
                 selector={
-                  <Selector
-                    id="Role"
-                    handler={updateState}
-                    options={roles}
-                    selectedOption={getAttributes("Role")}
-                    placeholder="Enter the roles you would consider"
+                  <AttributeSelector
+                    category="Role"
+                    handleChange={(e) => updateState("Role", e)}
+                    isMulti={true}
+                    value={formState["Role"]["attributes"]}
                   />
                 }
                 helper="Enter all the roles your would consider"
@@ -325,7 +355,7 @@ const Requirements = () => {
                 onClick={() => {
                   window.scrollTo(0, 0);
                   handleClose();
-                  navigate("/skills", { state: makeComplete(formState) });
+                  update();
                 }}
               >
                 Next
