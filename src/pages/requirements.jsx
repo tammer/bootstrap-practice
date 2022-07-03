@@ -137,6 +137,7 @@ const Requirements = () => {
                     handleChange={(e) => updateState("Role", e)}
                     isMulti={true}
                     value={formState["Role"]["attributes"]}
+                    placeholder="Input one or more roles"
                   />
                 }
                 helper="Enter all the roles your would consider"
@@ -149,12 +150,12 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Work Model"
                     selector={
-                      <Selector
-                        id="Model"
-                        handler={updateState}
-                        options={models}
-                        selectedOption={getAttributes("Model")}
-                        placeholder="On-site? Hybrid?"
+                      <AttributeSelector
+                        category="WorkModel"
+                        handleChange={(e) => updateState("Model", e)}
+                        isMulti={true}
+                        value={formState["Model"]["attributes"]}
+                        placeholder="Input work models"
                       />
                     }
                     helper="Enter all the work models you would consider. Remote = you are remote; All-Remote = every employee is remote"
@@ -167,11 +168,12 @@ const Requirements = () => {
                     title="Workplace Language"
                     togglable={false}
                     selector={
-                      <Selector
-                        id="Language"
-                        options={languages}
-                        selectedOption={getAttributes("Language")}
-                        handler={updateState}
+                      <AttributeSelector
+                        category="Language"
+                        handleChange={(e) => updateState("Language", e)}
+                        isMulti={true}
+                        value={formState["Language"]["attributes"]}
+                        placeholder="Input workplace languages"
                       />
                     }
                     helper="Enter the (human) languages you can work in"
@@ -187,11 +189,12 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Tenure"
                     selector={
-                      <Selector
-                        id="Tenure"
-                        handler={updateState}
-                        options={tenures}
-                        selectedOption={getAttributes("Tenure")}
+                      <AttributeSelector
+                        category="Tenure"
+                        handleChange={(e) => updateState("Tenure", e)}
+                        isMulti={true}
+                        value={formState["Tenure"]["attributes"]}
+                        placeholder="Input tenures"
                       />
                     }
                     helper="Enter the tenure structures you would consider"
