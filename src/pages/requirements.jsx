@@ -16,6 +16,7 @@ import React, { useState, useEffect } from "react";
 import Spec from "../components/Spec";
 import SkillSelector from "../components/SkillSelector";
 import AttributeSelector from "../components/AttributeSelector";
+import LocationSelector from "../components/LocationSelector";
 
 const Requirements = () => {
   const [show, setShow] = useState(false);
@@ -54,6 +55,14 @@ const Requirements = () => {
       return false;
     }
     return true;
+  }
+
+  function showLocation() {
+    let rv = false;
+    formState["Model"]["attributes"].forEach((e) => {
+      if ((e["name"] == "on-site") | (e["name"] == "hybrid")) rv = true;
+    });
+    return rv;
   }
 
   function update() {
@@ -205,6 +214,25 @@ const Requirements = () => {
                   />
                 </Col>
               </Row>
+
+              {showLocation() ? (
+                <Requirement
+                  id="Location"
+                  handleActive={updateActive}
+                  title="Location (on-site and/or hybrid)"
+                  togglable={false}
+                  selector={
+                    <LocationSelector
+                      isMulti={true}
+                      value={formState["Location"]["attributes"]}
+                      handleChange={(e) => updateState("Location", e)}
+                    />
+                  }
+                  helper="Do not by bound by what is offered in the dropdown; a new attributes is automatically created if you type something unique."
+                />
+              ) : (
+                ""
+              )}
 
               <Requirement
                 id="TechStack"
@@ -371,6 +399,7 @@ const defaultStates = {
   Model: { active: true, attributes: [] },
   Language: { active: true, attributes: [] },
   Tenure: { active: true, attributes: [] },
+  Location: { active: true, attributes: [] },
   TechStack: { active: true, attributes: [] },
   TechAntiStack: { active: false, attributes: [] },
   OrgSize: { active: true, attributes: [] },
