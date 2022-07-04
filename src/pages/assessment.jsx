@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Skill from "../components/Skill";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import SkillSelector from "../components/SkillSelector";
+import Privilaged from "../components/Privilaged";
 
 const Assessment = () => {
   const token = localStorage.getItem("token");
@@ -78,9 +79,9 @@ const Assessment = () => {
   }
 
   return (
-    <>
+    <Privilaged>
       <Container>{skillList ? renderItems() : "loading"}</Container>
-    </>
+    </Privilaged>
   );
 };
 

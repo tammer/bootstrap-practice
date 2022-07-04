@@ -41,9 +41,9 @@ function App() {
         <Nav.Item>
           <Nav.Link href="/requirements">Requirements</Nav.Link>
         </Nav.Item>
-        {/* <Nav.Item>
+        <Nav.Item>
           <Nav.Link href="/skills">Skills</Nav.Link>
-        </Nav.Item> */}
+        </Nav.Item>
         {/* <Nav.Item>
           <Nav.Link href="/cred">Calibration</Nav.Link>
         </Nav.Item>

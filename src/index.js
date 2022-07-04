@@ -27,8 +27,7 @@ root.render(
           <Route path="spec" element={<Spec />} />
           <Route path="requirements" element={<Requirements />} />
           <Route path="requirementsreview" element={<RequirementsReview />} />
-          <Route path="skills" element={<Skills />} />
-          <Route path="skills2" element={<Assessment />} />
+          <Route path="skills" element={<Assessment />} />
           <Route path="anchors" element={<Anchors />} />
           <Route path="join" element={<Join />} />
           <Route path="home" element={<Home />} />
