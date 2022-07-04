@@ -14,8 +14,12 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
     <>
       <Container hidden={state === "dead" ? true : false}>
         <Row style={{ margin: "20px" }}>
-          <Col>{selectedSkill}</Col>
-          <Col>
+          <Col sm="2">
+            <div style={{ textAlign: "right", marginRight: "20px" }}>
+              {selectedSkill}
+            </div>
+          </Col>
+          <Col sm="5">
             <LevelSlider value={state} handleChange={updateState} />
           </Col>
           <Col>

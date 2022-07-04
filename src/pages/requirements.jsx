@@ -219,7 +219,7 @@ const Requirements = () => {
                 <Requirement
                   id="Location"
                   handleActive={updateActive}
-                  title="Location (on-site and/or hybrid)"
+                  title="Location(s) (on-site and/or hybrid)"
                   togglable={false}
                   selector={
                     <LocationSelector
