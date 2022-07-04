@@ -1,26 +1,12 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import SkillSelector from "./SkillSelector";
 import LevelSelector from "./LevelSelector";
 
 const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
-  const [state, setState] = useState({
-    skill: selectedSkill,
-    level: selectedLevel,
-  });
+  const [state, setState] = useState(selectedLevel);
 
-  function updateState(name, value) {
-    let newState = {};
-    newState["level"] = state["level"];
-    newState["skill"] = state["skill"];
-    newState[name] = value;
-    if (
-      (typeof newState["skill"] === "undefined") |
-      (typeof newState["level"] === "undefined")
-    ) {
-      setState(newState);
-      return;
-    }
+  function updateState(newState) {
+    setState(newState);
     update(id, newState);
   }
 
@@ -28,18 +14,12 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
     <>
       <Container hidden={state === "dead" ? true : false}>
         <Row style={{ margin: "20px" }}>
+          <Col>{selectedSkill}</Col>
           <Col>
-            <SkillSelector
-              value={state["skill"]}
-              handleChange={(e) => updateState("skill", e)}
-            />
-            <LevelSelector
-              value={state["level"]}
-              handleChange={(e) => updateState("level", e)}
-            />
+            <LevelSelector value={state} handleChange={(e) => updateState(e)} />
           </Col>
           <Col>
-            {id < 1 ? (
+            {!destroy ? (
               ""
             ) : (
               <div>

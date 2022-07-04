@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SkillO from "../components/Skill";
+import Skill from "../components/Skill";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import SkillSelector from "../components/SkillSelector";
 
 const Assessment = () => {
   const token = localStorage.getItem("token");
@@ -15,12 +16,6 @@ const Assessment = () => {
       },
     });
     const y = await z.json();
-    // const x = {
-    //   id: Math.random(),
-    //   skill: undefined,
-    //   level: undefined,
-    // };
-    // setSkillList([...y, x]);
     setSkillList(y);
   }
 
@@ -39,44 +34,46 @@ const Assessment = () => {
     }).then((e) => fetchList());
   }
 
-  function update(id, state) {
-    fetch(
-      id < 1
-        ? "http://localhost:8000/assessments/"
-        : `http://localhost:8000/assessment/${id}`,
-      {
-        method: id < 1 ? "POST" : "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Token ${token}`,
-        },
-        body: JSON.stringify(state),
-      }
-    ).then((e) => fetchList());
+  function create(tech) {
+    fetch("http://localhost:8000/assessments/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify({ skill: tech, level: { id: 1, name: "novice" } }),
+    }).then((e) => fetchList());
+  }
+
+  function update(id, level) {
+    console.log("here", { level: level });
+    fetch(`http://localhost:8000/assessment/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify({ level: level }),
+    }).then((e) => fetchList());
   }
 
   function renderItems() {
     return (
       <>
         {skillList.map((item) => (
-          <SkillO
+          <Skill
             key={item["id"]}
             id={item["id"]}
-            selectedSkill={item["skill"]}
+            selectedSkill={item["skill"]["name"]}
             selectedLevel={item["level"]}
             update={update}
             destroy={destroy}
           />
         ))}
-        New:
-        <SkillO
-          key={Math.random()}
-          id={Math.random()}
-          // selectedSkill={item["skill"]}
-          // selectedLevel={item["level"]}
-          update={update}
-        />
+        <span>new:</span>
+        <SkillSelector value={null} handleChange={create} isMulti={false} />
       </>
     );
   }
