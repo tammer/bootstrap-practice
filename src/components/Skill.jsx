@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import LevelSelector from "./LevelSelector";
+import LevelSlider from "./LevelSlider";
 
 const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
   const [state, setState] = useState(selectedLevel);
@@ -16,13 +16,13 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
         <Row style={{ margin: "20px" }}>
           <Col>{selectedSkill}</Col>
           <Col>
-            <LevelSelector value={state} handleChange={(e) => updateState(e)} />
+            <LevelSlider value={state} handleChange={updateState} />
           </Col>
           <Col>
             {!destroy ? (
               ""
             ) : (
-              <div>
+              <div style={{ marginLeft: "50px" }}>
                 <Button
                   className="btn btn-sm btn-danger"
                   onClick={(e) => {

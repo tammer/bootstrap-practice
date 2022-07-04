@@ -47,7 +47,6 @@ const Assessment = () => {
   }
 
   function update(id, level) {
-    console.log("here", { level: level });
     fetch(`http://localhost:8000/assessment/${id}`, {
       method: "PUT",
       headers: {
@@ -55,7 +54,7 @@ const Assessment = () => {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
       },
-      body: JSON.stringify({ level: level }),
+      body: JSON.stringify({ level: { id: level } }),
     }).then((e) => fetchList());
   }
 
