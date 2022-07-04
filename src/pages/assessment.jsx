@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Skill from "../components/Skill";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import SkillSelector from "../components/SkillSelector";
 import Privilaged from "../components/Privilaged";
 
@@ -62,18 +62,30 @@ const Assessment = () => {
   function renderItems() {
     return (
       <>
-        {skillList.map((item) => (
-          <Skill
-            key={item["id"]}
-            id={item["id"]}
-            selectedSkill={item["skill"]["name"]}
-            selectedLevel={item["level"]}
-            update={update}
-            destroy={item["required"] ? null : destroy}
-          />
-        ))}
-        <span>new:</span>
-        <SkillSelector value={null} handleChange={create} isMulti={false} />
+        <Container>
+          <Row>
+            {skillList.map((item) => (
+              <Skill
+                key={item["id"]}
+                id={item["id"]}
+                selectedSkill={item["skill"]["name"]}
+                selectedLevel={item["level"]}
+                update={update}
+                destroy={item["required"] ? null : destroy}
+              />
+            ))}
+          </Row>
+          <Row>
+            <Col sm="1">new:</Col>
+            <Col sm="5">
+              <SkillSelector
+                value={null}
+                handleChange={create}
+                isMulti={false}
+              />
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }
