@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Skill from "../components/Skill";
+import SkillO from "../components/Skill";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const Assessment = () => {
@@ -60,7 +60,7 @@ const Assessment = () => {
     return (
       <>
         {skillList.map((item) => (
-          <Skill
+          <SkillO
             key={item["id"]}
             id={item["id"]}
             selectedSkill={item["skill"]}
@@ -70,7 +70,7 @@ const Assessment = () => {
           />
         ))}
         New:
-        <Skill
+        <SkillO
           key={Math.random()}
           id={Math.random()}
           // selectedSkill={item["skill"]}
