@@ -19,21 +19,19 @@ const Skill = ({ id, selectedSkill, selectedLevel, update, destroy }) => {
             <LevelSlider value={state} handleChange={updateState} />
           </Col>
           <Col>
-            {!destroy ? (
-              ""
-            ) : (
-              <div style={{ marginLeft: "50px" }}>
-                <Button
-                  className="btn btn-sm btn-danger"
-                  onClick={(e) => {
-                    setState("dead");
-                    destroy(id);
-                  }}
-                >
-                  Delete
-                </Button>
-              </div>
-            )}
+            <div style={{ marginLeft: "50px" }}>
+              <Button
+                className={
+                  "btn btn-sm btn-danger" + (destroy ? "" : " disabled")
+                }
+                onClick={(e) => {
+                  setState("dead");
+                  destroy(id);
+                }}
+              >
+                Delete
+              </Button>
+            </div>
           </Col>
         </Row>
       </Container>

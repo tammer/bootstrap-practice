@@ -69,7 +69,7 @@ const Assessment = () => {
             selectedSkill={item["skill"]["name"]}
             selectedLevel={item["level"]}
             update={update}
-            destroy={destroy}
+            destroy={item["required"] ? null : destroy}
           />
         ))}
         <span>new:</span>
