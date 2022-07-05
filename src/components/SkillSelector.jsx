@@ -1,4 +1,4 @@
-import AsyncSelect from "react-select/async";
+import AsyncCreatableSelect from "react-select/async-creatable";
 
 const SkillSelector = ({ handleChange, value, isMulti }) => {
   const loadTechOptions = (inputValue) => {
@@ -7,9 +7,24 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
     );
   };
 
+  function handleCreate(x) {
+    return fetch("http://localhost:8000/skills/", {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("token")}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({ name: x }),
+    })
+      .then((res) => res.json())
+      .then((j) => handleChange([...value, { id: j["id"], name: x }]));
+  }
+
   return (
     <>
-      <AsyncSelect
+      <AsyncCreatableSelect
         closeMenuOnSelect={true}
         defaultOptions
         cacheOptions
@@ -21,6 +36,11 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
         placeholder={"Type a technology"}
         value={value}
         onChange={handleChange}
+        onCreateOption={handleCreate}
+        formatCreateLabel={(e) => e}
+        getNewOptionData={(a, b) => {
+          return { id: a, name: b };
+        }}
       />
     </>
   );
