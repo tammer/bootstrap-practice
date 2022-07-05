@@ -19,7 +19,13 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
       body: JSON.stringify({ name: x }),
     })
       .then((res) => res.json())
-      .then((j) => handleChange([...value, { id: j["id"], name: x }]));
+      .then((j) =>
+        handleChange(
+          isMulti
+            ? [...value, { id: j["id"], name: x }]
+            : { id: j["id"], name: x }
+        )
+      );
   }
 
   return (
