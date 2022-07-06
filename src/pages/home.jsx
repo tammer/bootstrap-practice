@@ -80,8 +80,6 @@ const Home = () => {
         node_env:{process.env.NODE_ENV}
         <br />
         server:{process.env.REACT_APP_API}
-        <br />
-        server:{process.env.API}
       </Container>
     </>
   );

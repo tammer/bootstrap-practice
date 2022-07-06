@@ -2,13 +2,13 @@ import AsyncCreatableSelect from "react-select/async-creatable";
 
 const SkillSelector = ({ handleChange, value, isMulti }) => {
   const loadTechOptions = (inputValue) => {
-    return fetch(`http://localhost:8000/skills/${inputValue}`).then((res) =>
-      res.json()
+    return fetch(`${process.env.REACT_APP_API}/skills/${inputValue}`).then(
+      (res) => res.json()
     );
   };
 
   function handleCreate(x) {
-    return fetch("http://localhost:8000/skills/", {
+    return fetch(process.env.REACT_APP_API + "/skills/", {
       method: "POST",
       headers: {
         Authorization: `Token ${localStorage.getItem("token")}`,

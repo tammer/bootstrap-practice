@@ -14,7 +14,7 @@ function App() {
     const token = localStorage.getItem("token");
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
-    fetch("http://localhost:8000/logout/", {
+    fetch(process.env.REACT_APP_API + "/logout/", {
       method: "GET",
       headers: {
         Accept: "application/json",

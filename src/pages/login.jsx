@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   async function loginUser(creds) {
-    return fetch("http://localhost:8000/api-token-auth/", {
+    return fetch(process.env.REACT_APP_API + "/api-token-auth/", {
       method: "POST",
       headers: {
         Accept: "application/json",

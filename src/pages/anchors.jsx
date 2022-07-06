@@ -11,7 +11,7 @@ const Anchors = () => {
   }, []);
 
   async function fetchAnchors() {
-    const z = await fetch(`http://localhost:8000/anchors/`, {
+    const z = await fetch(`${process.env.REACT_APP_API}/anchors/`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -23,7 +23,7 @@ const Anchors = () => {
   }
 
   function destroy(id) {
-    fetch(`http://localhost:8000/anchor/${id}`, {
+    fetch(`${process.env.REACT_APP_API}/anchor/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -34,7 +34,7 @@ const Anchors = () => {
   }
 
   function accept(id) {
-    fetch(`http://localhost:8000/anchor/${id}/accept`, {
+    fetch(`${process.env.REACT_APP_API}/anchor/${id}/accept`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -45,7 +45,7 @@ const Anchors = () => {
   }
 
   function decline(id) {
-    fetch(`http://localhost:8000/anchor/${id}/decline`, {
+    fetch(`${process.env.REACT_APP_API}/anchor/${id}/decline`, {
       method: "PUT",
       headers: {
         Accept: "application/json",

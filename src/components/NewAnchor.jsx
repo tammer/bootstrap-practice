@@ -10,7 +10,7 @@ const NewAnchor = ({ onSuccess }) => {
   const [message, setMessage] = useState();
 
   async function postAnchor(anchor) {
-    return fetch("http://localhost:8000/anchors/", {
+    return fetch(process.env.REACT_APP_API + "/anchors/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,

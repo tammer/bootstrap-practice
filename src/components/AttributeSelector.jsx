@@ -15,8 +15,8 @@ const AttributeSelector = ({
   }, []);
 
   const loadOptions = () => {
-    return fetch(`http://localhost:8000/attributes/${category}/`).then((res) =>
-      res.json()
+    return fetch(`${process.env.REACT_APP_API}/attributes/${category}/`).then(
+      (res) => res.json()
     );
   };
 

@@ -7,7 +7,9 @@ const AnchorRow = ({ skill, isHeadingRow = false }) => {
   function getAnchors() {
     const skill_ = isHeadingRow ? "Fortran" : skill;
     const z = fetch(
-      `http://localhost:8000/anchors/?skill=${encodeURIComponent(skill_)}`,
+      `${process.env.REACT_APP_API}/anchors/?skill=${encodeURIComponent(
+        skill_
+      )}`,
       {
         method: "GET",
         headers: {

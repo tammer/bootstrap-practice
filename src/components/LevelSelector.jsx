@@ -1,7 +1,9 @@
 import AsyncSelect from "react-select/async";
 
 const loadLevelOptions = (inputValue) => {
-  return fetch(`http://localhost:8000/levels/`).then((res) => res.json());
+  return fetch(`${process.env.REACT_APP_API}/levels/`).then((res) =>
+    res.json()
+  );
 };
 
 const LevelSelector = ({ handleChange, value }) => {

@@ -9,7 +9,7 @@ const Assessment = () => {
   const [skillList, setSkillList] = useState();
 
   async function fetchList() {
-    const z = await fetch(`http://localhost:8000/assessments/`, {
+    const z = await fetch(`${process.env.REACT_APP_API}/assessments/`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -25,7 +25,7 @@ const Assessment = () => {
   }, []);
 
   function destroy(id) {
-    fetch(`http://localhost:8000/assessment/${id}`, {
+    fetch(`${process.env.REACT_APP_API}/assessment/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -36,7 +36,7 @@ const Assessment = () => {
   }
 
   function create(tech) {
-    fetch("http://localhost:8000/assessments/", {
+    fetch(process.env.REACT_APP_API + "/assessments/", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -48,7 +48,7 @@ const Assessment = () => {
   }
 
   function update(id, level) {
-    fetch(`http://localhost:8000/assessment/${id}`, {
+    fetch(`${process.env.REACT_APP_API}/assessment/${id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",

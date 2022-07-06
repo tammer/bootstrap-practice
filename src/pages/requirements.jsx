@@ -67,7 +67,7 @@ const Requirements = () => {
 
   function update() {
     const y = { spec: JSON.stringify(formState) };
-    fetch("http://localhost:8000/profile/", {
+    fetch(process.env.REACT_APP_API + "/profile/", {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -79,7 +79,7 @@ const Requirements = () => {
   }
 
   function formFromServer() {
-    fetch("http://localhost:8000/profile/", {
+    fetch(process.env.REACT_APP_API + "/profile/", {
       method: "GET",
       headers: {
         Accept: "application/json",
