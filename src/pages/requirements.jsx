@@ -341,7 +341,11 @@ const Requirements = () => {
               <div style={{ textAlign: "center" }}>
                 <Button
                   disabled={formGood() ? false : true}
-                  onClick={handleShow}
+                  // onClick={handleShow}
+                  onClick={() => {
+                    update();
+                    navigate("/skills");
+                  }}
                 >
                   Next
                 </Button>
