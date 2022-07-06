@@ -79,7 +79,7 @@ const Home = () => {
         </Row>
         node_env:{process.env.NODE_ENV}
         <br />
-        server:{process.env.REACT_SERVER_URL}
+        server:{process.env.REACT_APP_API}
       </Container>
     </>
   );
