@@ -64,6 +64,9 @@ const Assessment = () => {
       <>
         <Container>
           <Row>
+            <Skill isHeader></Skill>
+          </Row>
+          <Row>
             {skillList.map((item) => (
               <Skill
                 key={item["id"]}
