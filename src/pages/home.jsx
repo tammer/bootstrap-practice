@@ -77,6 +77,9 @@ const Home = () => {
             </div>
           </Col>
         </Row>
+        node_env:{process.env.NODE_ENV}
+        <br />
+        server:{process.env.REACT_SERVER_URL}
       </Container>
     </>
   );
