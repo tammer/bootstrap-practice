@@ -6,13 +6,16 @@ const AnchorRow = ({ skill, isHeadingRow = false }) => {
 
   function getAnchors() {
     const skill_ = isHeadingRow ? "Fortran" : skill;
-    const z = fetch(`http://localhost:8000/anchors/?skill=${skill_}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    })
+    const z = fetch(
+      `http://localhost:8000/anchors/?skill=${encodeURIComponent(skill_)}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((j) => setAnchorList(j));
   }
