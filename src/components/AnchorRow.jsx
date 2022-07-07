@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Badge } from "react-bootstrap";
+import { Row, Col, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const AnchorRow = ({ skill, isHeadingRow = false }) => {
   const [anchorList, setAnchorList] = useState(null);
@@ -26,6 +26,8 @@ const AnchorRow = ({ skill, isHeadingRow = false }) => {
     getAnchors();
   }, []);
 
+  const renderTooltip = (message) => <Tooltip>{message}</Tooltip>;
+
   return (
     <>
       {anchorList ? (
@@ -33,11 +35,30 @@ const AnchorRow = ({ skill, isHeadingRow = false }) => {
           {anchorList.map((e) => (
             <Col key={skill + e["initials"] + Math.random()}>
               {isHeadingRow ? (
-                <Badge pill bg="success">
-                  {e["initials"]}
-                </Badge>
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip(e["full_name"])}
+                >
+                  <Badge pill bg="success">
+                    {e["initials"]}
+                  </Badge>
+                </OverlayTrigger>
               ) : e["level"] ? (
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/OOjs_UI_icon_link-ltr.svg" />
+                <OverlayTrigger
+                  placement="right"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip(
+                    "Calibrated with " +
+                      e["initials"] +
+                      " @ " +
+                      e["level"] +
+                      " on " +
+                      e["created_at"]
+                  )}
+                >
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/OOjs_UI_icon_link-ltr.svg" />
+                </OverlayTrigger>
               ) : (
                 ""
               )}
