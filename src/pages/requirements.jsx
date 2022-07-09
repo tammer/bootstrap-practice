@@ -410,5 +410,5 @@ const defaultStates = {
   OrgChars: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
   Experentials: { active: true, attributes: [] },
-  Salary: { active: true, attributes: [{ amount: "1", ccy: "JPY" }] },
+  Salary: { active: true, attributes: [{ amount: "100,000", ccy: "USD" }] },
 };
