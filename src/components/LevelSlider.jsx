@@ -1,5 +1,7 @@
 import Slider from "rc-slider";
 import { useState } from "react";
+import "rc-slider/assets/index.css";
+import "./slider.css";
 
 const LevelSlider = ({ value, handleChange, minLevel = 1 }) => {
   const [level, setLevel] = useState(value["id"]);
