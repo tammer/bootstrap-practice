@@ -32,7 +32,7 @@ function App() {
         activeKey="/home"
       >
         <Nav.Item>
-          <Nav.Link href="/home">backgroundprocess.com</Nav.Link>
+          <Nav.Link href="/home">Home</Nav.Link>
         </Nav.Item>
 
         <Nav.Item>
