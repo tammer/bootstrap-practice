@@ -1,6 +1,8 @@
 import Slider from "rc-slider";
+import { useState } from "react";
 
-const LevelSlider = ({ value, handleChange }) => {
+const LevelSlider = ({ value, handleChange, minLevel = 1 }) => {
+  const [level, setLevel] = useState(value["id"]);
   return (
     <Slider
       min={1}
@@ -13,8 +15,16 @@ const LevelSlider = ({ value, handleChange }) => {
         5: "authority",
       }}
       step={null}
-      onChange={handleChange}
-      defaultValue={value["id"]}
+      onChange={(e) => {
+        if (e < minLevel) {
+          setLevel(minLevel);
+        } else {
+          setLevel(e);
+          handleChange(e);
+        }
+      }}
+      // defaultValue={value["id"]}
+      value={level}
     />
   );
 };

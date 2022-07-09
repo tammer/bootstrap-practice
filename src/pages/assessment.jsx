@@ -8,16 +8,18 @@ const Assessment = () => {
   const token = localStorage.getItem("token");
   const [skillList, setSkillList] = useState();
 
-  async function fetchList() {
-    const z = await fetch(`${process.env.REACT_APP_API}/assessments/`, {
+  function fetchList() {
+    fetch(`${process.env.REACT_APP_API}/assessments/`, {
       method: "GET",
       headers: {
         Accept: "application/json",
         Authorization: `Token ${token}`,
       },
-    });
-    const y = await z.json();
-    setSkillList(y);
+    })
+      .then((res) => res.json())
+      .then((j) => setSkillList(j));
+    // const y = await z.json();
+    // setSkillList(y);
   }
 
   useEffect(() => {
@@ -73,6 +75,7 @@ const Assessment = () => {
                 id={item["id"]}
                 selectedSkill={item["skill"]["name"]}
                 selectedLevel={item["level"]}
+                minLevel={item["min_level"]["id"]}
                 update={update}
                 destroy={item["required"] ? null : destroy}
               />

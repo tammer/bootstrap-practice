@@ -7,6 +7,7 @@ const Skill = ({
   id,
   selectedSkill,
   selectedLevel,
+  minLevel = 1,
   update,
   destroy,
   isHeader = false,
@@ -35,7 +36,11 @@ const Skill = ({
             {isHeader ? (
               ""
             ) : (
-              <LevelSlider value={state} handleChange={updateState} />
+              <LevelSlider
+                value={state}
+                handleChange={updateState}
+                minLevel={minLevel}
+              />
             )}
           </Col>
           <Col>
