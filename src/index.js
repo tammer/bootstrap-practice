@@ -7,10 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Spec from "./pages/spec";
 import Cred from "./pages/cred";
-import RequirementsReview from "./pages/requirementsReview";
 import LoggedinHome from "./pages/loggedinHome";
 import Requirements from "./pages/requirements";
-import Join from "./pages/join";
 import Login from "./pages/login";
 import Assessment from "./pages/assessment";
 import Anchors from "./pages/anchors";
@@ -25,10 +23,8 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="spec" element={<Spec />} />
           <Route path="requirements" element={<Requirements />} />
-          <Route path="requirementsreview" element={<RequirementsReview />} />
           <Route path="skills" element={<Assessment />} />
           <Route path="anchors" element={<Anchors />} />
-          <Route path="join" element={<Join />} />
           <Route path="landing" element={<Landing />} />
           <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
