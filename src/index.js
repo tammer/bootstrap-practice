@@ -6,8 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Spec from "./pages/spec";
-import Home from "./pages/home";
-import Skills from "./pages/skills";
 import Cred from "./pages/cred";
 import RequirementsReview from "./pages/requirementsReview";
 import LoggedinHome from "./pages/loggedinHome";
@@ -17,6 +15,7 @@ import Login from "./pages/login";
 import Assessment from "./pages/assessment";
 import Anchors from "./pages/anchors";
 import Sandbox from "./pages/sandbox";
+import Landing from "./pages/landing";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -30,7 +29,7 @@ root.render(
           <Route path="skills" element={<Assessment />} />
           <Route path="anchors" element={<Anchors />} />
           <Route path="join" element={<Join />} />
-          <Route path="home" element={<Home />} />
+          <Route path="landing" element={<Landing />} />
           <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
           <Route path="login" element={<Login />} />

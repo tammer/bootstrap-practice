@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-const Home = () => {
+const Landing = () => {
   return (
     <>
       <Container fluid>
@@ -85,4 +85,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Landing;
