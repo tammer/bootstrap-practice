@@ -31,6 +31,8 @@ const Login = () => {
           const n = localStorage.getItem("next");
           localStorage.removeItem("next");
           navigate(n);
+        } else {
+          navigate("/home");
         }
       });
     } else {
