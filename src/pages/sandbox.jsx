@@ -7,6 +7,8 @@ import { Col, Container, Row } from "react-bootstrap";
 
 import AnchorRow from "../components/AnchorRow";
 import LevelSlider from "../components/LevelSlider";
+import SkillSelector from "../components/SkillSelector";
+import GeneralSelector from "../components/GeneralSelector";
 
 const Sandbox = () => {
   const [state, setState] = useState();
@@ -19,7 +21,19 @@ const Sandbox = () => {
         <Row>
           <Col sm="12">
             {/* <AnchorRow skill="1" /> */}
-            <LevelSlider />
+            {/* <LevelSlider /> */}
+            {/* <SkillSelector /> */}
+            <GeneralSelector
+              api="/assessments/"
+              handleChange={(e) => {
+                return true;
+              }}
+              isMulti={true}
+              value={null}
+              placeholder="Input one or more roles"
+              getOptionLabel={(e) => e["skill"]["name"]}
+              getOptionValue={(e) => e["skill"]["id"]}
+            />
           </Col>
         </Row>
       </Container>

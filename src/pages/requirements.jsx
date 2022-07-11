@@ -15,7 +15,7 @@ import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
 import Spec from "../components/Spec";
 import SkillSelector from "../components/SkillSelector";
-import AttributeSelector from "../components/AttributeSelector";
+import GeneralSelector from "../components/GeneralSelector";
 import LocationSelector from "../components/LocationSelector";
 
 const Requirements = () => {
@@ -130,8 +130,8 @@ const Requirements = () => {
                 title="Role (aka Job Title)"
                 togglable={false}
                 selector={
-                  <AttributeSelector
-                    category="Role"
+                  <GeneralSelector
+                    api="attributes/Role"
                     handleChange={(e) => updateState("Role", e)}
                     isMulti={true}
                     value={formState["Role"]["attributes"]}
@@ -148,8 +148,8 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Work Model"
                     selector={
-                      <AttributeSelector
-                        category="WorkModel"
+                      <GeneralSelector
+                        api="/attributes/WorkModel/"
                         handleChange={(e) => updateState("Model", e)}
                         isMulti={true}
                         value={formState["Model"]["attributes"]}
@@ -166,8 +166,8 @@ const Requirements = () => {
                     title="Workplace Language"
                     togglable={false}
                     selector={
-                      <AttributeSelector
-                        category="Language"
+                      <GeneralSelector
+                        api="attributes/Language"
                         handleChange={(e) => updateState("Language", e)}
                         isMulti={true}
                         value={formState["Language"]["attributes"]}
@@ -187,8 +187,8 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Tenure"
                     selector={
-                      <AttributeSelector
-                        category="Tenure"
+                      <GeneralSelector
+                        api="attributes/Tenure"
                         handleChange={(e) => updateState("Tenure", e)}
                         isMulti={true}
                         value={formState["Tenure"]["attributes"]}
@@ -271,8 +271,8 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Org Size"
                     selector={
-                      <AttributeSelector
-                        category="OrgSize"
+                      <GeneralSelector
+                        api="attributes/OrgSize"
                         handleChange={(e) => updateState("OrgSize", e)}
                         isMulti={false}
                         value={formState["OrgSize"]["attributes"]}
@@ -288,8 +288,8 @@ const Requirements = () => {
                     handleActive={updateActive}
                     title="Org Characteristics"
                     selector={
-                      <AttributeSelector
-                        category="OrgType"
+                      <GeneralSelector
+                        api="attributes/OrgType"
                         handleChange={(e) => updateState("OrgChars", e)}
                         isMulti={true}
                         value={formState["OrgChars"]["attributes"]}
@@ -305,8 +305,8 @@ const Requirements = () => {
                 handleActive={updateActive}
                 title="Industry"
                 selector={
-                  <AttributeSelector
-                    category="Industry"
+                  <GeneralSelector
+                    api="attributes/Industry"
                     handleChange={(e) => updateState("Industry", e)}
                     isMulti={true}
                     value={formState["Industry"]["attributes"]}
@@ -321,8 +321,8 @@ const Requirements = () => {
                 handleActive={updateActive}
                 title="Experential"
                 selector={
-                  <AttributeSelector
-                    category="Experiential"
+                  <GeneralSelector
+                    api="attributes/Experiential"
                     handleChange={(e) => updateState("Experentials", e)}
                     isMulti={true}
                     value={formState["Experentials"]["attributes"]}
