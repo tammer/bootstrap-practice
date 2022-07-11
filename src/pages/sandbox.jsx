@@ -5,6 +5,9 @@ import LocationSelector from "../components/LocationSelector";
 import GeneralModal from "../components/GeneralModal";
 import { Col, Container, Row } from "react-bootstrap";
 
+import AnchorRow from "../components/AnchorRow";
+import LevelSlider from "../components/LevelSlider";
+
 const Sandbox = () => {
   const [state, setState] = useState();
   return (
@@ -15,7 +18,8 @@ const Sandbox = () => {
         <br />
         <Row>
           <Col sm="12">
-            <AnchorAcceptor />
+            {/* <AnchorRow skill="1" /> */}
+            <LevelSlider />
           </Col>
         </Row>
       </Container>

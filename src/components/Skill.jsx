@@ -7,7 +7,8 @@ const Skill = ({
   id,
   selectedSkill,
   selectedLevel,
-  minLevel = 1,
+  minLevel = 0,
+  maxLevel = 100,
   update,
   destroy,
   isHeader = false,
@@ -40,6 +41,7 @@ const Skill = ({
                 value={state}
                 handleChange={updateState}
                 minLevel={minLevel}
+                maxLevel={maxLevel}
               />
             )}
           </Col>

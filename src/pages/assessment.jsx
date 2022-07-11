@@ -18,8 +18,6 @@ const Assessment = () => {
     })
       .then((res) => res.json())
       .then((j) => setSkillList(j));
-    // const y = await z.json();
-    // setSkillList(y);
   }
 
   useEffect(() => {
@@ -45,7 +43,7 @@ const Assessment = () => {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
       },
-      body: JSON.stringify({ skill: tech, level: { id: 1, name: "novice" } }),
+      body: JSON.stringify({ skill: tech, level: 0 }),
     }).then((e) => fetchList());
   }
 
@@ -57,7 +55,7 @@ const Assessment = () => {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
       },
-      body: JSON.stringify({ level: { id: level } }),
+      body: JSON.stringify({ level: level }),
     }).then((e) => fetchList());
   }
 
@@ -75,7 +73,8 @@ const Assessment = () => {
                 id={item["id"]}
                 selectedSkill={item["skill"]["name"]}
                 selectedLevel={item["level"]}
-                minLevel={item["min_level"]["id"]}
+                minLevel={item["min_level"]}
+                maxLevel={item["max_level"]}
                 update={update}
                 destroy={item["required"] ? null : destroy}
               />

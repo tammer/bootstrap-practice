@@ -3,29 +3,40 @@ import { useState } from "react";
 import "rc-slider/assets/index.css";
 import "./slider.css";
 
-const LevelSlider = ({ value, handleChange, minLevel = 1 }) => {
-  const [level, setLevel] = useState(value["id"]);
+const LevelSlider = ({
+  value = { id: 0 },
+  handleChange,
+  minLevel = 0,
+  maxLevel = 100,
+}) => {
+  const [level, setLevel] = useState(value);
   return (
     <Slider
-      min={1}
-      max={5}
+      min={0}
+      max={100}
       marks={{
-        1: "novice",
-        2: "capable",
-        3: "proficient",
-        4: "expert",
-        5: "authority",
+        20: "novice",
+        40: "capable",
+        60: "proficient",
+        80: "expert",
+        100: "authority",
       }}
-      step={null}
+      step={1}
       onChange={(e) => {
         if (e < minLevel) {
           setLevel(minLevel);
+        } else if (e > maxLevel) {
+          setLevel(maxLevel);
         } else {
           setLevel(e);
-          handleChange(e);
+          localStorage.setItem("newLevel", e);
+          setTimeout(() => {
+            if (localStorage.getItem("newLevel") == e) {
+              handleChange(e);
+            }
+          }, 2000);
         }
       }}
-      // defaultValue={value["id"]}
       value={level}
     />
   );
