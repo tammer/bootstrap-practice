@@ -37,7 +37,6 @@ const GeneralSelector = ({
       <Select
         closeMenuOnSelect={true}
         defaultOptions
-        cacheOptions
         getOptionLabel={getOptionLabel}
         getOptionValue={getOptionValue}
         isMulti={isMulti}
