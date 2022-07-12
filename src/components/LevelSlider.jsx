@@ -9,6 +9,7 @@ const LevelSlider = ({
   minLevel = 0,
   maxLevel = 100,
 }) => {
+  const uid = Math.random().toString();
   const [level, setLevel] = useState(value);
   return (
     <Slider
@@ -29,12 +30,12 @@ const LevelSlider = ({
           setLevel(maxLevel);
         } else {
           setLevel(e);
-          localStorage.setItem("newLevel", e);
+          localStorage.setItem(uid, e);
           setTimeout(() => {
-            if (localStorage.getItem("newLevel") == e) {
+            if (localStorage.getItem(uid) == e) {
               handleChange(e);
             }
-          }, 2000);
+          }, 1000);
         }
       }}
       value={level}
