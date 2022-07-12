@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import SkillSelector from "./SkillSelector";
 import LevelSelector from "./LevelSelector";
 
+import GeneralCreatable from "../components/GeneralCreatable";
+import GeneralSelector from "./GeneralSelector";
+
 const NewAnchor = ({ onSuccess }) => {
   const token = localStorage.getItem("token");
   const [receiverEmail, setReceiverEmail] = useState();
   const [skills, setSkills] = useState();
-  const [level, setLevel] = useState();
   const [message, setMessage] = useState();
 
   async function postAnchor(anchor) {
@@ -26,9 +28,9 @@ const NewAnchor = ({ onSuccess }) => {
     e.preventDefault();
     skills.map((skill) =>
       postAnchor({
-        receiver_email: receiverEmail,
-        skill: skill,
-        level: level,
+        receiver_email: receiverEmail["id"],
+        skill: skill["skill"][["name"]],
+        level: skill["level"],
       }).then(
         (res) => {
           setMessage(res.status === 201 ? "Success" : "Error");
@@ -45,18 +47,30 @@ const NewAnchor = ({ onSuccess }) => {
     <>
       <h1>New Anchor Invite</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          <p>Recepient email address</p>
-          <input
-            type="text"
-            onChange={(e) => setReceiverEmail(e.target.value)}
-          />
-        </label>
-        <SkillSelector
-          isMulti={true}
-          handleChange={(e) => setSkills(e.map((item) => item["name"]))}
+        <GeneralCreatable
+          isClearable
+          api="/friends/"
+          handleChange={setReceiverEmail}
+          isMulti={false}
+          value={receiverEmail}
+          placeholder="email"
+          getOptionLabel={(e) => e["display_name"]}
+          getOptionValue={(e) => e["id"]}
+          getNewOptionData={(a, b) => {
+            return { id: a, display_name: b };
+          }}
         />
-        <LevelSelector handleChange={(e) => setLevel(e["name"])} />
+
+        <GeneralSelector
+          api="/assessments/"
+          handleChange={setSkills}
+          isMulti
+          value={skills}
+          placeholder="select skills to calibrate on"
+          getOptionLabel={(e) => e["skill"]["name"]}
+          getOptionValue={(e) => e["skill"]["id"]}
+        />
+
         <div>
           <button type="submit">Submit</button>
         </div>
