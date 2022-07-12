@@ -152,8 +152,8 @@ const Anchors = () => {
     return (
       <>
         <h1>My Anchors</h1>
-        <h2>Active</h2>
-        {renderCategory(anchorList["active"], {})}
+        <h2>Accepted</h2>
+        {renderCategory(anchorList["accepted"], {})}
         <h2>Received (Pending Acceptance)</h2>
         {renderCategory(anchorList["received"]["pending"], {
           accept: true,
