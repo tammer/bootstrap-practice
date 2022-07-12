@@ -9,6 +9,7 @@ import AnchorRow from "../components/AnchorRow";
 import LevelSlider from "../components/LevelSlider";
 import SkillSelector from "../components/SkillSelector";
 import GeneralSelector from "../components/GeneralSelector";
+import GeneralCreatable from "../components/GeneralCreatable";
 
 const Sandbox = () => {
   const [state, setState] = useState();
@@ -23,16 +24,18 @@ const Sandbox = () => {
             {/* <AnchorRow skill="1" /> */}
             {/* <LevelSlider /> */}
             {/* <SkillSelector /> */}
-            <GeneralSelector
-              api="/assessments/"
-              handleChange={(e) => {
-                return true;
+            <GeneralCreatable
+              isClearable
+              api="/friends/"
+              handleChange={setState}
+              isMulti={false}
+              value={state}
+              placeholder="email"
+              getOptionLabel={(e) => e["display_name"]}
+              getOptionValue={(e) => e["id"]}
+              getNewOptionData={(a, b) => {
+                return { id: a, display_name: b };
               }}
-              isMulti={true}
-              value={null}
-              placeholder="Input one or more roles"
-              getOptionLabel={(e) => e["skill"]["name"]}
-              getOptionValue={(e) => e["skill"]["id"]}
             />
           </Col>
         </Row>
