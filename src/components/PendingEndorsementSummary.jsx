@@ -18,17 +18,14 @@ const PendingEndorsementSummary = ({ spec, onChange }) => {
           </Button>
         </Col>
         {spec["confirmable"] ? (
-          spec["my_level"] ? (
-            <ConfirmSkill
-              spec={spec}
-              show={show}
-              onHide={() => setShow(false)}
-              onDecline={onChange}
-              onAccept={onChange}
-            />
-          ) : (
-            "confirmable, but I dont have a level"
-          )
+          <ConfirmSkill
+            spec={spec}
+            show={show}
+            onHide={() => setShow(false)}
+            onDecline={onChange}
+            onAccept={onChange}
+            existingSkill={spec["my_level"] ? true : false}
+          />
         ) : (
           "not ocnfirmable"
         )}

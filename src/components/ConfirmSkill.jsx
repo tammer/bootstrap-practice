@@ -1,12 +1,16 @@
 import { Modal, Button } from "react-bootstrap";
 import { acceptAnchor, declineAnchor } from "../helpers/helpers";
 
-const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
-  return (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
-        <Modal.Title>Title</Modal.Title>
-      </Modal.Header>
+const ConfirmSkill = ({
+  spec,
+  show = true,
+  onHide,
+  onAccept,
+  onDecline,
+  existingSkill = true,
+}) => {
+  const existingSkillMessage = (
+    <>
       {spec["passer_display_name"]}
       asserts that their
       {spec["skill"]} skill level is similar to yours. If you agree, you should
@@ -27,6 +31,16 @@ const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
           This platform wieghs accuracy higher than skill level. learn more>>
         </li>
       </ul>
+    </>
+  );
+  const newSkillMessage = <>new skill message</>;
+
+  return (
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
+        <Modal.Title>Title</Modal.Title>
+      </Modal.Header>
+      {existingSkill ? existingSkillMessage : newSkillMessage}
       <Button
         onClick={() => declineAnchor(spec["id"]).then((res) => onDecline(res))}
         variant="secondary"
