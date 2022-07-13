@@ -16,22 +16,31 @@ const max = 100;
 
 const FrozenLevelSlider = ({ low, high }) => {
   return (
-    <Slider
-      range
-      min={min}
-      max={max}
-      marks={marks}
-      trackStyle={{ backgroundColor: "#fbf719", height: 10 }}
-      handleStyle={{
-        borderColor: "white",
-        height: 0,
-        width: 0,
-        marginLeft: -14,
-        marginTop: -9,
-        backgroundColor: "black",
+    <div
+      style={{
+        margin: "20px",
+        marginBottom: "40px",
+        marginLeft: "30px",
+        marginRight: "50px",
       }}
-      value={[low, high]}
-    />
+    >
+      <Slider
+        range
+        min={min}
+        max={max}
+        marks={marks}
+        trackStyle={{ backgroundColor: "#fbf719", height: 10 }}
+        handleStyle={{
+          borderColor: "white",
+          height: 0,
+          width: 0,
+          marginLeft: -14,
+          marginTop: -9,
+          backgroundColor: "black",
+        }}
+        value={[low, high]}
+      />
+    </div>
   );
 };
 
