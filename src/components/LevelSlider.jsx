@@ -45,10 +45,11 @@ const FrozenLevelSlider = ({ low, high }) => {
 };
 
 const LevelSlider = ({
-  value = { id: 0 },
+  value,
   handleChange,
   minLevel = 0,
   maxLevel = 100,
+  frozen = false,
 }) => {
   const uid = Math.random().toString();
   const [level, setLevel] = useState(value);
@@ -73,7 +74,7 @@ const LevelSlider = ({
           }, 1000);
         }
       }}
-      value={level}
+      value={frozen ? value : level}
     />
   );
 };
