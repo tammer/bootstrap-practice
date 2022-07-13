@@ -24,7 +24,6 @@ const PendingEndorsementSummary = ({ spec, onChange }) => {
             onHide={() => setShow(false)}
             onDecline={onChange}
             onAccept={onChange}
-            existingSkill={spec["my_level"] ? true : false}
           />
         ) : (
           "not ocnfirmable"
