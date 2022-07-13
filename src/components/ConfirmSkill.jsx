@@ -1,46 +1,73 @@
 import { Modal, Button } from "react-bootstrap";
 import { acceptAnchor, declineAnchor } from "../helpers/helpers";
 
-const ConfirmSkill = ({
-  spec,
-  show = true,
-  onHide,
-  onAccept,
-  onDecline,
-  existingSkill = true,
-}) => {
-  const existingSkillMessage = (
+import { FrozenLevelSlider } from "./LevelSlider";
+
+const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
+  const showMessage = () => (
     <>
-      {spec["passer_display_name"]}
-      asserts that their
-      {spec["skill"]} skill level is similar to yours. If you agree, you should
-      accept this level-set. Decline this level-set if{" "}
-      {spec["passer_display_name"]}'s skill level is actually outside the bounds
-      shown. By accepting this Levelset:
+      {spec["passer_display_name"] + " "}
+      is inviting you to levelset on
+      {" " + spec["skill"]}:
+      <FrozenLevelSlider
+        low={spec["confirm_range"]["lb"]}
+        high={spec["confirm_range"]["ub"]}
+      />
+      <p>
+        {!spec["my_level"] ? (
+          <>
+            {spec["passer_first_name"]}'s self-assessed skill level is in the
+            range shown. {spec["passer_first_name"] + " "} is asserting that
+            your skill level is also in this range.
+          </>
+        ) : (
+          <>
+            {spec["passer_first_name"]}'s self-assessed skill level is in the
+            range shown. Yours is too.
+          </>
+        )}
+      </p>
+      <p>Accept this invitation if:</p>
       <ul>
         <li>
-          You affirm Ross and you are at similar levels, with a margin of error
-          as shown resulting in each your endorsing the other's ability.
+          You agree
+          {" " + spec["passer_first_name"]}'s
+          {" " + spec["skill"]} skill level is in the range shown.
         </li>
-        <li>
-          Your credibility on this platform is increased UNLESS your assessment
-          of {spec["passer_display_name"]} is overstated relative to what the
-          larger network implies.
-        </li>
-        <li>
-          This platform wieghs accuracy higher than skill level. learn more>>
-        </li>
+        {!spec["my_level"] ? (
+          <li>Your {spec["skill"] + " "} skill level is in the range shown.</li>
+        ) : (
+          ""
+        )}
       </ul>
+      <p>If you accept:</p>
+      <ul>
+        <li>
+          {spec["passer_first_name"]} gains a {spec["skill"]} endorsement from
+          you.
+        </li>
+        <li>
+          You gain a {spec["skill"]} endorsement from
+          {" " + spec["passer_first_name"]}.
+        </li>
+        <li>You both gain increased credibility on the platform.</li>
+      </ul>
+      <p>
+        Decline this invitation if you disagree with {spec["passer_first_name"]}
+        's assessment of themselves or you or if don't know enough about{" "}
+        {spec["passer_first_name"]}'s skill level at {spec["skill"]}.
+        (Inaccurate endorsements degrade your credibility. Learn more>>)
+      </p>
     </>
   );
   const newSkillMessage = <>new skill message</>;
-
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>Title</Modal.Title>
+        <Modal.Title>{spec["skill"]}</Modal.Title>
       </Modal.Header>
-      {existingSkill ? existingSkillMessage : newSkillMessage}
+      {/* {spec["my_level"] ? existingSkillMessage : newSkillMessage} */}
+      {showMessage()}
       <Button
         onClick={() => declineAnchor(spec["id"]).then((res) => onDecline(res))}
         variant="secondary"
