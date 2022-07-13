@@ -3,6 +3,7 @@ import Skill from "../components/Skill";
 import { Container, Row, Col } from "react-bootstrap";
 import SkillSelector from "../components/SkillSelector";
 import Privilaged from "../components/Privilaged";
+import NewAnchor from "../components/NewAnchor";
 
 const Assessment = () => {
   const token = localStorage.getItem("token");
@@ -80,14 +81,22 @@ const Assessment = () => {
               />
             ))}
           </Row>
+          <hr />
           <Row>
-            <Col sm="1">new:</Col>
-            <Col sm="5">
+            <Col sm="2">add a new skill:</Col>
+            <Col sm="4">
               <SkillSelector
                 value={null}
                 handleChange={create}
                 isMulti={false}
               />
+            </Col>
+          </Row>
+          <hr />
+          <Row>
+            <Col sm="2">add an calibration link:</Col>
+            <Col sm="4">
+              <NewAnchor />
             </Col>
           </Row>
         </Container>

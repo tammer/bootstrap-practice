@@ -45,7 +45,6 @@ const NewAnchor = ({ onSuccess }) => {
 
   return (
     <>
-      <h1>New Anchor Invite</h1>
       <form onSubmit={handleSubmit}>
         <GeneralCreatable
           isClearable
