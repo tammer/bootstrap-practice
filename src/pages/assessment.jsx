@@ -102,7 +102,7 @@ const Assessment = () => {
           </Row>
         </Container>
 
-        <PendingEndorsements />
+        <PendingEndorsements onChange={fetchList} />
       </>
     );
   }

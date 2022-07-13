@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import PendingEndorsementSummary from "./PendingEndorsementSummary";
 
-const PendingEndorsements = () => {
+const PendingEndorsements = ({ onChange }) => {
   const [list, setList] = useState();
 
   function fetchList() {
-    fetch(`${process.env.REACT_APP_API}/anchors/received`, {
+    return fetch(`${process.env.REACT_APP_API}/anchors/received`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -31,6 +31,7 @@ const PendingEndorsements = () => {
               <PendingEndorsementSummary
                 key={"pendingendorsement" + e["id"]}
                 spec={e}
+                onChange={(e) => fetchList().then((res) => onChange())}
               />
             ))}
       </Container>
