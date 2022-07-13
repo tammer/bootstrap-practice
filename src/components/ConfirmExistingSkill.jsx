@@ -1,4 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
+import { acceptAnchor, declineAnchor } from "../helpers/helpers";
 
 const ConfirmExistingSkill = ({
   spec,
@@ -7,28 +8,6 @@ const ConfirmExistingSkill = ({
   onAccept,
   onDecline,
 }) => {
-  function accept(id) {
-    return fetch(`${process.env.REACT_APP_API}/anchor/${id}/accept`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    });
-  }
-
-  function decline(id) {
-    return fetch(`${process.env.REACT_APP_API}/anchor/${id}/decline`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    });
-  }
-
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -55,13 +34,13 @@ const ConfirmExistingSkill = ({
         </li>
       </ul>
       <Button
-        onClick={() => decline(spec["id"]).then((res) => onDecline(res))}
+        onClick={() => declineAnchor(spec["id"]).then((res) => onDecline(res))}
         variant="secondary"
       >
         Decline
       </Button>
       <Button
-        onClick={() => accept(spec["id"]).then((res) => onAccept(res))}
+        onClick={() => acceptAnchor(spec["id"]).then((res) => onAccept(res))}
         variant="primary"
       >
         Accept
