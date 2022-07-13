@@ -17,17 +17,13 @@ const PendingEndorsementSummary = ({ spec, onChange }) => {
             Handle
           </Button>
         </Col>
-        {spec["confirmable"] ? (
-          <ConfirmSkill
-            spec={spec}
-            show={show}
-            onHide={() => setShow(false)}
-            onDecline={onChange}
-            onAccept={onChange}
-          />
-        ) : (
-          "not ocnfirmable"
-        )}
+        <ConfirmSkill
+          spec={spec}
+          show={show}
+          onHide={() => setShow(false)}
+          onDecline={onChange}
+          onAccept={onChange}
+        />
       </Row>
     </>
   );
