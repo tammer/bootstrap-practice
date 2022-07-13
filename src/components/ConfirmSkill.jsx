@@ -1,13 +1,7 @@
 import { Modal, Button } from "react-bootstrap";
 import { acceptAnchor, declineAnchor } from "../helpers/helpers";
 
-const ConfirmExistingSkill = ({
-  spec,
-  show = true,
-  onHide,
-  onAccept,
-  onDecline,
-}) => {
+const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -49,4 +43,4 @@ const ConfirmExistingSkill = ({
   );
 };
 
-export default ConfirmExistingSkill;
+export default ConfirmSkill;

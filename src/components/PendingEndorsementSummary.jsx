@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-import ConfirmExistingSkill from "./ConfirmExistingSkill";
+import ConfirmSkill from "./ConfirmSkill";
 
 const PendingEndorsementSummary = ({ spec, onChange }) => {
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ const PendingEndorsementSummary = ({ spec, onChange }) => {
         </Col>
         {spec["confirmable"] ? (
           spec["my_level"] ? (
-            <ConfirmExistingSkill
+            <ConfirmSkill
               spec={spec}
               show={show}
               onHide={() => setShow(false)}
