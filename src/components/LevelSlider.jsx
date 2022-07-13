@@ -3,6 +3,38 @@ import { useState } from "react";
 import "rc-slider/assets/index.css";
 import "./slider.css";
 
+const marks = {
+  20: "novice",
+  40: "capable",
+  60: "proficient",
+  80: "expert",
+  100: "authority",
+};
+
+const min = 0;
+const max = 100;
+
+const FrozenLevelSlider = ({ low, high }) => {
+  return (
+    <Slider
+      range
+      min={min}
+      max={max}
+      marks={marks}
+      trackStyle={{ backgroundColor: "#fbf719", height: 10 }}
+      handleStyle={{
+        borderColor: "white",
+        height: 0,
+        width: 0,
+        marginLeft: -14,
+        marginTop: -9,
+        backgroundColor: "black",
+      }}
+      value={[low, high]}
+    />
+  );
+};
+
 const LevelSlider = ({
   value = { id: 0 },
   handleChange,
@@ -13,15 +45,9 @@ const LevelSlider = ({
   const [level, setLevel] = useState(value);
   return (
     <Slider
-      min={0}
-      max={100}
-      marks={{
-        20: "novice",
-        40: "capable",
-        60: "proficient",
-        80: "expert",
-        100: "authority",
-      }}
+      min={min}
+      max={max}
+      marks={marks}
       step={1}
       onChange={(e) => {
         if (e < minLevel) {
@@ -43,4 +69,4 @@ const LevelSlider = ({
   );
 };
 
-export default LevelSlider;
+export { LevelSlider as default, FrozenLevelSlider };
