@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import SkillSelector from "../components/SkillSelector";
 import Privilaged from "../components/Privilaged";
 import NewAnchor from "../components/NewAnchor";
+import PendingEndorsements from "../components/PendingEndorsements";
 
 const Assessment = () => {
   const token = localStorage.getItem("token");
@@ -100,6 +101,8 @@ const Assessment = () => {
             </Col>
           </Row>
         </Container>
+
+        <PendingEndorsements />
       </>
     );
   }
