@@ -27,7 +27,12 @@ const PendingEndorsements = () => {
       <Container>
         {!list
           ? "loading"
-          : list.map((e) => <PendingEndorsementSummary spec={e} />)}
+          : list.map((e) => (
+              <PendingEndorsementSummary
+                key={"pendingendorsement" + e["id"]}
+                spec={e}
+              />
+            ))}
       </Container>
     </>
   );
