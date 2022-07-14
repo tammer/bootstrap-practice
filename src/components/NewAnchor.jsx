@@ -30,7 +30,11 @@ const NewAnchor = ({ onSuccess }) => {
         skill: skill["skill"][["name"]],
       }).then(
         (res) => {
-          setMessage(res.status === 201 ? "Success" : "Fail");
+          if (res.status === 201) {
+            return setMessage("Success");
+          } else {
+            return res.json().then((j) => setMessage(j["error_message"]));
+          }
           onSuccess();
         },
         (res) => {
