@@ -30,11 +30,11 @@ const NewAnchor = ({ onSuccess }) => {
         skill: skill["skill"][["name"]],
       }).then(
         (res) => {
-          setMessage(res.status === 201 ? "Success" : "Error");
+          setMessage(res.status === 201 ? "Success" : "Fail");
           onSuccess();
         },
         (res) => {
-          setMessage(res);
+          setMessage("Could not reach server");
         }
       )
     );
