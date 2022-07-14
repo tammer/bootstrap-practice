@@ -19,3 +19,14 @@ export function declineAnchor(id) {
     },
   });
 }
+
+export function destroyAnchor(id) {
+  return fetch(`${process.env.REACT_APP_API}/anchor/${id}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Token ${localStorage.getItem("token")}`,
+    },
+  });
+}

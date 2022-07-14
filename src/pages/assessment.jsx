@@ -5,6 +5,7 @@ import SkillSelector from "../components/SkillSelector";
 import Privilaged from "../components/Privilaged";
 import NewAnchor from "../components/NewAnchor";
 import PendingEndorsements from "../components/PendingEndorsements";
+import SentEndorsements from "../components/SentEndorsements";
 
 const Assessment = () => {
   const token = localStorage.getItem("token");
@@ -101,12 +102,21 @@ const Assessment = () => {
           <Row>
             <Col sm="2">add a calibration link:</Col>
             <Col sm="4">
-              <NewAnchor key={skillList} />
+              <NewAnchor
+                key={skillList}
+                onSuccess={() => setCurrentState(currentState + 1)}
+              />
             </Col>
           </Row>
         </Container>
-
+        <h4>Levelset Invites:</h4>
+        <h6>Received:</h6>
         <PendingEndorsements key={currentState} onChange={fetchList} />
+        <h6>Sent:</h6>
+        <SentEndorsements
+          key={currentState + 0.5}
+          onChange={() => setCurrentState(currentState + 1)}
+        />
       </>
     );
   }

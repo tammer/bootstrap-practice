@@ -28,19 +28,20 @@ const NewAnchor = ({ onSuccess }) => {
       postAnchor({
         receiver_email: receiverEmail["id"],
         skill: skill["skill"][["name"]],
-      }).then(
-        (res) => {
-          if (res.status === 201) {
-            return setMessage("Success");
-          } else {
-            return res.json().then((j) => setMessage(j["error_message"]));
+      })
+        .then(
+          (res) => {
+            if (res.status === 201) {
+              return setMessage("Success");
+            } else {
+              return res.json().then((j) => setMessage(j["error_message"]));
+            }
+          },
+          (res) => {
+            setMessage("Could not reach server");
           }
-          onSuccess();
-        },
-        (res) => {
-          setMessage("Could not reach server");
-        }
-      )
+        )
+        .then(onSuccess)
     );
   };
 
