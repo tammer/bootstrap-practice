@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import SkillSelector from "./SkillSelector";
-import LevelSelector from "./LevelSelector";
 
 import GeneralCreatable from "../components/GeneralCreatable";
 import GeneralSelector from "./GeneralSelector";
@@ -30,7 +28,6 @@ const NewAnchor = ({ onSuccess }) => {
       postAnchor({
         receiver_email: receiverEmail["id"],
         skill: skill["skill"][["name"]],
-        level: skill["level"],
       }).then(
         (res) => {
           setMessage(res.status === 201 ? "Success" : "Error");
