@@ -42,9 +42,6 @@ function App() {
           <Nav.Link href="/skills">Skills</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/anchors">Anchors</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
           {localStorage.getItem("token") ? (
             <>
               <Button
