@@ -9,6 +9,7 @@ import PendingEndorsements from "../components/PendingEndorsements";
 const Assessment = () => {
   const token = localStorage.getItem("token");
   const [skillList, setSkillList] = useState();
+  const [currentState, setCurrentState] = useState(0); // used to force rerenders on Pending Endorsements
 
   function fetchList() {
     fetch(`${process.env.REACT_APP_API}/assessments/`, {
@@ -19,7 +20,10 @@ const Assessment = () => {
       },
     })
       .then((res) => res.json())
-      .then((j) => setSkillList(j));
+      .then((j) => {
+        setSkillList(j);
+        setCurrentState(currentState + 1);
+      });
   }
 
   useEffect(() => {
@@ -95,14 +99,14 @@ const Assessment = () => {
           </Row>
           <hr />
           <Row>
-            <Col sm="2">add an calibration link:</Col>
+            <Col sm="2">add a calibration link:</Col>
             <Col sm="4">
-              <NewAnchor />
+              <NewAnchor key={skillList} />
             </Col>
           </Row>
         </Container>
 
-        <PendingEndorsements onChange={fetchList} />
+        <PendingEndorsements key={currentState} onChange={fetchList} />
       </>
     );
   }
