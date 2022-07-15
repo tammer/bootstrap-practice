@@ -1,3 +1,23 @@
+export function standardGet(apiPath, onComplete) {
+  if (apiPath[0] != "/") {
+    apiPath = "/" + apiPath;
+  }
+  if (apiPath[apiPath.length - 1] != "/") {
+    apiPath = apiPath + "/";
+  }
+  return fetch(`${process.env.REACT_APP_API}${apiPath}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Token ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((j) => {
+      onComplete(j);
+    });
+}
+
 export function acceptAnchor(id) {
   return fetch(`${process.env.REACT_APP_API}/anchor/${id}/accept`, {
     method: "PUT",

@@ -6,6 +6,7 @@ import Privilaged from "../components/Privilaged";
 import NewAnchor from "../components/NewAnchor";
 import PendingEndorsements from "../components/PendingEndorsements";
 import SentEndorsements from "../components/SentEndorsements";
+import Credibility from "../components/Credibility";
 
 const Assessment = () => {
   const token = localStorage.getItem("token");
@@ -87,6 +88,9 @@ const Assessment = () => {
               />
             ))}
           </Row>
+
+          <Credibility />
+
           <hr />
           <Row>
             <Col sm="2">add a new skill:</Col>
