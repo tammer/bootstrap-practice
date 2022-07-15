@@ -21,6 +21,8 @@ const SentEndorsementSummary = ({ spec, onChange }) => {
             >
               Revoke
             </Button>
+          ) : spec["status"] == "accepted" ? (
+            "Accepted"
           ) : (
             "Declined"
           )}
