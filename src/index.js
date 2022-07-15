@@ -15,6 +15,7 @@ import Anchors from "./pages/anchors";
 import Sandbox from "./pages/sandbox";
 import Landing from "./pages/landing";
 import Home from "./pages/home";
+import Opps from "./pages/opps";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
           <Route path="home" element={<Home />} />
           <Route path="spec" element={<Spec />} />
           <Route path="requirements" element={<Requirements />} />
+          <Route path="opps" element={<Opps />} />
           <Route path="skills" element={<Assessment />} />
           <Route path="anchors" element={<Anchors />} />
           <Route path="landing" element={<Landing />} />
