@@ -4,6 +4,17 @@ import { Row, Col, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 const AnchorRow = ({ skill, isHeadingRow = false }) => {
   const [anchorList, setAnchorList] = useState(null);
 
+  function qualify(x) {
+    if (x >= 90) return "authority";
+    else if (x >= 80) return "expert";
+    else if (x >= 70) return "highly proficient";
+    else if (x >= 60) return "proficient";
+    else if (x >= 50) return "highly capable";
+    else if (x >= 40) return "capable";
+    else if (x >= 20) return "novice";
+    else return "no experience";
+  }
+
   function getAnchors() {
     const skill_ = isHeadingRow ? "Fortran" : skill;
     const z = fetch(
@@ -52,7 +63,7 @@ const AnchorRow = ({ skill, isHeadingRow = false }) => {
                     "Calibrated with " +
                       e["initials"] +
                       " @ " +
-                      e["level"] +
+                      qualify(e["level"]) +
                       " on " +
                       e["created_at"]
                   )}
