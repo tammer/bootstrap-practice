@@ -9,8 +9,8 @@ const Credibility = () => {
   }, []);
 
   return (
-    <div>
-      {data ? JSON.stringify(data) : ""} full cred (100%) at 3 endorsers and 9
+    <div style={{ background: "aqua" }}>
+      {data ? JSON.stringify(data) : ""} full cred of 100 at 3 endorsers and 9
       endorsements
     </div>
   );
