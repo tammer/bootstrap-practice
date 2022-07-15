@@ -71,6 +71,7 @@ const Assessment = () => {
     return (
       <>
         <Container>
+          <Credibility key={skillList} />
           <Row>
             <Skill isHeader></Skill>
           </Row>
@@ -89,9 +90,6 @@ const Assessment = () => {
             ))}
           </Row>
 
-          <Credibility key={skillList} />
-
-          <hr />
           <Row>
             <Col sm="2">add a new skill:</Col>
             <Col sm="4">
