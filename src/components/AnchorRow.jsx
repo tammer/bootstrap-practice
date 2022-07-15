@@ -60,7 +60,7 @@ const AnchorRow = ({ skill, isHeadingRow = false }) => {
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
                   overlay={renderTooltip(
-                    "Calibrated with " +
+                    "Levelset with " +
                       e["initials"] +
                       " @ " +
                       qualify(e["level"]) +
