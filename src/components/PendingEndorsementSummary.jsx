@@ -17,6 +17,8 @@ const PendingEndorsementSummary = ({ spec, onChange }) => {
             <Button onClick={() => setShow(true)} className="btn btn-sm">
               Handle
             </Button>
+          ) : spec["status"] == "accepted" ? (
+            "Accepted"
           ) : (
             "Declined"
           )}
