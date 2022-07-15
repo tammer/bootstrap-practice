@@ -89,7 +89,7 @@ const Assessment = () => {
             ))}
           </Row>
 
-          <Credibility />
+          <Credibility key={skillList} />
 
           <hr />
           <Row>
