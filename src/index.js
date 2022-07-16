@@ -23,6 +23,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="" element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="spec" element={<Spec />} />
           <Route path="requirements" element={<Requirements />} />
