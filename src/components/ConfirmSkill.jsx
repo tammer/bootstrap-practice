@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { acceptAnchor, declineAnchor } from "../helpers/helpers";
+import GeneralConfirm from "./GeneralConfirm";
 
 import LevelSlider, { FrozenLevelSlider } from "./LevelSlider";
 
 const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
+  const [showDeclineConfirm, setShowDeclineConfirm] = useState(false);
+  const [showAcceptConfirm, setShowAcceptConfirm] = useState(false);
   const showMessage2 = () => (
     <>
       {spec["passer_display_name"] + " "}
@@ -37,7 +41,7 @@ const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
         <li>
           you are in fact at different skill levels, then simply decline the
           invite. (Inaccurate endorsements degrade your credibility. Learn
-          more>>)
+          more&raquo;)
         </li>
       </ul>
     </>
@@ -95,31 +99,46 @@ const ConfirmSkill = ({ spec, show = true, onHide, onAccept, onDecline }) => {
         Decline this invitation if you disagree with {spec["passer_first_name"]}
         's assessment of themselves or you or if don't know enough about{" "}
         {spec["passer_first_name"]}'s skill level at {spec["skill"]}.
-        (Inaccurate endorsements degrade your credibility. Learn more>>)
+        (Inaccurate endorsements degrade your credibility. Learn more&raquo;)
       </p>
     </>
   );
   const newSkillMessage = <>new skill message</>;
   return (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
-        <Modal.Title>{spec["skill"]}</Modal.Title>
-      </Modal.Header>
-      {spec["confirmable"] ? showMessage() : showMessage2()}
-      <Button
-        onClick={() => declineAnchor(spec["id"]).then((res) => onDecline(res))}
-        variant="secondary"
-      >
-        Decline
-      </Button>
-      <Button
-        disabled={!spec["confirmable"]}
-        onClick={() => acceptAnchor(spec["id"]).then((res) => onAccept(res))}
-        variant="primary"
-      >
-        Accept
-      </Button>
-    </Modal>
+    <>
+      <Modal show={show} onHide={onHide}>
+        <Modal.Header closeButton>
+          <Modal.Title>{spec["skill"]}</Modal.Title>
+        </Modal.Header>
+        {spec["confirmable"] ? showMessage() : showMessage2()}
+        <Button onClick={() => setShowDeclineConfirm(true)} variant="secondary">
+          Decline
+        </Button>
+        <Button
+          disabled={!spec["confirmable"]}
+          onClick={() => setShowAcceptConfirm(true)}
+          variant="primary"
+        >
+          Accept
+        </Button>
+      </Modal>
+      <GeneralConfirm
+        message="confirm"
+        show={showDeclineConfirm}
+        onAccept={() => {
+          declineAnchor(spec["id"]).then((res) => onDecline(res));
+        }}
+        onDecline={() => setShowDeclineConfirm(false)}
+      />
+      <GeneralConfirm
+        message="confirm"
+        show={showAcceptConfirm}
+        onAccept={() => {
+          acceptAnchor(spec["id"]).then((res) => onAccept(res));
+        }}
+        onDecline={() => setShowAcceptConfirm(false)}
+      />
+    </>
   );
 };
 
