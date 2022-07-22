@@ -66,7 +66,7 @@ const Requirements = () => {
   }
 
   function update() {
-    const y = { spec: JSON.stringify(formState) };
+    const y = JSON.stringify(formState);
     fetch(process.env.REACT_APP_API + "/profile/", {
       method: "PUT",
       headers: {
@@ -74,7 +74,7 @@ const Requirements = () => {
         "Content-Type": "application/json",
         Authorization: `Token ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify(y),
+      body: y,
     });
   }
 
@@ -88,8 +88,8 @@ const Requirements = () => {
       },
     })
       .then((res) => (res.status == 200 ? res.json() : null))
-      .then((raw) => {
-        if (raw) setFormState(JSON.parse(raw["spec"]));
+      .then((data) => {
+        if (data) setFormState(data);
       });
   }
 
@@ -284,15 +284,15 @@ const Requirements = () => {
                 </Col>
                 <Col>
                   <Requirement
-                    id="OrgChars"
+                    id="OrgType"
                     handleActive={updateActive}
                     title="Org Characteristics"
                     selector={
                       <GeneralSelector
                         api="attributes/OrgType"
-                        handleChange={(e) => updateState("OrgChars", e)}
+                        handleChange={(e) => updateState("OrgType", e)}
                         isMulti={true}
-                        value={formState["OrgChars"]["attributes"]}
+                        value={formState["OrgType"]["attributes"]}
                         placeholder="Input desired org types"
                       />
                     }
@@ -317,15 +317,15 @@ const Requirements = () => {
               />
 
               <Requirement
-                id="Experentials"
+                id="Experential"
                 handleActive={updateActive}
                 title="Experential"
                 selector={
                   <GeneralSelector
                     api="attributes/Experiential"
-                    handleChange={(e) => updateState("Experentials", e)}
+                    handleChange={(e) => updateState("Experential", e)}
                     isMulti={true}
-                    value={formState["Experentials"]["attributes"]}
+                    value={formState["Experential"]["attributes"]}
                     placeholder="Input desired experiential factors"
                   />
                 }
@@ -407,8 +407,8 @@ const defaultStates = {
   TechStack: { active: true, attributes: [] },
   TechAntiStack: { active: false, attributes: [] },
   OrgSize: { active: true, attributes: [] },
-  OrgChars: { active: true, attributes: [] },
+  OrgType: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
-  Experentials: { active: true, attributes: [] },
+  Experential: { active: true, attributes: [] },
   Salary: { active: true, attributes: [{ amount: "100,000", ccy: "USD" }] },
 };

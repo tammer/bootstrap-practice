@@ -9,9 +9,9 @@ const Spec = ({ formState }) => {
       TechAntiStack: { suffix: "tech_stack", comparison: "∉" },
       Industry: { suffix: "industry", comparison: "∈" },
       Salary: { suffix: "salary", comparison: ">=" },
-      OrgChars: { suffix: "org_chars", comparison: "∈" },
+      OrgType: { suffix: "org_chars", comparison: "∈" },
       OrgSize: { suffix: "org_size", comparison: "" },
-      Experentials: { suffix: "experentials", comparison: "⊇" },
+      Experential: { suffix: "Experential", comparison: "⊇" },
     };
 
     if (
@@ -89,8 +89,8 @@ const Spec = ({ formState }) => {
                 {makeCondition("Industry", true)}
               </div>
               <div className="code-indent">{makeCondition("OrgSize")}</div>
-              <div className="code-indent">{makeCondition("OrgChars")}</div>
-              <div className="code-indent">{makeCondition("Experentials")}</div>
+              <div className="code-indent">{makeCondition("OrgType")}</div>
+              <div className="code-indent">{makeCondition("Experential")}</div>
               <span className="code-color-1">THEN:</span>
               <div className="code-indent">
                 <span className="code-color-3">send_email(</span>to: you,
