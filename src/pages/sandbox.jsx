@@ -1,48 +1,68 @@
+import { Col, Collapse, Container, Row } from "react-bootstrap";
+import OuterContainer from "../components/OuterContainer";
 import Slider from "rc-slider";
-import { useState, useEffect } from "react";
-
-import { Col, Container, Row } from "react-bootstrap";
-import { FrozenLevelSlider } from "../components/LevelSlider";
 
 const Sandbox = () => {
-  const [state, setState] = useState();
-
-  function fetchList() {
-    return fetch(`${process.env.REACT_APP_API}/anchors/received`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => {
-        console.log(response.status);
-        if (response.status == 200) {
-          return response.json();
-        } else {
-          return { one: 1 };
-        }
-        // return response.json().then((parsedJson) => ({ json: parsedJson }));
-      })
-      .then((x) => {
-        // console.log("here", x);
-        setState(x);
-      });
-  }
-
-  useEffect(() => {
-    fetchList();
-  }, []);
+  const marks = {
+    1: "1",
+    10: "10",
+    16: "50",
+    20: "100",
+    25: "500",
+    30: "1000",
+    40: "10k",
+    50: "100k",
+    60: "1M",
+    70: "10M",
+  };
 
   return (
-    <>
-      <Container>
-        <br />
-        <Row>
-          <Col sm="5">{state ? JSON.stringify(state) : "loading"}</Col>
-        </Row>
-      </Container>
-    </>
+    <OuterContainer>
+      <br />
+      <br />
+      <br />
+      <Row>
+        <Col sm="3"></Col>
+        <Col sm="9">
+          <Row className="requirements-section">
+            <Col sm="4" className="requirements-section-left">
+              <h1>Organization</h1>
+              Spec the organizational features that are important to you
+            </Col>
+            <Col sm="8" className="requirements-section-right">
+              <h1>Size</h1>
+              <h2>Number of Employees (range)</h2>
+              <Slider
+                range
+                step={null}
+                min={1}
+                max={70}
+                marks={marks}
+                trackStyle={{
+                  backgroundColor: "gray",
+                  height: 5,
+                  marginTop: "0px",
+                }}
+                dotStyle={{ borderColor: "gray" }}
+                activeDotStyle={{
+                  height: 0,
+                  width: 0,
+                  border: "0px",
+                }}
+                handleStyle={{
+                  borderColor: "gray",
+                  height: 9,
+                  width: 9,
+                  // marginLeft: -14,
+                  marginTop: -2,
+                  backgroundColor: "gray",
+                }}
+              />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </OuterContainer>
   );
 };
 
