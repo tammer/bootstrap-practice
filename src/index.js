@@ -22,6 +22,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="sandbox" element={<Sandbox />} />
         <Route path="/" element={<App />}>
           <Route path="" element={<Home />} />
           <Route path="home" element={<Home />} />
@@ -34,7 +35,6 @@ root.render(
           <Route path="loggedin-home" element={<LoggedinHome />} />
           <Route path="cred" element={<Cred />} />
           <Route path="login" element={<Login />} />
-          <Route path="sandbox" element={<Sandbox />} />
         </Route>
       </Routes>
     </BrowserRouter>
