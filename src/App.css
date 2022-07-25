@@ -203,20 +203,51 @@ h2,
 h3 {
   text-align: center;
   margin-bottom: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.ssection ul,
+ol,
+li {
+  font-size: 2vw;
 }
 
 .ssection h1 {
-  font-size: 5vw;
+  font-size: 4vw;
 }
 
 .ssection h2 {
   font-size: 3vw;
 }
 
+.ssection h5 {
+  text-align: center;
+  margin: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: gray;
+}
+
+.ssection .c1 {
+  /* background-color: pink; */
+  margin: 8%;
+}
+
+.ssection .r1,
+.r2 {
+  text-align: center;
+  font-size: 2.5vw;
+}
+
+.ssection .r3 {
+  font-size: 1.1vw;
+}
+
 .ssection:nth-child(even) {
-  background-color: #232f3e;
+  background-color: #c0d7de;
 }
 
 .ssection:nth-child(odd) {
-  background-color: pink;
+  background-color: #e0d7de;
 }
