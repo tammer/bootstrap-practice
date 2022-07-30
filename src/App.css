@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Inter");
+
+/* @font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(file://Users/tammer/Downloads/font.ttf) format("truetype");
+} */
+
 body {
   background-color: #f6f8fa;
 }
@@ -198,7 +206,7 @@ h1 {
   scroll-snap-align: start;
 }
 
-.ssection h1,
+.ssection > h1,
 h2,
 h3 {
   text-align: center;
@@ -207,21 +215,21 @@ h3 {
   margin-right: 15%;
 }
 
-.ssection ul,
+.ssection > ul,
 ol,
 li {
   font-size: 2vw;
 }
 
-.ssection h1 {
+.ssection > h1 {
   font-size: 4vw;
 }
 
-.ssection h2 {
+.ssection > h2 {
   font-size: 3vw;
 }
 
-.ssection h5 {
+.ssection > h5 {
   text-align: center;
   margin: 100px;
   padding-top: 100px;
@@ -250,4 +258,117 @@ li {
 
 .ssection:nth-child(odd) {
   background-color: #e0d7de;
+}
+
+/* Main Layout */
+
+.main-container {
+  width: 100%;
+  /* background-color: cyan; */
+  border: 0px solid;
+  padding: 0px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #232f3e;
+}
+
+.left-panel {
+  width: 360px;
+  /* background-color: #dcdcab; */
+}
+
+.right-panel {
+  border-bottom: #e4e4e4 2px solid;
+  padding-bottom: 30px;
+  background-color: #4b6a88;
+  /* min-height: 120px; */
+}
+
+.left-subpanel,
+.right-subpanel {
+  /* background-color: pink; */
+  width: 360px;
+  padding: 4px;
+  padding-top: 8px;
+  padding-left: 13px;
+}
+
+.left-subpanel {
+  padding-right: 40px;
+  background-color: orange;
+}
+
+.right-subpanel {
+  background-color: pink;
+  padding-top: 15px;
+}
+
+.left-subpanel > h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1d2a39;
+}
+
+.right-subpanel h1 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  /* margin-left: -6px; */
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  color: #000000;
+  opacity: 0.8;
+}
+
+.right-subpanel h2 {
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 17px;
+  /* margin-left: -6px; */
+  margin-left: 0px;
+  margin: 0 px;
+  margin-bottom: -1px;
+  text-align: left;
+  color: #202223;
+
+  padding: 0px;
+  opacity: 0.8;
+}
+
+.attribute-section {
+  margin-bottom: 50px;
+}
+
+@media (min-width: 720px) {
+  .left-panel {
+    width: 720px;
+  }
+  .left-subpanel,
+  .right-subpanel {
+    float: left;
+  }
+}
+
+@media (min-width: 1080px) {
+  .left-panel {
+    float: left;
+    width: 360px;
+  }
+  .right-panel {
+    float: left;
+  }
+}
+
+.selector {
+  margin-left: -1px;
+}
+
+.g1 {
+  display: grid;
+  grid-template-columns: 360px 360px 360px;
 }
