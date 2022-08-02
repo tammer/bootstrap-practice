@@ -337,6 +337,23 @@ const Requirements = () => {
                 }
               />
             </div>
+
+            <div className="right-panel no-borders">
+              <div></div>
+              <div>
+                <button
+                  className="bp-button"
+                  style={{ float: "right" }}
+                  disabled={formGood() ? false : true}
+                  onClick={() => {
+                    update();
+                    // navigate("/skills");
+                  }}
+                >
+                  Save and Continue
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </Privilaged>
