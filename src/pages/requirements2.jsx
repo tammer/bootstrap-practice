@@ -339,7 +339,18 @@ const Requirements = () => {
             </div>
 
             <div className="right-panel no-borders">
-              <div></div>
+              <SectionLeft
+                title=""
+                text={
+                  formGood() ? (
+                    ""
+                  ) : (
+                    <span style={{ color: "red" }}>
+                      Incomplete form: Role and TechStack are manditory fields
+                    </span>
+                  )
+                }
+              />
               <div>
                 <button
                   className="bp-button"
