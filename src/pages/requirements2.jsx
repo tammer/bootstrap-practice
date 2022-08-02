@@ -135,6 +135,27 @@ const Requirements = () => {
     );
   }
 
+  function workModelBlurb() {
+    return (
+      <>
+        <div>
+          Enter all the work models you would consider. Remote = you are remote;
+          All-Remote = every employee is remote"
+        </div>
+        {showLocation() ? (
+          <div>
+            <br />
+            <br />
+            Enter the locations(s) you are willing to work at. You can enter
+            small (e.g. Palo Alto) or large (e.g. California) regions
+          </div>
+        ) : (
+          ""
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       <Privilaged>
@@ -199,10 +220,7 @@ const Requirements = () => {
             </div>
 
             <div className="right-panel">
-              <SectionLeft
-                title="Work Model"
-                text="Enter all the work models you would consider. Remote = you are remote; All-Remote = every employee is remote"
-              />
+              <SectionLeft title="Work Model" text={workModelBlurb()} />
               <div>
                 <SectionRight
                   id="Model"
