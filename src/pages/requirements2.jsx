@@ -139,15 +139,18 @@ const Requirements = () => {
     return (
       <>
         <div>
-          Enter all the work models you would consider. Remote = you are remote;
-          All-Remote = every employee is remote"
+          Enter all the work models you would consider.
+          <br />
+          Remote = you are remote
+          <br />
+          All-Remote = every employee is remote
         </div>
         {showLocation() ? (
           <div>
             <br />
             <br />
-            Enter the locations(s) you are willing to work at. You can enter
-            small (e.g. Palo Alto) or large (e.g. California) regions
+            Enter the region(s) you are willing to work at. (Regions can be
+            anything from a single city or town to an entire country.)
           </div>
         ) : (
           ""
@@ -164,6 +167,18 @@ const Requirements = () => {
             <div>Hello&nbsp;</div>
           </div>
           <div>
+            <div className="right-panel no-borders">
+              <div className="double-subpanel">
+                <h1>Spec Your Dream Job</h1>
+                Use the form below to precisely spec jobs you are willing to
+                consider. You are essentially creating a filter: you will be
+                alerted to any job opportunity that meets the criteria you spec
+                here. All others will be filtered out.
+                <br />
+                Tip: If you love your current job, spec it with the salary field
+                at 150% of what you make now.
+              </div>
+            </div>
             <div className="right-panel">
               <SectionLeft
                 title="Role"
@@ -184,7 +199,6 @@ const Requirements = () => {
                 }
               />
             </div>
-
             <div className="right-panel">
               <SectionLeft
                 title="Salary"
@@ -218,7 +232,6 @@ const Requirements = () => {
                 />
               </div>
             </div>
-
             <div className="right-panel">
               <SectionLeft title="Work Model" text={workModelBlurb()} />
               <div>
@@ -318,7 +331,6 @@ const Requirements = () => {
                 />
               </div>
             </div>
-
             <div className="right-panel">
               <SectionLeft
                 title="Tech Stack"
@@ -337,7 +349,6 @@ const Requirements = () => {
                 }
               />
             </div>
-
             <div className="right-panel no-borders">
               <SectionLeft
                 title=""
