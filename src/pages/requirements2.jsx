@@ -110,15 +110,7 @@ const Requirements = () => {
     );
   }
 
-  function SectionRight({
-    id,
-    canBeDisabled,
-    placeholder,
-    isMulti = true,
-    api = null,
-    subtitle = "",
-  }) {
-    api = !api ? "attributes/" + id : api;
+  function SectionRight({ id, canBeDisabled, selector, subtitle = "" }) {
     return (
       <div className="right-subpanel">
         <div className="attribute-section">
@@ -137,19 +129,7 @@ const Requirements = () => {
               ""
             )}
           </div>
-          <div>
-            {formState[id]["active"] ? (
-              <GeneralSelector
-                api={api}
-                handleChange={(e) => updateState(id, e)}
-                isMulti={isMulti}
-                value={formState[id]["attributes"]}
-                placeholder={placeholder}
-              />
-            ) : (
-              noMatter()
-            )}
-          </div>
+          <div>{formState[id]["active"] ? selector : noMatter()}</div>
         </div>
       </div>
     );
@@ -166,12 +146,21 @@ const Requirements = () => {
             <div className="right-panel">
               <SectionLeft
                 title="Role"
-                text="Enter the jobs roles you would be interested in."
+                text="Enter the job roles you are willing to consider."
               />
               <SectionRight
                 id="Role"
                 canBeDisabled={false}
                 placeholder="Input one or more roles"
+                selector={
+                  <GeneralSelector
+                    api={"/attributes/Role"}
+                    handleChange={(e) => updateState("Role", e)}
+                    isMulti={true}
+                    value={formState["Role"]["attributes"]}
+                    placeholder={"Enter the roles you would consider."}
+                  />
+                }
               />
             </div>
 
@@ -180,13 +169,33 @@ const Requirements = () => {
                 title="Salary"
                 text="Enter your minimum acceptable salary. You will not be shown any opportunity that pays less than the value you input here."
               />
+              <div>
+                <SectionRight
+                  id="Salary"
+                  canBeDisabled={false}
+                  selector={
+                    <SalarySelector
+                      value={formState["Salary"]["attributes"][0]}
+                      handleChange={(e) => updateState("Salary", e)}
+                    />
+                  }
+                />
 
-              <SectionRight
-                id="Tenure"
-                subtitle="Tenure"
-                canBeDisabled={false}
-                placeholder="Input tenures"
-              />
+                <SectionRight
+                  id="Tenure"
+                  subtitle="Tenure"
+                  canBeDisabled={false}
+                  selector={
+                    <GeneralSelector
+                      api={"/attributes/Tenure"}
+                      handleChange={(e) => updateState("Tenure", e)}
+                      isMulti={true}
+                      value={formState["Tenure"]["attributes"]}
+                      placeholder={"Input tenures"}
+                    />
+                  }
+                />
+              </div>
             </div>
 
             <div className="right-panel">
@@ -194,46 +203,121 @@ const Requirements = () => {
                 title="Work Model"
                 text="Enter all the work models you would consider. Remote = you are remote; All-Remote = every employee is remote"
               />
-              <SectionRight
-                api="attributes/WorkModel"
-                id="Model"
-                canBeDisabled={true}
-                placeholder="Enter work models."
-              />
+              <div>
+                <SectionRight
+                  id="Model"
+                  canBeDisabled={false}
+                  selector={
+                    <GeneralSelector
+                      api="attributes/WorkModel"
+                      handleChange={(e) => updateState("Model", e)}
+                      isMulti={true}
+                      value={formState["Model"]["attributes"]}
+                      placeholder={"Enter the work models you would consider."}
+                    />
+                  }
+                />
+                {showLocation() ? (
+                  <SectionRight
+                    id="Location"
+                    subtitle="Location"
+                    canBeDisabled={false}
+                    selector={
+                      <LocationSelector
+                        isMulti={true}
+                        value={formState["Location"]["attributes"]}
+                        handleChange={(e) => updateState("Location", e)}
+                      />
+                    }
+                  />
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
             <div className="right-panel">
               <SectionLeft
                 title="Organization"
-                text="Enter organizational characteristics and features that are important to you."
+                text="Enter organizational characteristics and features that are important to you. Note: Experential criteria are treated as must-haves. Potential matches decrease with the number of experential requirements you put in place."
               />
               <div>
                 <SectionRight
                   subtitle="Size"
                   id="OrgSize"
                   canBeDisabled={true}
-                  //   placeholder="Ender workplace languages."
+                  selector={
+                    <GeneralSelector
+                      api="attributes/OrgSize"
+                      handleChange={(e) => updateState("OrgSize", e)}
+                      isMulti={false}
+                      value={formState["OrgSize"]["attributes"]}
+                    />
+                  }
                 />
                 <SectionRight
                   subtitle="Type"
                   id="OrgType"
                   canBeDisabled={true}
-                  //   placeholder="Ender workplace languages."
+                  selector={
+                    <GeneralSelector
+                      api="attributes/OrgType"
+                      handleChange={(e) => updateState("OrgType", e)}
+                      isMulti={true}
+                      value={formState["OrgType"]["attributes"]}
+                      //   placeholder={"Enter the work models you would consider."}
+                    />
+                  }
                 />
                 <SectionRight
-                  subtitle="Language"
+                  subtitle="Workplace Language"
                   api="attributes/Language"
                   id="Language"
                   canBeDisabled={false}
-                  placeholder="Ender workplace languages."
+                  selector={
+                    <GeneralSelector
+                      api="attributes/Language"
+                      handleChange={(e) => updateState("Language", e)}
+                      isMulti={true}
+                      value={formState["Language"]["attributes"]}
+                      placeholder="Ender workplace languages."
+                    />
+                  }
                 />
                 <SectionRight
                   subtitle="Experential"
                   // api="attributes/Language"
                   id="Experential"
                   canBeDisabled={true}
-                  placeholder="Ender experential factors."
+                  selector={
+                    <GeneralSelector
+                      api="attributes/Experential"
+                      handleChange={(e) => updateState("Experential", e)}
+                      isMulti={true}
+                      value={formState["Experential"]["attributes"]}
+                      placeholder="Ender experential factors."
+                    />
+                  }
                 />
               </div>
+            </div>
+
+            <div className="right-panel">
+              <SectionLeft
+                title="Tech Stack"
+                text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather list the technologies you want to use day to day. Hiring orgs spec the main technologies (maximum 5) they are working with. A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
+              />
+              <SectionRight
+                id="TechStack"
+                canBeDisabled={false}
+                placeholder="Input your tech stack"
+                selector={
+                  <SkillSelector
+                    isMulti={true}
+                    value={formState["TechStack"]["attributes"]}
+                    handleChange={(e) => updateState("TechStack", e)}
+                  />
+                }
+              />
             </div>
           </div>
         </div>

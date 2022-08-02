@@ -1,18 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import "./App.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Spec from "./pages/spec";
 import Cred from "./pages/cred";
 import LoggedinHome from "./pages/loggedinHome";
-import Requirements from "./pages/requirements";
+import Requirements from "./pages/requirements2";
 import Login from "./pages/login";
 import Assessment from "./pages/assessment";
 import Anchors from "./pages/anchors";
-import Sandbox from "./pages/sandbox";
+// import Sandbox from "./pages/sandbox";
+// import Sandbox from "./pages/sandbox_range_slider";
+import Sandbox from "./pages/sandbox_basic";
+// import Sandbox from "./pages/sandbox_basic2";
 import Landing from "./pages/landing";
 import Home from "./pages/home";
 import Opps from "./pages/opps";
@@ -26,7 +30,6 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="" element={<Home />} />
           <Route path="home" element={<Home />} />
-          <Route path="spec" element={<Spec />} />
           <Route path="requirements" element={<Requirements />} />
           <Route path="opps" element={<Opps />} />
           <Route path="skills" element={<Assessment />} />
