@@ -238,7 +238,7 @@ const Requirements = () => {
             <div className="right-panel">
               <SectionLeft
                 title="Organization"
-                text="Enter organizational characteristics and features that are important to you. Note: Experential criteria are treated as must-haves. Potential matches decrease with the number of experential requirements you put in place."
+                text="Enter organizational characteristics and features that are important to you. Note: Experiential criteria are treated as must-haves. Potential matches decrease with the number of experential requirements you put in place."
               />
               <div>
                 <SectionRight
@@ -284,16 +284,16 @@ const Requirements = () => {
                   }
                 />
                 <SectionRight
-                  subtitle="Experential"
+                  subtitle="Experiential"
                   // api="attributes/Language"
-                  id="Experential"
+                  id="Experiential"
                   canBeDisabled={true}
                   selector={
                     <GeneralSelector
-                      api="attributes/Experential"
-                      handleChange={(e) => updateState("Experential", e)}
+                      api="attributes/Experiential"
+                      handleChange={(e) => updateState("Experiential", e)}
                       isMulti={true}
-                      value={formState["Experential"]["attributes"]}
+                      value={formState["Experiential"]["attributes"]}
                       placeholder="Ender experential factors."
                     />
                   }
@@ -339,6 +339,6 @@ const defaultStates = {
   OrgSize: { active: true, attributes: [] },
   OrgType: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
-  Experential: { active: true, attributes: [] },
+  Experiential: { active: true, attributes: [] },
   Salary: { active: true, attributes: [{ amount: "100,000", ccy: "USD" }] },
 };

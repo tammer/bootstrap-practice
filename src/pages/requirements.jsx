@@ -317,15 +317,15 @@ const Requirements = () => {
               />
 
               <Requirement
-                id="Experential"
+                id="Experiential"
                 handleActive={updateActive}
-                title="Experential"
+                title="Experiential"
                 selector={
                   <GeneralSelector
                     api="attributes/Experiential"
-                    handleChange={(e) => updateState("Experential", e)}
+                    handleChange={(e) => updateState("Experiential", e)}
                     isMulti={true}
-                    value={formState["Experential"]["attributes"]}
+                    value={formState["Experiential"]["attributes"]}
                     placeholder="Input desired experiential factors"
                   />
                 }
@@ -409,6 +409,6 @@ const defaultStates = {
   OrgSize: { active: true, attributes: [] },
   OrgType: { active: true, attributes: [] },
   Industry: { active: true, attributes: [] },
-  Experential: { active: true, attributes: [] },
+  Experiential: { active: true, attributes: [] },
   Salary: { active: true, attributes: [{ amount: "100,000", ccy: "USD" }] },
 };

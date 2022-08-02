@@ -11,7 +11,7 @@ const Spec = ({ formState }) => {
       Salary: { suffix: "salary", comparison: ">=" },
       OrgType: { suffix: "org_chars", comparison: "∈" },
       OrgSize: { suffix: "org_size", comparison: "" },
-      Experential: { suffix: "Experential", comparison: "⊇" },
+      Experiential: { suffix: "Experiential", comparison: "⊇" },
     };
 
     if (
@@ -90,7 +90,7 @@ const Spec = ({ formState }) => {
               </div>
               <div className="code-indent">{makeCondition("OrgSize")}</div>
               <div className="code-indent">{makeCondition("OrgType")}</div>
-              <div className="code-indent">{makeCondition("Experential")}</div>
+              <div className="code-indent">{makeCondition("Experiential")}</div>
               <span className="code-color-1">THEN:</span>
               <div className="code-indent">
                 <span className="code-color-3">send_email(</span>to: you,
