@@ -29,12 +29,12 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
   }
 
   return (
-    <>
+    <div className="selector">
       <AsyncCreatableSelect
         closeMenuOnSelect={true}
         defaultOptions
         cacheOptions
-        // isClearable
+        isClearable={false}
         getOptionLabel={(e) => e["name"]}
         getOptionValue={(e) => e["id"]}
         isMulti={isMulti}
@@ -48,7 +48,7 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
           return { id: a, name: b };
         }}
       />
-    </>
+    </div>
   );
 };
 

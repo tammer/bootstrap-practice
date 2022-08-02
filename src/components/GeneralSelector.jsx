@@ -44,6 +44,7 @@ const GeneralSelector = ({
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
+        isClearable={false}
       />
     </>
   );

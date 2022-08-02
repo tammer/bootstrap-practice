@@ -263,6 +263,9 @@ li {
 /* Main Layout */
 
 .main-container {
+  display: grid;
+  grid-template-columns: 360px;
+
   width: 100%;
   /* background-color: cyan; */
   border: 0px solid;
@@ -276,16 +279,22 @@ li {
   color: #232f3e;
 }
 
+.two-columns {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
 .left-panel {
   width: 360px;
   /* background-color: #dcdcab; */
 }
 
 .right-panel {
+  display: inline-grid;
   border-bottom: #e4e4e4 2px solid;
-  padding-bottom: 30px;
-  background-color: #4b6a88;
-  /* min-height: 120px; */
+  padding-bottom: 0px;
+  margin-bottom: 28px;
+  /* background-color: #4b6a88; */
 }
 
 .left-subpanel,
@@ -299,11 +308,11 @@ li {
 
 .left-subpanel {
   padding-right: 40px;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .right-subpanel {
-  background-color: pink;
+  /* background-color: pink; */
   padding-top: 15px;
 }
 
@@ -316,7 +325,7 @@ li {
 
 .right-subpanel h1 {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 17px;
   /* margin-left: -6px; */
   margin-bottom: 14px;
@@ -341,26 +350,27 @@ li {
 }
 
 .attribute-section {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 @media (min-width: 720px) {
+  .main-container {
+    grid-template-columns: 720px;
+  }
+  .right-panel {
+    grid-template-columns: 360px 360px;
+  }
   .left-panel {
     width: 720px;
-  }
-  .left-subpanel,
-  .right-subpanel {
-    float: left;
   }
 }
 
 @media (min-width: 1080px) {
-  .left-panel {
-    float: left;
-    width: 360px;
+  .main-container {
+    grid-template-columns: 360px 720px;
   }
   .right-panel {
-    float: left;
+    grid-template-columns: 360px 360px;
   }
 }
 
@@ -368,7 +378,21 @@ li {
   margin-left: -1px;
 }
 
-.g1 {
-  display: grid;
-  grid-template-columns: 360px 360px 360px;
+.react-switch {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.bpswitch-off {
+  color: white;
+  font-size: 9px;
+  padding-left: 5px;
+  padding-top: 2px;
+}
+
+.bpswitch-on {
+  color: black;
+  font-size: 9px;
+  padding-left: 4px;
+  padding-top: 2px;
 }
