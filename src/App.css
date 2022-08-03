@@ -289,6 +289,23 @@ h3 {
   grid-template-columns: auto auto;
 }
 
+.salary-selector {
+  display: grid;
+  width: 152px;
+  grid-template-columns: auto 90px;
+}
+
+.salary-selector-input {
+  background-color: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  height: 37px;
+  width: 64px;
+  padding-left: 8px;
+}
+
 .left-panel {
   width: 360px;
   /* background-color: #dcdcab; */

@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Select from "react-select";
 
 const SalarySelector = ({ handleChange, value }) => {
@@ -32,20 +30,20 @@ const SalarySelector = ({ handleChange, value }) => {
   }
 
   return (
-    <Row>
-      <Col sm="auto" style={{ paddingRight: "0px" }}>
+    <div className="salary-selector">
+      <div>
         <input
-          style={{ height: "37px" }}
+          className="salary-selector-input"
           maxLength="7"
           size="7"
           type="text"
           value={state["amount"]}
           onChange={(e) => handleInput(e)}
         />
-      </Col>
-      <Col style={{ paddingLeft: "2px" }}>
+      </div>
+      <div>
         <Select
-          options={quickMake(["USD", "CAD", "EUR", "GBP", "JPY"])}
+          options={quickMake(["USD", "CAD", "EUR", "GBP"])}
           closeMenuOnSelect={true}
           getOptionLabel={(e) => e["name"]}
           getOptionValue={(e) => e["id"]}
@@ -53,8 +51,8 @@ const SalarySelector = ({ handleChange, value }) => {
           value={{ id: state["ccy"], name: state["ccy"] }}
           onChange={handleCcyChange}
         />
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 
