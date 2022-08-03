@@ -181,13 +181,21 @@ const Requirements = () => {
             <div className="right-panel no-borders">
               <div className="double-subpanel">
                 <h1>Spec Your Dream Job</h1>
-                Use the form below to precisely spec jobs you are willing to
-                consider. You are essentially creating a filter: you will be
-                alerted to any job opportunity that meets the criteria you spec
-                here. All others will be filtered out.
-                <br />
-                Tip: If you love your current job, spec it with the salary field
-                at 150% of what you make now.
+                <ul>
+                  <li>
+                    Use the form below to precisely spec jobs you are willing to
+                    consider.
+                  </li>
+                  <li>
+                    Think of this form as a filter on the universe of jobs: you
+                    will be alerted to any opportunity that meets the criteria
+                    you spec here. All others will be filtered out.
+                  </li>
+                  <li>
+                    Tip: If you love your current job, spec it with the salary
+                    field at 150% of what you make now.
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="right-panel">
