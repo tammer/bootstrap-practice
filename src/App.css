@@ -215,9 +215,13 @@ h3 {
   margin-right: 15%;
 }
 
-.ssection > ul,
-ol,
-li {
+.ssection > ul {
+  font-size: 2vw;
+}
+.ssection > ol {
+  font-size: 2vw;
+}
+.ssection > li {
   font-size: 2vw;
 }
 
