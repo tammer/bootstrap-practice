@@ -191,10 +191,6 @@ const Requirements = () => {
                     will be alerted to any opportunity that meets the criteria
                     you spec here. All others will be filtered out.
                   </li>
-                  <li>
-                    Tip: If you love your current job, spec it with the salary
-                    field at 150% of what you make now.
-                  </li>
                 </ul>
               </div>
             </div>
