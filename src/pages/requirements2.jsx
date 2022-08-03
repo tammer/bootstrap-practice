@@ -8,6 +8,57 @@ import GeneralSelector from "../components/GeneralSelector";
 import LocationSelector from "../components/LocationSelector";
 import BPSwitch from "../components/bpswitch";
 
+const SectionRight = ({
+  isActive = true,
+  updateActive,
+  canBeDisabled = false,
+  selector,
+  subtitle = "",
+}) => {
+  function noMatter() {
+    return (
+      <>
+        <div
+          style={{
+            marginBottom: "38px",
+            marginLeft: "0px",
+            paddingTop: "10px",
+            marginLeft: "27px",
+            color: "gray",
+          }}
+        >
+          Doesn't matter.
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <div className="right-subpanel">
+      <div className="attribute-section">
+        <div className="two-columns">
+          <div style={{ float: "left" }}>
+            <h1>{subtitle}</h1>
+          </div>
+          {canBeDisabled ? (
+            <div style={{ paddingBottom: "3px", textAlign: "right" }}>
+              <BPSwitch
+                checked={isActive}
+                handleChange={(e) => {
+                  updateActive(e);
+                }}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>{isActive ? selector : noMatter()}</div>
+      </div>
+    </div>
+  );
+};
+
 const Requirements = () => {
   const [show, setShow] = useState(false);
 
@@ -45,7 +96,7 @@ const Requirements = () => {
 
   function showLocation() {
     let rv = false;
-    formState["Model"]["attributes"].forEach((e) => {
+    formState["WorkModel"]["attributes"].forEach((e) => {
       if ((e["name"] == "on-site") | (e["name"] == "hybrid")) rv = true;
     });
     return rv;
@@ -83,54 +134,11 @@ const Requirements = () => {
     formFromServer();
   }, []);
 
-  function noMatter() {
-    return (
-      <>
-        <div
-          style={{
-            marginBottom: "38px",
-            marginLeft: "0px",
-            paddingTop: "10px",
-            marginLeft: "27px",
-            color: "gray",
-          }}
-        >
-          Doesn't matter.
-        </div>
-      </>
-    );
-  }
-
   function SectionLeft({ title, text }) {
     return (
       <div className="left-subpanel">
         <h1>{title}</h1>
         {text}
-      </div>
-    );
-  }
-
-  function SectionRight({ id, canBeDisabled, selector, subtitle = "" }) {
-    return (
-      <div className="right-subpanel">
-        <div className="attribute-section">
-          <div className="two-columns">
-            <div style={{ float: "left" }}>
-              <h1>{subtitle}</h1>
-            </div>
-            {canBeDisabled ? (
-              <div style={{ paddingBottom: "3px", textAlign: "right" }}>
-                <BPSwitch
-                  checked={formState[id]["active"]}
-                  handleChange={(e) => updateActive(id, e)}
-                />
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-          <div>{formState[id]["active"] ? selector : noMatter()}</div>
-        </div>
       </div>
     );
   }
@@ -156,6 +164,18 @@ const Requirements = () => {
           ""
         )}
       </>
+    );
+  }
+
+  function MakeSelector(attribute, placeholder) {
+    return (
+      <GeneralSelector
+        api={"attributes/" + attribute}
+        handleChange={(e) => updateState(attribute, e)}
+        isMulti={attribute == "OrgSize" ? false : true}
+        value={formState[attribute]["attributes"]}
+        placeholder={placeholder}
+      />
     );
   }
 
@@ -185,18 +205,7 @@ const Requirements = () => {
                 text="Enter the job roles you are willing to consider."
               />
               <SectionRight
-                id="Role"
-                canBeDisabled={false}
-                placeholder="Input one or more roles"
-                selector={
-                  <GeneralSelector
-                    api={"/attributes/Role"}
-                    handleChange={(e) => updateState("Role", e)}
-                    isMulti={true}
-                    value={formState["Role"]["attributes"]}
-                    placeholder={"Enter the roles you would consider."}
-                  />
-                }
+                selector={MakeSelector("Role", "Input one or more roles")}
               />
             </div>
             <div className="right-panel">
@@ -206,8 +215,6 @@ const Requirements = () => {
               />
               <div>
                 <SectionRight
-                  id="Salary"
-                  canBeDisabled={false}
                   selector={
                     <SalarySelector
                       value={formState["Salary"]["attributes"][0]}
@@ -217,18 +224,8 @@ const Requirements = () => {
                 />
 
                 <SectionRight
-                  id="Tenure"
                   subtitle="Tenure"
-                  canBeDisabled={false}
-                  selector={
-                    <GeneralSelector
-                      api={"/attributes/Tenure"}
-                      handleChange={(e) => updateState("Tenure", e)}
-                      isMulti={true}
-                      value={formState["Tenure"]["attributes"]}
-                      placeholder={"Input tenures"}
-                    />
-                  }
+                  selector={MakeSelector("Tenure", "Tenure(s)")}
                 />
               </div>
             </div>
@@ -236,23 +233,14 @@ const Requirements = () => {
               <SectionLeft title="Work Model" text={workModelBlurb()} />
               <div>
                 <SectionRight
-                  id="Model"
-                  canBeDisabled={false}
-                  selector={
-                    <GeneralSelector
-                      api="attributes/WorkModel"
-                      handleChange={(e) => updateState("Model", e)}
-                      isMulti={true}
-                      value={formState["Model"]["attributes"]}
-                      placeholder={"Enter the work models you would consider."}
-                    />
-                  }
+                  selector={MakeSelector(
+                    "WorkModel",
+                    "Enter the work models you would consider."
+                  )}
                 />
                 {showLocation() ? (
                   <SectionRight
-                    id="Location"
                     subtitle="Location"
-                    canBeDisabled={false}
                     selector={
                       <LocationSelector
                         isMulti={true}
@@ -274,60 +262,31 @@ const Requirements = () => {
               <div>
                 <SectionRight
                   subtitle="Size"
-                  id="OrgSize"
                   canBeDisabled={true}
-                  selector={
-                    <GeneralSelector
-                      api="attributes/OrgSize"
-                      handleChange={(e) => updateState("OrgSize", e)}
-                      isMulti={false}
-                      value={formState["OrgSize"]["attributes"]}
-                    />
-                  }
+                  isActive={formState["OrgSize"]["active"]}
+                  updateActive={(e) => updateActive("OrgSize", e)}
+                  selector={MakeSelector("OrgSize", "Set size")}
                 />
                 <SectionRight
                   subtitle="Type"
-                  id="OrgType"
                   canBeDisabled={true}
-                  selector={
-                    <GeneralSelector
-                      api="attributes/OrgType"
-                      handleChange={(e) => updateState("OrgType", e)}
-                      isMulti={true}
-                      value={formState["OrgType"]["attributes"]}
-                      //   placeholder={"Enter the work models you would consider."}
-                    />
-                  }
+                  isActive={formState["OrgType"]["active"]}
+                  updateActive={(e) => updateActive("OrgType", e)}
+                  selector={MakeSelector("OrgType", "Org types")}
                 />
                 <SectionRight
                   subtitle="Workplace Language"
-                  api="attributes/Language"
-                  id="Language"
-                  canBeDisabled={false}
-                  selector={
-                    <GeneralSelector
-                      api="attributes/Language"
-                      handleChange={(e) => updateState("Language", e)}
-                      isMulti={true}
-                      value={formState["Language"]["attributes"]}
-                      placeholder="Ender workplace languages."
-                    />
-                  }
+                  selector={MakeSelector("Language", "Workplace languages")}
                 />
                 <SectionRight
                   subtitle="Experiential"
-                  // api="attributes/Language"
-                  id="Experiential"
                   canBeDisabled={true}
-                  selector={
-                    <GeneralSelector
-                      api="attributes/Experiential"
-                      handleChange={(e) => updateState("Experiential", e)}
-                      isMulti={true}
-                      value={formState["Experiential"]["attributes"]}
-                      placeholder="Ender experential factors."
-                    />
-                  }
+                  isActive={formState["Experiential"]["active"]}
+                  updateActive={(e) => updateActive("Experiential", e)}
+                  selector={MakeSelector(
+                    "Experiential",
+                    "Experiential Requirements"
+                  )}
                 />
               </div>
             </div>
@@ -337,8 +296,6 @@ const Requirements = () => {
                 text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather list the technologies you want to use day to day. Hiring orgs spec the main technologies (maximum 5) they are working with. A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
               />
               <SectionRight
-                id="TechStack"
-                canBeDisabled={false}
                 placeholder="Input your tech stack"
                 selector={
                   <SkillSelector
@@ -387,7 +344,7 @@ export default Requirements;
 
 const defaultStates = {
   Role: { active: true, attributes: [] },
-  Model: { active: true, attributes: [] },
+  WorkModel: { active: true, attributes: [] },
   Language: { active: true, attributes: [] },
   Tenure: { active: true, attributes: [] },
   Location: { active: true, attributes: [] },
