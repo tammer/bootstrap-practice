@@ -2,7 +2,6 @@ import Privilaged from "../components/Privilaged";
 
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
-import Spec from "../components/Spec";
 import SkillSelector from "../components/SkillSelector";
 import GeneralSelector from "../components/GeneralSelector";
 import LocationSelector from "../components/LocationSelector";
@@ -60,11 +59,6 @@ const SectionRight = ({
 };
 
 const Requirements = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [formState, setFormState] = useState(defaultStates);
 
   function updateState(id, values_) {
@@ -79,9 +73,6 @@ const Requirements = () => {
     let temp = { ...formState };
     temp[id] ? (temp[id]["active"] = status) : (temp[id] = { active: status });
     setFormState(temp);
-  }
-  function getAttributes(field) {
-    return !formState[field] ? [] : formState[field]["attributes"];
   }
 
   function formGood() {
