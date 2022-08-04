@@ -1,10 +1,10 @@
-import "./index.css";
-import { Outlet, Link } from "react-router-dom";
+import "./Navbar.scss";
+import { Outlet } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
-import { Button } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
-// !!! I wish I knew what activeKey did
 
 function App() {
   const userName = localStorage.getItem("userName");
@@ -26,43 +26,36 @@ function App() {
 
   return (
     <>
-      <Nav
-        className="navbar-light"
-        style={{ backgroundColor: "#e3f2fd" }}
-        activeKey="/home"
-      >
-        <Nav.Item>
-          <Nav.Link href="/home">Home</Nav.Link>
-        </Nav.Item>
+      <Navbar fixed="top" expand="md">
+        <Container>
+          <Navbar.Brand href="/home">BP</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/requirements">My Requirements</Nav.Link>
+              <Nav.Link href="/skills">My Skillset</Nav.Link>
+              <Nav.Link href="/opps">My Opportunities</Nav.Link>
+            </Nav>
+            {localStorage.getItem("token") ? (
+              <NavDropdown title={userName} id="basic-nav-dropdown">
+                {/* <NavDropdown.Divider /> */}
+                <NavDropdown.Item
+                  href="#"
+                  onClick={(e) => {
+                    logout();
+                    navigate("/login");
+                  }}
+                >
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Nav.Link href="/login">Login</Nav.Link>
+            )}
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-        <Nav.Item>
-          <Nav.Link href="/requirements">My Requirements</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/skills">My Skillset</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/opps">My Opportunities</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          {localStorage.getItem("token") ? (
-            <>
-              <Button
-                className="btn btn-sm btn-secondary"
-                onClick={(e) => {
-                  logout();
-                  navigate("/login");
-                }}
-              >
-                Logout ({userName})
-              </Button>
-              {/* <span>{localStorage.getItem("token")}</span> */}
-            </>
-          ) : (
-            <Nav.Link href="/login">Login</Nav.Link>
-          )}
-        </Nav.Item>
-      </Nav>
       <Outlet />
     </>
   );
