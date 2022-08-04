@@ -385,7 +385,7 @@ h3 {
     grid-template-columns: 360px 360px;
   }
   .left-panel {
-    width: 720px;
+    width: 360px;
   }
 }
 
