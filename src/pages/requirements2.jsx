@@ -174,9 +174,7 @@ const Requirements = () => {
     <>
       <Privilaged>
         <div className="main-container">
-          <div className="left-panel">
-            <div>Hello&nbsp;</div>
-          </div>
+          <div className="left-panel"></div>
           <div>
             <div className="right-panel no-borders">
               <div className="double-subpanel">
