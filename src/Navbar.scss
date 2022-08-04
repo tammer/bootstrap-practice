@@ -6,6 +6,11 @@ $bgHighlight: #ffffff;
 $colDefault: #ffffff;
 $colHighlight: #e1ffcb;
 $dropDown: true;
+
+.main-area {
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
 .navbar {
   .nav-link {
     color: $colDefault;

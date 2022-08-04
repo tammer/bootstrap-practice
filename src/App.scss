@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Inter");
 
+$color1: #f5f5f5; // background color
+$color2: #232f3e; // default font color
+
 body {
-  background-color: #f5f5f5;
+  background-color: $color1;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: $color2;
   overscroll-behavior: none;
 }
 
@@ -13,7 +22,6 @@ body {
   padding: 0px;
 }
 .section-inner {
-  background-color: #f5f5f5;
   border: 1px;
   border-style: solid;
   border-color: #d0d7de;
@@ -265,16 +273,8 @@ h3 {
   grid-template-columns: 360px;
 
   width: 100%;
-  background-color: #f5f5f5;
   border: 0px solid;
   padding: 0px;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: #232f3e;
   margin-top: 100px;
 }
 

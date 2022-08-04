@@ -30,7 +30,7 @@ function App() {
         <Navbar.Brand href="/home">&nbsp;&nbsp;BP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto main-area">
             <Nav.Link href="/requirements">My Requirements</Nav.Link>
             <Nav.Link href="/skills">My Skillset</Nav.Link>
             <Nav.Link href="/opps">My Opportunities</Nav.Link>
