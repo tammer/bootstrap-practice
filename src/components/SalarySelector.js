@@ -43,7 +43,7 @@ const SalarySelector = ({ handleChange, value }) => {
       </div>
       <div>
         <Select
-          options={quickMake(["USD", "CAD", "EUR", "GBP"])}
+          options={quickMake(["USD", "CAD", "AUD", "EUR", "GBP"])}
           closeMenuOnSelect={true}
           getOptionLabel={(e) => e["name"]}
           getOptionValue={(e) => e["id"]}
