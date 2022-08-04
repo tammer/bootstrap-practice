@@ -27,33 +27,31 @@ function App() {
   return (
     <>
       <Navbar fixed="top" expand="md">
-        <Container>
-          <Navbar.Brand href="/home">BP</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/requirements">My Requirements</Nav.Link>
-              <Nav.Link href="/skills">My Skillset</Nav.Link>
-              <Nav.Link href="/opps">My Opportunities</Nav.Link>
-            </Nav>
-            {localStorage.getItem("token") ? (
-              <NavDropdown title={userName} id="basic-nav-dropdown">
-                {/* <NavDropdown.Divider /> */}
-                <NavDropdown.Item
-                  href="#"
-                  onClick={(e) => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
-            ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
-            )}
-          </Navbar.Collapse>
-        </Container>
+        <Navbar.Brand href="/home">&nbsp;&nbsp;BP</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/requirements">My Requirements</Nav.Link>
+            <Nav.Link href="/skills">My Skillset</Nav.Link>
+            <Nav.Link href="/opps">My Opportunities</Nav.Link>
+          </Nav>
+          {localStorage.getItem("token") ? (
+            <NavDropdown title={userName} id="basic-nav-dropdown">
+              {/* <NavDropdown.Divider /> */}
+              <NavDropdown.Item
+                href="#"
+                onClick={(e) => {
+                  logout();
+                  navigate("/login");
+                }}
+              >
+                Logout
+              </NavDropdown.Item>
+            </NavDropdown>
+          ) : (
+            <Nav.Link href="/login">Login</Nav.Link>
+          )}
+        </Navbar.Collapse>
       </Navbar>
 
       <Outlet />
