@@ -1,14 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Inter");
 
-/* @font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  src: url(file://Users/tammer/Downloads/font.ttf) format("truetype");
-} */
-
 body {
   background-color: #f5f5f5;
+  overscroll-behavior: none;
 }
 
 .row {
@@ -281,7 +275,7 @@ h3 {
   font-size: 12px;
   line-height: 15px;
   color: #232f3e;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .two-columns {
