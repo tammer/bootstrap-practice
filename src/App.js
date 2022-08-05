@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Navbar fixed="top" expand="md">
+      <Navbar expand="md">
         <Navbar.Brand href="/home">&nbsp;&nbsp;BP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
