@@ -4,9 +4,7 @@
 $color1: white;
 $color2: #232f3e; // default font color
 
-$leftSide: 10px;
-$bp1: 720px;
-$bp2: 720px + $leftSide;
+$bp: 720px;
 
 body {
   background-color: $color1;
@@ -22,13 +20,12 @@ body {
 /* Main Layout */
 
 .main-container {
-  display: grid;
-  grid-template-columns: 360px;
-
   width: 100%;
   border: 0px solid;
   padding: 0px;
   margin-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .two-columns {
@@ -53,13 +50,8 @@ body {
   padding-left: 8px;
 }
 
-.left-panel {
-  width: auto;
-  // background-color: #dcdcab;
-}
-
 .right-panel {
-  display: inline-grid;
+  display: grid;
   border-bottom: #e4e4e4 2px solid;
   padding-bottom: 10px;
   margin-bottom: 18px;
@@ -69,7 +61,7 @@ body {
 .left-subpanel,
 .right-subpanel {
   /* background-color: pink; */
-  width: 360px;
+  width: 100%;
   padding: 4px;
   padding-top: 8px;
   padding-left: 13px;
@@ -130,27 +122,9 @@ body {
   margin-bottom: 25px;
 }
 
-@media (min-width: $bp1) {
-  .main-container {
-    grid-template-columns: $bp1;
-  }
+@media (min-width: $bp) {
   .right-panel {
-    grid-template-columns: 360px auto;
-  }
-  .left-panel {
-    width: 720px;
-  }
-}
-
-@media (min-width: $bp2) {
-  .main-container {
-    grid-template-columns: $leftSide auto;
-  }
-  .right-panel {
-    grid-template-columns: 360px auto;
-  }
-  .left-panel {
-    width: $leftSide;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
