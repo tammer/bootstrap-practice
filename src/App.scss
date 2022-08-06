@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Inter");
 
-$color1: #f5f5f5; // background color
+// $color1: #f5f5f5; // background color
+$color1: white;
 $color2: #232f3e; // default font color
 
-$leftSide: 180px;
+$leftSide: 10px;
 $bp1: 720px;
 $bp2: 720px + $leftSide;
 
@@ -42,12 +43,6 @@ body {
   background-color: white;
   min-height: 100%;
   height: 100%;
-}
-
-.foo {
-  text-align: left;
-  color: black;
-  background-color: #a7e9f0;
 }
 
 .instructions {
@@ -459,4 +454,74 @@ h3 {
 
 .no-borders {
   border: none;
+}
+
+$levelSliderHeight: 30px;
+$innerLevelSliderHeight: $levelSliderHeight - 20px;
+
+.level-slider-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+  font-size: 11px;
+  padding-bottom: 14px;
+}
+
+.level-slider-outer,
+.level-slider-outer-header {
+  display: grid;
+  grid-template-columns: 60px auto;
+  height: $levelSliderHeight;
+  margin-bottom: 10px;
+}
+
+.level-slider-outer {
+  // background: rgb(241, 242, 243);
+  // border: 1px solid rgb(214, 217, 220);
+  // border-radius: 4px;
+}
+
+.level-slider-body {
+  display: grid;
+  // background-color: pink;
+  position: relative;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+}
+
+.level-slider-body-div {
+  // background-color: green;
+  height: $innerLevelSliderHeight;
+}
+
+.level-slider-body-div {
+  border-right: 1px dashed gray;
+  opacity: 20%;
+  margin-top: 10px;
+  // margin-bottom: 10px;
+}
+
+.level-slider-item {
+  position: absolute;
+  width: 80%;
+  top: 0;
+  left: 0;
+  margin-left: 10%;
+  margin-top: 8px;
+  // background-color: green;
+}
+
+.horse {
+  text-align: right;
+  padding-right: 10px;
+  padding-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 6px;
+  margin-left: 6px;
+  background: lightblue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 6px;
+  // text-overflow: ellipsis;
+  // background-color: pink;
 }
