@@ -3,6 +3,7 @@
 // $color1: #f5f5f5; // background color
 $color1: white;
 $color2: #232f3e; // default font color
+$color3: #edd716;
 
 $bp: 1000px;
 
@@ -26,6 +27,7 @@ body {
   margin-top: 100px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 250px;
 }
 
 .two-columns {
@@ -400,8 +402,8 @@ h3 {
 .bp-button {
   color: #000000;
   border-radius: 4px;
-  background-color: #edd716;
-  border-color: #edd716;
+  background-color: $color3;
+  border-color: $color3;
   border: none;
   text-align: center;
   height: 40px;
