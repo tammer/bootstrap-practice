@@ -1,14 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import LevelSlider from "../components/LevelSlider";
 import SkillSelector from "../components/SkillSelector";
 
 const TechStack = ({ attributes, handleChange }) => {
   const bottomRef = useRef(null);
   const [selectorValue, setSelectorVlaue] = useState(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [attributes]);
 
   function handleLevelChange(skillName, newLevel) {
     let rv = [...attributes];
@@ -22,6 +18,10 @@ const TechStack = ({ attributes, handleChange }) => {
     }
     value["level"] = 50;
     setSelectorVlaue(null);
+    bottomRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
     handleChange([...attributes, value]);
   }
 
@@ -75,7 +75,7 @@ const TechStack = ({ attributes, handleChange }) => {
             </div>
             <div className="level-slider-inner-box">
               {attributes.map((att) => row(att["name"], att["level"]))}
-              <div ref={bottomRef} />
+              <div className="level-slider-outer" ref={bottomRef} />
             </div>
           </div>
           <br />

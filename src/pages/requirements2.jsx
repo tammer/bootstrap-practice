@@ -247,6 +247,23 @@ const Requirements = () => {
                 )}
               </div>
             </div>
+
+            <div className="right-panel">
+              <SectionLeft
+                title="Tech Stack"
+                text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
+              />
+              <SectionRight
+                placeholder="Input your tech stack"
+                selector={
+                  <TechStack
+                    attributes={formState["TechStack"]["attributes"]}
+                    handleChange={(e) => updateState("TechStack", e)}
+                  />
+                }
+              />
+            </div>
+
             <div className="right-panel">
               <SectionLeft
                 title="Organization"
@@ -283,21 +300,7 @@ const Requirements = () => {
                 />
               </div>
             </div>
-            <div className="right-panel">
-              <SectionLeft
-                title="Tech Stack"
-                text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
-              />
-              <SectionRight
-                placeholder="Input your tech stack"
-                selector={
-                  <TechStack
-                    attributes={formState["TechStack"]["attributes"]}
-                    handleChange={(e) => updateState("TechStack", e)}
-                  />
-                }
-              />
-            </div>
+
             <div className="right-panel no-borders">
               <SectionLeft
                 title=""
