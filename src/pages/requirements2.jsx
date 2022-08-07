@@ -267,7 +267,7 @@ const Requirements = () => {
             <div className="right-panel">
               <SectionLeft
                 title="Organization"
-                text="Enter organizational characteristics and features that are important to you. Note: Experiential criteria are treated as must-haves. Potential matches decrease with the number of experential requirements you put in place."
+                text="Enter organizational characteristics and features that are important to you. Note: Experiential criteria are treated as must-haves. Matches decrease with the number of experential requirements you put in place."
               />
               <div>
                 <SectionRight
