@@ -19,23 +19,18 @@ const TechStack = ({ attributes, handleChange }) => {
     handleChange([...attributes, value]);
   }
 
-  //   function buttonRow() {
-  //     return (
-  //       <div className="level-slider-outer">
-  //         <div style={{ gridColumn: "1 /3" }}>{/* <SkillSelector /> */}</div>
-
-  //         {/* <div className="horse-holder">
-  //           <div className="horse-new">+ New</div>
-  //         </div> */}
-  //       </div>
-  //     );
-  //   }
+  function handleDelete(name) {
+    handleChange(attributes.filter((e) => e["name"] != name));
+  }
 
   function row(name, level) {
     return (
       <div key={`teckstack1-${name}`} className="level-slider-outer">
         <div className="horse-holder">
           <div className="horse">{name}</div>
+          <div className="horse-button" onClick={(e) => handleDelete(name)}>
+            x
+          </div>
         </div>
         <div>
           <div className="level-slider-body">

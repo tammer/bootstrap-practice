@@ -484,7 +484,8 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   // background-color: green;
 }
 
-.horse {
+.horse,
+.horse-button {
   max-width: 100%;
   padding: 2px;
   padding-left: 5px;
@@ -502,6 +503,18 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.horse-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.horse-button:hover {
+  background-color: pink;
+  cursor: pointer;
 }
 
 .horse-holder {
