@@ -1,5 +1,5 @@
 import Privilaged from "../components/Privilaged";
-
+import TechStack from "../components/TechStack";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
 import SkillSelector from "../components/SkillSelector";
@@ -291,9 +291,8 @@ const Requirements = () => {
               <SectionRight
                 placeholder="Input your tech stack"
                 selector={
-                  <SkillSelector
-                    isMulti={true}
-                    value={formState["TechStack"]["attributes"]}
+                  <TechStack
+                    attributes={formState["TechStack"]["attributes"]}
                     handleChange={(e) => updateState("TechStack", e)}
                   />
                 }

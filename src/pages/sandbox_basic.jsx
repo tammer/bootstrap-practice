@@ -15,14 +15,52 @@ const LevelSliderContainer = () => {
   );
 };
 
+// attributes is attributes field from TechStack
+const TechStack = ({ attributes }) => {
+  function row(name, level) {
+    return (
+      <div key={`teckstack1-${name}`} className="level-slider-outer">
+        <div className="horse-holder">
+          <div className="horse">{name}</div>
+        </div>
+        <div>
+          <div className="level-slider-body">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div
+                key={`techstack${name}${i}`}
+                className="level-slider-body-div"
+              />
+            ))}
+            <div className="level-slider-item">
+              <LevelSlider value={level} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="level-slider-box">
+      <div className="level-slider-outer-header">
+        <div />
+        <div className="level-slider-header">
+          <div>novice</div>
+          <div>capable</div>
+          <div>proficient</div>
+          <div>expert</div>
+          <div>authority</div>
+        </div>
+      </div>
+      {attributes.map((att) => row(att["name"], att["level"]))}
+    </div>
+  );
+};
+
 const Sandbox = () => {
   return (
     <>
       <div className="main-container">
-        <div className="two-columns">
-          <SalarySelector value={22} />
-          <div>2</div>
-        </div>
         <div className="left-panel">
           <div>Hello&nbsp;</div>
         </div>
@@ -32,6 +70,8 @@ const Sandbox = () => {
             content in left-subpanel Have a nice day today.
           </div>
           <div className="right-subpanel">
+            <TechStack attributes={[{ name: "Tammer", level: 22 }]} />
+
             <div className="attribute-section">
               <h1>right-subpanel &gt; h1</h1>
               <h2>right-subpanel &gt; h2</h2>
@@ -40,17 +80,15 @@ const Sandbox = () => {
                   display: "grid",
                   gridAutoColumns: "1fr 1fr",
                 }}
-              >
-                <BPSwitch />
-              </div>
+              ></div>
 
-              <SkillSelector isMulti />
+              {/* <SkillSelector isMulti /> */}
               <br />
               <br />
               {/* <LevelSliderContainer /> */}
               <br />
               <br />
-              <div className="level-slider-box">
+              {/* <div className="level-slider-box">
                 <div className="level-slider-outer-header">
                   <div />
                   <div className="level-slider-header">
@@ -94,7 +132,7 @@ const Sandbox = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div style={{ width: "250px" }}></div>
               <br />
