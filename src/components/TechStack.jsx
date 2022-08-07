@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import LevelSlider from "../components/LevelSlider";
 import SkillSelector from "../components/SkillSelector";
 
 const TechStack = ({ attributes, handleChange }) => {
+  const bottomRef = useRef(null);
   const [selectorValue, setSelectorVlaue] = useState(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [attributes]);
+
   function handleLevelChange(skillName, newLevel) {
     let rv = [...attributes];
     rv.find((e) => e["name"] == skillName)["level"] = newLevel;
@@ -65,8 +71,10 @@ const TechStack = ({ attributes, handleChange }) => {
             <div>authority</div>
           </div>
         </div>
-        {attributes.map((att) => row(att["name"], att["level"]))}
-        {/* {buttonRow()} */}
+        <div className="level-slider-inner-box">
+          {attributes.map((att) => row(att["name"], att["level"]))}
+          <div ref={bottomRef} />
+        </div>
       </div>
       <br />
       <div style={{ width: "300px" }}>

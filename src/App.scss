@@ -455,6 +455,12 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   margin-bottom: 0px;
 }
 
+.level-slider-inner-box {
+  // background-color: cornflowerblue;
+  max-height: 365px;
+  overflow: scroll;
+}
+
 .level-slider-body {
   display: grid;
   // background-color: pink;
