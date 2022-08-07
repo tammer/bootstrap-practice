@@ -60,23 +60,30 @@ const TechStack = ({ attributes, handleChange }) => {
 
   return (
     <>
-      <div className="level-slider-box">
-        <div className="level-slider-outer-header">
-          <div />
-          <div className="level-slider-header">
-            <div>novice</div>
-            <div>capable</div>
-            <div>proficient</div>
-            <div>expert</div>
-            <div>authority</div>
+      {attributes.length > 0 ? (
+        <>
+          <div className="level-slider-box">
+            <div className="level-slider-outer-header">
+              <div />
+              <div className="level-slider-header">
+                <div>novice</div>
+                <div>capable</div>
+                <div>proficient</div>
+                <div>expert</div>
+                <div>authority</div>
+              </div>
+            </div>
+            <div className="level-slider-inner-box">
+              {attributes.map((att) => row(att["name"], att["level"]))}
+              <div ref={bottomRef} />
+            </div>
           </div>
-        </div>
-        <div className="level-slider-inner-box">
-          {attributes.map((att) => row(att["name"], att["level"]))}
-          <div ref={bottomRef} />
-        </div>
-      </div>
-      <br />
+          <br />
+        </>
+      ) : (
+        ""
+      )}
+
       <div style={{ width: "300px" }}>
         <SkillSelector
           isMulti={false}
