@@ -31,6 +31,7 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
   return (
     <div className="selector">
       <AsyncCreatableSelect
+        maxMenuHeight={"150px"}
         closeMenuOnSelect={true}
         defaultOptions
         cacheOptions
