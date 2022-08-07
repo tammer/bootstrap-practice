@@ -4,7 +4,7 @@
 $color1: white;
 $color2: #232f3e; // default font color
 
-$bp: 720px;
+$bp: 1000px;
 
 body {
   background-color: $color1;
@@ -444,15 +444,13 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 .level-slider-outer,
 .level-slider-outer-header {
   display: grid;
-  grid-template-columns: 60px auto;
+  grid-template-columns: 180px auto;
   height: $levelSliderHeight;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.level-slider-outer {
-  // background: rgb(241, 242, 243);
-  // border: 1px solid rgb(214, 217, 220);
-  // border-radius: 4px;
+.level-slider-outer-header {
+  margin-bottom: 0px;
 }
 
 .level-slider-body {
@@ -485,17 +483,32 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 }
 
 .horse {
-  text-align: right;
-  padding-right: 10px;
+  max-width: 100%;
+  padding: 2px;
   padding-left: 5px;
+  padding-right: 5px;
+  font-size: 85%;
   white-space: nowrap;
   overflow: hidden;
-  margin-top: 6px;
-  margin-left: 6px;
-  background: lightblue;
-  border: 1px solid gray;
-  border-radius: 5px;
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 2px;
   margin-bottom: 6px;
-  // text-overflow: ellipsis;
-  // background-color: pink;
+  // box-sizing: border-box;
+  text-overflow: hidden;
+  color: hsl(0, 0%, 20%);
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.horse-holder {
+  text-align: right;
+}
+
+.level-slider-box {
+  border: 1px solid pink;
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  padding: 7px;
 }

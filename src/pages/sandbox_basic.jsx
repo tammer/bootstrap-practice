@@ -4,6 +4,17 @@ import { Form } from "react-bootstrap";
 import BPSwitch from "../components/bpswitch";
 import SalarySelector from "../components/SalarySelector";
 
+const LevelSliderContainer = () => {
+  return (
+    <div className="level-slider-outer">
+      <div className="horse">Javascript</div>
+      <div>
+        <LevelSlider />
+      </div>
+    </div>
+  );
+};
+
 const Sandbox = () => {
   return (
     <>
@@ -34,6 +45,62 @@ const Sandbox = () => {
               </div>
 
               <SkillSelector isMulti />
+              <br />
+              <br />
+              {/* <LevelSliderContainer /> */}
+              <br />
+              <br />
+              <div className="level-slider-box">
+                <div className="level-slider-outer-header">
+                  <div />
+                  <div className="level-slider-header">
+                    <div>novice</div>
+                    <div>capable</div>
+                    <div>proficient</div>
+                    <div>expert</div>
+                    <div>authority</div>
+                  </div>
+                </div>
+                <div className="level-slider-outer">
+                  <div className="horse-holder">
+                    <div className="horse">4th Dimension</div>
+                  </div>
+                  <div>
+                    <div className="level-slider-body">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <div className="level-slider-body-div" />
+                      ))}
+                      <div className="level-slider-item">
+                        <LevelSlider />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="level-slider-outer">
+                  <div className="horse-holder">
+                    <div className="horse">
+                      Amazon Web Services with Access Databsae
+                    </div>
+                  </div>
+                  <div>
+                    <div className="level-slider-body">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <div className="level-slider-body-div" />
+                      ))}
+                      <div className="level-slider-item">
+                        <LevelSlider />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ width: "250px" }}></div>
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
 
             <div className="attribute-section">

@@ -4,11 +4,11 @@ import "rc-slider/assets/index.css";
 import "./slider.css";
 
 const marks = {
-  20: "novice",
-  40: "capable",
-  60: "proficient",
-  80: "expert",
-  100: "authority",
+  20: "",
+  40: "",
+  60: "",
+  80: "",
+  100: "",
 };
 
 const min = 0;
@@ -55,6 +55,25 @@ const LevelSlider = ({
   const [level, setLevel] = useState(value);
   return (
     <Slider
+      railStyle={{
+        backgroundColor: "gray",
+        opacity: "20%",
+        height: 2,
+        marginTop: "0px",
+      }}
+      trackStyle={{
+        backgroundColor: "gray",
+        opacity: "10%",
+        height: 2,
+        marginTop: "0px",
+      }}
+      handleStyle={{
+        borderColor: "#61FACC",
+        height: 10,
+        width: 10,
+        marginTop: -4,
+        backgroundColor: "#61FACC",
+      }}
       min={min}
       max={max}
       marks={marks}
