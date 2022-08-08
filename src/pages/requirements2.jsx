@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import GeneralSelector from "../components/GeneralSelector";
 import LocationSelector from "../components/LocationSelector";
 import BPSwitch from "../components/bpswitch";
+import { useNavigate } from "react-router-dom";
 
 const SectionRight = ({
   isActive = true,
@@ -60,6 +61,7 @@ const SectionRight = ({
 
 const Requirements = () => {
   const [formState, setFormState] = useState(defaultStates);
+  const navigate = useNavigate();
 
   function updateState(id, values_) {
     let values = Array.isArray(values_) ? values_ : [values_];
@@ -305,10 +307,10 @@ const Requirements = () => {
                   disabled={formGood() ? false : true}
                   onClick={() => {
                     update();
-                    // navigate("/skills");
+                    navigate("/home");
                   }}
                 >
-                  Save and Continue
+                  Save
                 </button>
               </div>
             </div>
