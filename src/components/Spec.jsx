@@ -100,23 +100,19 @@ const Spec = ({ formState }) => {
               <div className="code-indent">{makeCondition("Experiential")}</div>
               <span className="code-color-1">THEN:</span>
               <div className="code-indent">
-                <span className="code-color-3">
-                  <span className="code-color-2">opportunities</span>.append(
-                  {JD})
-                </span>
+                {formState["active"] ? (
+                  <span className="code-color-3">
+                    <span className="code-color-2">opportunities</span>.append(
+                    {JD})
+                  </span>
+                ) : (
+                  <span className="code-color-3">
+                    <span className="code-color-3">
+                      # !!! Do nothing; spec is inactive
+                    </span>
+                  </span>
+                )}
               </div>
-              {/* <div className="code-indent">
-                  <span className="code-color-1">IF:</span> you.interested() ===
-                  true:
-                  <div className="code-indent">
-                    <span className="code-color-3">introduce</span>(you
-                    &gt;&lt;&nbsp;
-                    {JD}.contact_person
-                    <span className="code-color-3">)</span>
-                  </div>
-                  <span className="code-color-1">ELSE:</span>
-                  <div className="code-indent">nil</div>
-                </div> */}
             </div>
           </div>
         </code>
