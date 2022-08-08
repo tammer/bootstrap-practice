@@ -277,6 +277,13 @@ const Requirements = () => {
                     "Experiential Requirements"
                   )}
                 />
+                <SectionRight
+                  subtitle="Industry"
+                  canBeDisabled={true}
+                  isActive={formState["Industry"]["active"]}
+                  updateActive={(e) => updateActive("Industry", e)}
+                  selector={MakeSelector("Industry", "Industry Requirements")}
+                />
               </div>
             </div>
 
