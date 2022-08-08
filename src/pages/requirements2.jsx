@@ -2,7 +2,6 @@ import Privilaged from "../components/Privilaged";
 import TechStack from "../components/TechStack";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
-import SkillSelector from "../components/SkillSelector";
 import GeneralSelector from "../components/GeneralSelector";
 import LocationSelector from "../components/LocationSelector";
 import BPSwitch from "../components/bpswitch";
@@ -174,7 +173,6 @@ const Requirements = () => {
     <>
       <Privilaged>
         <div className="main-container">
-          <div className="left-panel"></div>
           <div>
             <div className="right-panel no-borders">
               <div className="double-subpanel">
