@@ -30,9 +30,10 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto main-area">
-            <Nav.Link href="/requirements">My Spec</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/requirements">Spec</Nav.Link>
             {/* <Nav.Link href="/skills">My Skillset</Nav.Link> */}
-            <Nav.Link href="/opps">My Opportunities</Nav.Link>
+            {/* <Nav.Link href="/opps">My Opportunities</Nav.Link> */}
           </Nav>
           {localStorage.getItem("token") ? (
             <NavDropdown title={userName} id="basic-nav-dropdown">
