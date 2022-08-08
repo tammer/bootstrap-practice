@@ -50,3 +50,18 @@ export function destroyAnchor(id) {
     },
   });
 }
+
+export function formFromServer(setFormState) {
+  fetch(process.env.REACT_APP_API + "/profile/", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Token ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => (res.status == 200 ? res.json() : null))
+    .then((data) => {
+      if (data) setFormState(data);
+    });
+}
