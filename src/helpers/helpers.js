@@ -65,3 +65,16 @@ export function formFromServer(setFormState) {
       if (data) setFormState(data);
     });
 }
+
+export function formToServer(formState) {
+  const y = JSON.stringify(formState);
+  fetch(process.env.REACT_APP_API + "/profile/", {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Token ${localStorage.getItem("token")}`,
+    },
+    body: y,
+  });
+}

@@ -1,5 +1,5 @@
 import Privilaged from "../components/Privilaged";
-import { formFromServer } from "../helpers/helpers";
+import { formFromServer, formToServer } from "../helpers/helpers";
 import TechStack from "../components/TechStack";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
@@ -93,19 +93,6 @@ const Requirements = () => {
       if ((e["name"] == "on-site") | (e["name"] == "hybrid")) rv = true;
     });
     return rv;
-  }
-
-  function update() {
-    const y = JSON.stringify(formState);
-    fetch(process.env.REACT_APP_API + "/profile/", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-      body: y,
-    });
   }
 
   useEffect(() => {
@@ -306,7 +293,7 @@ const Requirements = () => {
                   style={{ float: "right" }}
                   disabled={formGood() ? false : true}
                   onClick={() => {
-                    update();
+                    formToServer(formState);
                     navigate("/home");
                   }}
                 >
