@@ -2,7 +2,7 @@ import Privilaged from "../components/Privilaged";
 import Spec from "../components/Spec";
 import BPSwitch from "../components/bpswitch";
 import { useNavigate } from "react-router-dom";
-import { formFromServer } from "../helpers/helpers";
+import { formFromServer, formToServer } from "../helpers/helpers";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -34,9 +34,12 @@ const Home = () => {
                   <div style={{ paddingBottom: "3px", textAlign: "right" }}>
                     <BPSwitch
                       label="ACTIVE?"
-                      checked={true}
+                      checked={formState ? formState["active"] : false}
                       handleChange={(e) => {
-                        return true;
+                        let temp = { ...formState };
+                        temp["active"] = e;
+                        setFormState(temp);
+                        formToServer(temp);
                       }}
                     />
                   </div>
