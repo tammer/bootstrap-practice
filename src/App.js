@@ -35,6 +35,7 @@ function App() {
             {/* <Nav.Link href="/skills">My Skillset</Nav.Link> */}
             {/* <Nav.Link href="/opps">My Opportunities</Nav.Link> */}
           </Nav>
+          <Nav.Link href="/requirements">About</Nav.Link>
           {localStorage.getItem("token") ? (
             <NavDropdown title={userName} id="basic-nav-dropdown">
               {/* <NavDropdown.Divider /> */}
