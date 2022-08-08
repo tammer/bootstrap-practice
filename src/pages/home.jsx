@@ -18,6 +18,11 @@ const Home = () => {
           <div className="right-panel">
             <div className="left-subpanel">
               <h1>Spec</h1>
+              {formState && !formState["active"] ? (
+                <p style={{ color: "red" }}>Inactive</p>
+              ) : (
+                ""
+              )}
               <p>
                 The pseudocode shows the filtering that is applied to every job
                 posting submitted to this platform. It follows directly from
