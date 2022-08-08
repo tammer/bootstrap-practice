@@ -404,7 +404,8 @@ h3 {
   padding-top: 2px;
 }
 
-.bp-button {
+.bp-button,
+.bp-button-secondary {
   color: #000000;
   border-radius: 4px;
   background-color: $color3;
@@ -416,6 +417,10 @@ h3 {
   font-size: 16px;
   font-weight: 500;
   margin-right: 4px;
+}
+
+.bp-button-secondary {
+  background-color: #d0d7de;
 }
 
 .bp-button:hover {

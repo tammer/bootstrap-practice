@@ -61,6 +61,7 @@ const SectionRight = ({
 
 const Requirements = () => {
   const [formState, setFormState] = useState(defaultStates);
+  const [formChanged, setFormChanged] = useState(false);
   const navigate = useNavigate();
 
   function updateState(id, values_) {
@@ -70,11 +71,13 @@ const Requirements = () => {
       ? (temp[id]["attributes"] = values)
       : (temp[id] = { attributes: values });
     setFormState(temp);
+    setFormChanged(true);
   }
   function updateActive(id, status) {
     let temp = { ...formState };
     temp[id] ? (temp[id]["active"] = status) : (temp[id] = { active: status });
     setFormState(temp);
+    setFormChanged(true);
   }
 
   function formGood() {
@@ -288,17 +291,31 @@ const Requirements = () => {
                 }
               />
               <div>
-                <button
-                  className="bp-button"
-                  style={{ float: "right" }}
-                  disabled={formGood() ? false : true}
-                  onClick={() => {
-                    formToServer(formState);
-                    navigate("/home");
-                  }}
-                >
-                  Save
-                </button>
+                <div style={{ float: "right" }}>
+                  {formChanged ? (
+                    <button
+                      className="bp-button-secondary"
+                      onClick={() => {
+                        navigate("/home");
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  ) : (
+                    ""
+                  )}
+
+                  <button
+                    className="bp-button"
+                    disabled={formGood() && formChanged ? false : true}
+                    onClick={() => {
+                      formToServer(formState);
+                      navigate("/home");
+                    }}
+                  >
+                    Save
+                  </button>
+                </div>
               </div>
             </div>
           </div>
