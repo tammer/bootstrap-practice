@@ -169,18 +169,23 @@ body {
 }
 
 .attribute {
-  background-color: white;
-  color: #4b6a88;
-  font-weight: bold;
+  background-color: #233f48;
+  color: #c1c9d2;
+  // border-bottom: 1px solid white;
+  // padding: 1px;
+  padding-right: 2px;
+  padding-left: 2px;
+  // font-style: italic;
+  // font-weight: bold;
 }
 
 .filter-code {
-  background-color: #1e1e1d;
-  color: #dcdcab;
-  font-size: 12px;
+  background-color: rgb(79, 86, 107);
+  // color: #dcdcab;
+  color: rgb(245, 251, 255);
   padding: 20px;
   padding-right: 0px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .code-color-0 {
@@ -188,15 +193,15 @@ body {
 }
 
 .code-color-1 {
-  color: pink;
+  color: rgb(248, 184, 134);
 }
 
 .code-color-2 {
-  color: orange;
+  color: rgb(164, 205, 254);
 }
 
 .code-color-3 {
-  color: greenyellow;
+  color: rgb(133, 217, 151);
 }
 
 .slider-label {

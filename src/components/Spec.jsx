@@ -1,15 +1,24 @@
-const Spec = ({ formState }) => {
+import React, { useState, useEffect } from "react";
+import { formFromServer } from "../helpers/helpers";
+
+const Spec = () => {
+  const LIMIT = 5;
+  const [formState, setFormState] = useState(null);
+  useEffect(() => {
+    formFromServer(setFormState);
+  }, []);
   const JD = <span className="code-color-2">jd</span>;
   function makeCondition(id, isLast = false) {
     const cond = {
       Role: { suffix: "role", comparison: "∈" },
-      Model: { suffix: "work_model", comparison: "∈" },
+      WorkModel: { suffix: "work_model", comparison: "∈" },
+      Location: { suffix: "loc", comparison: "∈" },
       Tenure: { suffix: "tenure", comparison: "∈" },
       TechStack: { suffix: "tech_stack", comparison: "⊇" },
       TechAntiStack: { suffix: "tech_stack", comparison: "∉" },
       Industry: { suffix: "industry", comparison: "∈" },
       Salary: { suffix: "salary", comparison: ">=" },
-      OrgType: { suffix: "org_chars", comparison: "∈" },
+      OrgType: { suffix: "org_type", comparison: "∈" },
       OrgSize: { suffix: "org_size", comparison: "" },
       Experiential: { suffix: "Experiential", comparison: "⊇" },
     };
@@ -21,17 +30,21 @@ const Spec = ({ formState }) => {
     ) {
       return <div></div>;
     }
-    const listItems = formState[id]["attributes"].slice(0, 3).map((e) => (
-      <span>
-        <span className="attribute">{e["label"]}</span>,&nbsp;
-      </span>
-    ));
+    const listItems = formState[id]["attributes"]
+      .slice(0, LIMIT)
+      .map((e, idx) => (
+        <span key={idx}>
+          <span className="attribute">{e["name"]}</span>
+          ,&nbsp;
+        </span>
+      ));
     if (id === "Salary") {
       return (
         <div>
           {JD}.salary &gt;={" "}
           <span className="attribute">
-            ${formState[id]["attributes"][0]["label"]}
+            {formState[id]["attributes"][0]["ccy"]}
+            {formState[id]["attributes"][0]["amount"]}
           </span>
           &nbsp;&amp;&amp;
         </div>
@@ -44,7 +57,7 @@ const Spec = ({ formState }) => {
         <div>
           {JD}.org_size &lt;&nbsp;
           <span className="attribute">
-            {formState[id]["attributes"][0]["label"].substring(2)}
+            {formState[id]["attributes"][0]["name"].substring(2)}
           </span>
           &nbsp;&amp;&amp;
         </div>
@@ -56,7 +69,7 @@ const Spec = ({ formState }) => {
         <div>
           {JD}.{cond[id]["suffix"] + " " + cond[id]["comparison"] + " {"}
           {listItems}
-          {formState[id]["attributes"].length > 3 ? "..." : ""}
+          {formState[id]["attributes"].length > LIMIT ? "..." : ""}
           {"}"}
           {!isLast ? <>&nbsp;&amp;&amp;</> : ""}
         </div>
@@ -66,20 +79,21 @@ const Spec = ({ formState }) => {
 
   return (
     <>
-      <code>
-        <div className="filter-code">
-          <div className="code-indent"></div>
-          <span className="code-color-1">While(true):</span>
-          <div className="code-indent">
+      {formState ? (
+        <code>
+          <div className="filter-code">
+            <div className="code-indent"></div>
+            <span className="code-color-2">opportunities</span> = []
+            <br />
             <span className="code-color-2">jd_list</span> ={" "}
             <span className="code-color-3">fetchNewJobDescriptions()</span>
             <br />
-            for each {JD} in <span className="code-color-2">jd_list</span>:
+            for {JD} in <span className="code-color-2">jd_list</span>:
             <div className="code-indent">
               <span className="code-color-1">IF:</span>
               <div className="code-indent">{makeCondition("Role")}</div>
               <div className="code-indent">{makeCondition("Salary")}</div>
-              <div className="code-indent">{makeCondition("Model")}</div>
+              <div className="code-indent">{makeCondition("WorkModel")}</div>
               <div className="code-indent">{makeCondition("Tenure")}</div>
               <div className="code-indent">{makeCondition("TechStack")}</div>
               <div className="code-indent">
@@ -93,30 +107,29 @@ const Spec = ({ formState }) => {
               <div className="code-indent">{makeCondition("Experiential")}</div>
               <span className="code-color-1">THEN:</span>
               <div className="code-indent">
-                <span className="code-color-3">send_email(</span>to: you,
-                content: {JD}.full_description
-                <span className="code-color-3">)</span>{" "}
+                <span className="code-color-3">
+                  <span className="code-color-2">opportunities</span>.append(
+                  {JD})
+                </span>
               </div>
-              <div className="code-indent">
-                <span className="code-color-1">IF:</span> you.interested() ===
-                true:
-                <div className="code-indent">
-                  <span className="code-color-3">introduce</span>(you
-                  &gt;&lt;&nbsp;
-                  {JD}.contact_person
-                  <span className="code-color-3">)</span>
-                </div>
-                <span className="code-color-1">ELSE:</span>
-                <div className="code-indent">nil</div>
-              </div>
+              {/* <div className="code-indent">
+                  <span className="code-color-1">IF:</span> you.interested() ===
+                  true:
+                  <div className="code-indent">
+                    <span className="code-color-3">introduce</span>(you
+                    &gt;&lt;&nbsp;
+                    {JD}.contact_person
+                    <span className="code-color-3">)</span>
+                  </div>
+                  <span className="code-color-1">ELSE:</span>
+                  <div className="code-indent">nil</div>
+                </div> */}
             </div>
-            <span className="code-color-3">
-              sleep(
-              <span className="code-color-0">24 hours</span>)
-            </span>
           </div>
-        </div>
-      </code>
+        </code>
+      ) : (
+        ""
+      )}
     </>
   );
 };
