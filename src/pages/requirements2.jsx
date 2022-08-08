@@ -1,4 +1,5 @@
 import Privilaged from "../components/Privilaged";
+import { formFromServer } from "../helpers/helpers";
 import TechStack from "../components/TechStack";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
@@ -105,23 +106,8 @@ const Requirements = () => {
     });
   }
 
-  function formFromServer() {
-    fetch(process.env.REACT_APP_API + "/profile/", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => (res.status == 200 ? res.json() : null))
-      .then((data) => {
-        if (data) setFormState(data);
-      });
-  }
-
   useEffect(() => {
-    formFromServer();
+    formFromServer(setFormState);
   }, []);
 
   function SectionLeft({ title, text }) {
