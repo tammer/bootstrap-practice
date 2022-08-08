@@ -78,3 +78,15 @@ export function formToServer(formState) {
     body: y,
   });
 }
+
+export function showMessage(
+  setMessage,
+  msg,
+  type = "message-success",
+  timeout = 5500
+) {
+  setMessage([msg, type]);
+  setTimeout(() => {
+    setMessage(["", null]);
+  }, timeout);
+}

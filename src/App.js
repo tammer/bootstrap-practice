@@ -4,8 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [message, setMessage] = useState(["", null]);
   const userName = localStorage.getItem("userName");
   const navigate = useNavigate();
 
@@ -54,8 +56,15 @@ function App() {
           )}
         </Navbar.Collapse>
       </Navbar>
+      {message[0] ? (
+        <div id="message-area" className={message[1]}>
+          {message[0]}
+        </div>
+      ) : (
+        ""
+      )}
 
-      <Outlet />
+      <Outlet context={[message, setMessage]} />
     </>
   );
 }

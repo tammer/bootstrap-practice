@@ -1,5 +1,5 @@
 import Privilaged from "../components/Privilaged";
-import { formFromServer, formToServer } from "../helpers/helpers";
+import { formFromServer, formToServer, showMessage } from "../helpers/helpers";
 import TechStack from "../components/TechStack";
 import SalarySelector from "../components/SalarySelector";
 import React, { useState, useEffect } from "react";
@@ -7,6 +7,7 @@ import GeneralSelector from "../components/GeneralSelector";
 import LocationSelector from "../components/LocationSelector";
 import BPSwitch from "../components/bpswitch";
 import { useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const SectionRight = ({
   isActive = true,
@@ -60,6 +61,8 @@ const SectionRight = ({
 };
 
 const Requirements = () => {
+  const [message, setMessage] = useOutletContext();
+  console.log(message);
   const [formState, setFormState] = useState(defaultStates);
   const [formChanged, setFormChanged] = useState(false);
   const navigate = useNavigate();
@@ -297,6 +300,11 @@ const Requirements = () => {
                       className="bp-button-secondary"
                       onClick={() => {
                         navigate("/home");
+                        showMessage(
+                          setMessage,
+                          "No changes were saved.",
+                          "message-secondary"
+                        );
                       }}
                     >
                       Cancel
@@ -310,6 +318,7 @@ const Requirements = () => {
                     disabled={formGood() && formChanged ? false : true}
                     onClick={() => {
                       formToServer(formState);
+                      showMessage(setMessage, "Spec has been saved.");
                       navigate("/home");
                     }}
                   >

@@ -4,6 +4,10 @@
 $color1: white;
 $color2: #232f3e; // default font color
 $color3: #edd716;
+$yellow1: #faed27;
+$bootstrap-primary: rgb(0, 123, 255);
+$bootstrap-success: rgb(40, 167, 69);
+$bootstrap-secondary: rgb(108, 117, 125);
 
 $bp: 850px;
 
@@ -542,4 +546,22 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   border-color: hsl(0, 0%, 80%);
   border-radius: 4px;
   padding: 7px;
+}
+
+.message-success,
+.message-secondary {
+  background-color: $bootstrap-primary;
+  color: white;
+  height: 30px;
+  padding-top: 7px;
+  padding-left: 10px;
+  font-size: 1.2em;
+  font-weight: 700;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+
+.message-secondary {
+  background-color: $bootstrap-secondary;
 }
