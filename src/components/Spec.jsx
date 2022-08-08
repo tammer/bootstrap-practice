@@ -5,7 +5,7 @@ const Spec = ({ formState }) => {
     const cond = {
       Role: { suffix: "role", comparison: "∈" },
       WorkModel: { suffix: "work_model", comparison: "∈" },
-      Location: { suffix: "loc", comparison: "∈" },
+      Location: { suffix: "location", comparison: "∈" },
       Tenure: { suffix: "tenure", comparison: "∈" },
       TechStack: { suffix: "tech_stack", comparison: "⊇" },
       TechAntiStack: { suffix: "tech_stack", comparison: "∉" },
@@ -15,6 +15,7 @@ const Spec = ({ formState }) => {
       OrgSize: { suffix: "org_size", comparison: "" },
       Experiential: { suffix: "Experiential", comparison: "⊇" },
     };
+    const NAME = id === "Location" ? "place_name" : "name";
 
     if (
       !formState[id] ||
@@ -27,7 +28,7 @@ const Spec = ({ formState }) => {
       .slice(0, LIMIT)
       .map((e, idx) => (
         <span key={idx}>
-          <span className="attribute">{e["name"]}</span>
+          <span className="attribute">{e[NAME]}</span>
           ,&nbsp;
         </span>
       ));
@@ -87,6 +88,7 @@ const Spec = ({ formState }) => {
               <div className="code-indent">{makeCondition("Role")}</div>
               <div className="code-indent">{makeCondition("Salary")}</div>
               <div className="code-indent">{makeCondition("WorkModel")}</div>
+              <div className="code-indent">{makeCondition("Location")}</div>
               <div className="code-indent">{makeCondition("Tenure")}</div>
               <div className="code-indent">{makeCondition("TechStack")}</div>
               <div className="code-indent">
