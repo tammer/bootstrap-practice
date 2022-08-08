@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { formFromServer } from "../helpers/helpers";
-
-const Spec = () => {
+const Spec = ({ formState }) => {
   const LIMIT = 5;
-  const [formState, setFormState] = useState(null);
-  useEffect(() => {
-    formFromServer(setFormState);
-  }, []);
   const JD = <span className="code-color-2">jd</span>;
   function makeCondition(id, isLast = false) {
     const cond = {

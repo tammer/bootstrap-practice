@@ -2,8 +2,14 @@ import Privilaged from "../components/Privilaged";
 import Spec from "../components/Spec";
 import BPSwitch from "../components/bpswitch";
 import { useNavigate } from "react-router-dom";
+import { formFromServer } from "../helpers/helpers";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+  const [formState, setFormState] = useState(null);
+  useEffect(() => {
+    formFromServer(setFormState);
+  }, []);
   const navigate = useNavigate();
   return (
     <>
@@ -35,7 +41,7 @@ const Home = () => {
                     />
                   </div>
                 </div>
-                <Spec />
+                <Spec formState={formState} />
                 <div>
                   <button
                     className="bp-button"
