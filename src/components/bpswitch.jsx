@@ -1,9 +1,9 @@
 import Switch from "react-switch";
 
-const BPSwitch = ({ checked, handleChange }) => {
+const BPSwitch = ({ checked, handleChange, label = "RELEVANT?" }) => {
   return (
     <>
-      <span>RELEVANT?</span>
+      <span>{label}</span>
       <Switch
         height={18}
         width={40}
