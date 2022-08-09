@@ -87,19 +87,19 @@ const Spec = ({ formState }) => {
               <span className="code-color-1">IF:</span>
               <div className="code-indent">{makeCondition("Role")}</div>
               <div className="code-indent">{makeCondition("Salary")}</div>
+              <div className="code-indent">{makeCondition("Tenure")}</div>
               <div className="code-indent">{makeCondition("WorkModel")}</div>
               <div className="code-indent">{makeCondition("Location")}</div>
-              <div className="code-indent">{makeCondition("Tenure")}</div>
               <div className="code-indent">{makeCondition("TechStack")}</div>
+              <div className="code-indent">{makeCondition("OrgSize")}</div>
+              <div className="code-indent">{makeCondition("OrgType")}</div>
+              <div className="code-indent">{makeCondition("Experiential")}</div>
               <div className="code-indent">
                 {makeCondition("TechAntiStack")}
               </div>
               <div className="code-indent">
                 {makeCondition("Industry", true)}
               </div>
-              <div className="code-indent">{makeCondition("OrgSize")}</div>
-              <div className="code-indent">{makeCondition("OrgType")}</div>
-              <div className="code-indent">{makeCondition("Experiential")}</div>
               <span className="code-color-1">THEN:</span>
               <div className="code-indent">
                 {formState["active"] ? (
