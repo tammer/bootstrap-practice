@@ -13,10 +13,10 @@ import Requirements from "./pages/requirements2";
 import Login from "./pages/login";
 import Assessment from "./pages/assessment";
 import Anchors from "./pages/anchors";
-import Sandbox from "./pages/sandbox";
+// import Sandbox from "./pages/sandbox";
 // import Sandbox from "./pages/sandbox_range_slider";
 // import Sandbox from "./pages/sandbox_basic";
-// import Sandbox from "./pages/sandbox_basic2";
+import Sandbox from "./pages/sandbox_basic2";
 import Landing from "./pages/landing";
 import Home from "./pages/home";
 import Opps from "./pages/opps";
@@ -27,6 +27,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="sandbox" element={<Sandbox />} />
+        <Route path="/l" element={<Landing />} />
         <Route path="/" element={<App />}>
           <Route path="" element={<Home />} />
           <Route path="home" element={<Home />} />
