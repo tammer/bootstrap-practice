@@ -1,86 +1,124 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
-
-const Landing = () => {
+const Feature = ({ title, copy, src }) => {
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col sm="2"></Col>
-          <Col sm="8">
-            <div style={{ textAlign: "center", marginTop: "40px" }}>
-              <h1 className="display-6">Welcome to</h1>
-              <h5>(the protype of)</h5>
-              <h1 className="display-1">Background Process</h1>
-              <p className="lead">
-                The Job Opportunity Management System for Developers{" "}
-              </p>
-              <h5>
-                Background Process is a filtering system for the job market
-              </h5>
-            </div>
-            <div className="d-flex justify-content-center">
-              <ol>
-                <li>
-                  You spec a series of parameters (role, tech stack, salary,
-                  ...).
-                </li>
-                <li>
-                  Recruiters and hiring orgs submit job requisites to the
-                  platform.
-                </li>
-                <li>
-                  When (and only when) a job opportunity meets your criteria, we
-                  show it to you.
-                </li>
-                <li>
-                  If (and only if) you like what you see, we connect you to the
-                  submitter.
-                </li>
-              </ol>
-            </div>
-            <h1 style={{ textAlign: "center" }}>Benefits</h1>
-            <dl className="row">
-              <dt className="col-sm-3">Effecient</dt>
-              <dd className="col-sm-9">
-                You only see opportunities that are exactly what you would
-                actually consider.
-              </dd>
-              <dt className="col-sm-3">Annonymous</dt>
-              <dd className="col-sm-9">
-                Nobody sees your criteria or that you are using the platform. In
-                fact, nobody sees anything ever. Only when you explitily request
-                it, the platform facilitates intros.
-              </dd>
-              <dt className="col-sm-3">Customizable</dt>
-              <dd className="col-sm-9">
-                Love your current job? Then spec your dream job at a salary high
-                enough to actually entice you. Ready for a change? Expand the
-                range of a few parameters to start seeing more opps.
-              </dd>
-              <dt className="col-sm-3">Unobtrusive</dt>
-              <dd className="col-sm-9">
-                Like the name says, the platform is in the background.
-                Occationally it alerts you to opportunities that are exactly
-                what you told it to flag.
-              </dd>
-            </dl>
-            <div style={{ textAlign: "center" }}>
-              <h1 className="display-6">Just a Matching Engine</h1>
-              <p>Background Process IS NOT a jobs board.</p>
-              <p>Background Process IS NOT a recruitment agency.</p>
-              <p>
-                It's a computer program that runs once a day applying a fitler
-                to the job market.
-              </p>
-              <br />
-              <Button href="/requirements">Try it</Button>
-            </div>
-          </Col>
-        </Row>
-        node_env:{process.env.NODE_ENV}
-        <br />
-        server:{process.env.REACT_APP_API}
-      </Container>
+      <div className="feature">
+        <div>{title}</div>
+        <div>
+          <img src={require(`./../assets/${src}`)} />
+        </div>
+        <div>{copy}</div>
+      </div>
+    </>
+  );
+};
+
+const Content = ({ title, subtitle, body }) => {
+  return (
+    <>
+      <div className="page">
+        <div>{title}</div>
+        <div>{subtitle}</div>
+        <div>{body}</div>
+      </div>
+    </>
+  );
+};
+
+const Page = ({ content }) => {
+  return <div className="ssection">{content}</div>;
+};
+
+const feature_page = [
+  [
+    "Precision",
+    "precision.png",
+    <p>
+      You spec the job(s) you would consider using 9 attributes: role, tech
+      stack, salary, work model, location, industry, org type, org size and
+      experential factors.
+    </p>,
+  ],
+  [
+    "Accuracy",
+    "accuracy.png",
+    <p>
+      You will be notified of every opportunity that matches your spec. No more.
+      No less.
+    </p>,
+  ],
+  [
+    "Anonymity",
+    "anonymity.png",
+    <p>
+      Nobody can see your spec or anything about you or even know that you are
+      using Background Process. You remain anonymous until you choose to meet a
+      particular organization.
+    </p>,
+  ],
+  [
+    "24/7/365",
+    "247.png",
+    <p>
+      Organizations continually submit requirements for roles they need to fill.
+      Every one is checked against your spec.
+    </p>,
+  ],
+  [
+    "Not a Recruiter",
+    "nohh.png",
+    <p>
+      No headhunters work here. This is matching engine that ensures you see all
+      the opportunities that interest you and none that don't. That's all it
+      does.
+    </p>,
+  ],
+  [
+    "Not a Jobs Board",
+    "nojb.png",
+    <p>
+      There are noo job postings here. When an opportunity matches your spec,
+      you will get a link to the original posting.
+    </p>,
+  ],
+];
+
+const Landing = () => {
+  const body = (
+    <div className="feature-grid">
+      {feature_page.map((e, index) => {
+        return (
+          <Feature key={`trala-${index}`} title={e[0]} src={e[1]} copy={e[2]} />
+        );
+      })}
+    </div>
+  );
+  const contents = [
+    <Content
+      title={<h1>Welcome to Background Process</h1>}
+      subtitle=""
+      body={
+        <div style={{ paddingTop: "100px", paddingBottom: "200px" }}>
+          <h2>
+            Background Process monitors the job market for opportunities which
+            match criteria you specify.
+          </h2>
+        </div>
+      }
+    />,
+
+    <Content
+      title={<h1>Key Aspects of Background Process</h1>}
+      subtitle={null}
+      body={body}
+    />,
+  ];
+  return (
+    <>
+      <div className="scontainer">
+        {contents.map((content, index) => {
+          return <Page key={`lp-${index}`} content={content} />;
+        })}
+      </div>
     </>
   );
 };
