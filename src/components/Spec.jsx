@@ -13,7 +13,7 @@ const Spec = ({ formState }) => {
       Salary: { suffix: "salary", comparison: ">=" },
       OrgType: { suffix: "org_type", comparison: "∈" },
       OrgSize: { suffix: "org_size", comparison: "" },
-      Experiential: { suffix: "Experiential", comparison: "⊇" },
+      Experiential: { suffix: "experiential", comparison: "⊇" },
     };
     const NAME = id === "Location" ? "place_name" : "name";
     const AND = <span className="code-color-1">AND</span>;
