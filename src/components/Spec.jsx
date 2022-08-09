@@ -65,7 +65,13 @@ const Spec = ({ formState }) => {
           {listItems}
           {formState[id]["attributes"].length > LIMIT ? "..." : ""}
           {"}"}
-          {!isLast ? <>&nbsp;&amp;&amp;</> : ""}
+          {!isLast ? (
+            <>
+              &nbsp;<span className="code-color-1">AND</span>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </>
     );
