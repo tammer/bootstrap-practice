@@ -16,6 +16,7 @@ const Spec = ({ formState }) => {
       Experiential: { suffix: "Experiential", comparison: "⊇" },
     };
     const NAME = id === "Location" ? "place_name" : "name";
+    const AND = <span className="code-color-1">AND</span>;
 
     if (
       !formState[id] ||
@@ -40,7 +41,7 @@ const Spec = ({ formState }) => {
             {formState[id]["attributes"][0]["ccy"]}
             {formState[id]["attributes"][0]["amount"]}
           </span>
-          &nbsp;&amp;&amp;
+          &nbsp;{AND}
         </div>
       );
     }
@@ -65,13 +66,7 @@ const Spec = ({ formState }) => {
           {listItems}
           {formState[id]["attributes"].length > LIMIT ? "..." : ""}
           {"}"}
-          {!isLast ? (
-            <>
-              &nbsp;<span className="code-color-1">AND</span>
-            </>
-          ) : (
-            ""
-          )}
+          {!isLast ? <>&nbsp;{AND}</> : ""}
         </div>
       </>
     );
