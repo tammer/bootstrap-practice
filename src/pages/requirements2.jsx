@@ -325,7 +325,7 @@ const Requirements = () => {
                     disabled={formGood() && formChanged ? false : true}
                     onClick={() => {
                       formToServer(formState);
-                      showMessage(setMessage, "Spec has been saved.");
+                      showMessage(setMessage, "Spec updated");
                       navigate("/home");
                     }}
                   >
