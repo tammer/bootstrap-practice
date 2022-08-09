@@ -312,19 +312,19 @@ h1 {
 }
 
 .scontainer {
-  position: relative;
+  // position: relative;
   width: 100%;
-  height: 100vh;
-  scroll-behavior: smooth;
-  overflow: auto;
-  scroll-snap-type: y mandatory;
+  // height: 100vh;
+  // scroll-behavior: smooth;
+  // overflow: auto;
+  // scroll-snap-type: y mandatory;
 }
 .ssection {
   width: 100%;
-  height: 100vh;
-  padding-top: 100px;
-  background-size: cover;
-  scroll-snap-align: start;
+  // height: 90vh;
+  // padding-top: 100px;
+  // background-size: cover;
+  // scroll-snap-align: start;
 }
 
 .ssection > h1,
@@ -346,11 +346,11 @@ h3 {
   font-size: 2vw;
 }
 
-.ssection > h1 {
+.ssection h1 {
   font-size: 4vw;
 }
 
-.ssection > h2 {
+.ssection h2 {
   font-size: 3vw;
 }
 
@@ -383,6 +383,69 @@ h3 {
 
 .ssection:nth-child(odd) {
   background-color: #e0d7de;
+}
+
+.feature {
+  // background-color: pink;
+  // display: grid;
+  // grid-template-rows: auto auto auto;
+}
+
+.feature > div:nth-child(1) {
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.feature > div:nth-child(2) {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.feature > div > img {
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  width: 80px;
+}
+
+.feature > div:nth-child(3) {
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.feature-grid > div {
+  margin: 20px;
+  margin-bottom: 30px;
+}
+
+.page {
+  // display: grid;
+  // grid-template-rows: auto auto auto;
+  // background-color: white;
+  line-height: normal;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.page > div:nth-child(1) {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.page > div:nth-child(2) {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 30px;
 }
 
 .selector {
@@ -564,4 +627,51 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 
 .message-secondary {
   background-color: $bootstrap-secondary;
+}
+
+.bp-modal1 {
+  position: absolute;
+  margin-top: 100px;
+  // top: 50px;
+  // left: 50px;
+  width: 100%;
+  // margin: 25%;
+  border: 1px solid black;
+  // width: 50%;
+  // margin: 0 auto;
+}
+
+.bp-modal {
+  // from: https://codepen.io/timothylong/pen/AJxrPR
+  position: fixed;
+  background-color: rgba(125, 125, 125, 0.3);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  pointer-events: none;
+  transition: all 0.3s;
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  & > div {
+    width: 500px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: white;
+    border-radius: 7px;
+  }
+  header {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 24px;
+    margin: 0 0 15px;
+  }
 }
