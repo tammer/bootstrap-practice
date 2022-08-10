@@ -76,8 +76,8 @@ const feature_page = [
     "Not a Jobs Board",
     "nojb.png",
     <p>
-      There are noo job postings here. When an opportunity matches your spec,
-      you will get a link to the original posting.
+      There are no job postings here. When an opportunity matches your spec, you
+      will get a link to the original posting.
     </p>,
   ],
 ];
@@ -93,21 +93,93 @@ const Landing = () => {
     </div>
   );
   const contents = [
-    <Content
-      title={<h1>Welcome to Background Process</h1>}
-      subtitle=""
-      body={
-        <div style={{ paddingTop: "100px", paddingBottom: "200px" }}>
-          <h2>
-            Background Process monitors the job market for opportunities which
-            match criteria you specify.
-          </h2>
-        </div>
-      }
-    />,
+    <div>
+      <Content
+        title={
+          <h1 style={{ color: "white", marginBottom: "0px" }}>
+            Welcome to Background Process
+          </h1>
+        }
+        subtitle="Automated, totally passive job search for software professionals"
+        body={
+          <div
+            style={{
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                margin: "0 auto",
+                paddingBottom: "100px",
+                width: "300px",
+              }}
+            >
+              <img width="100%" src={require(`./../assets/coder.png`)} />
+            </div>
+          </div>
+        }
+      />
+    </div>,
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 2fr",
+        // paddingTop: "20%",
+        paddingBottom: "20%",
+      }}
+    >
+      <div style={{}}>
+        <img width="70%" src={require(`./../assets/radar.png`)} />
+      </div>
+      <div style={{ paddingTop: "20%" }}>
+        <h2>
+          Background Process monitors the job market for opportunities which
+          match objective criteria you specify.
+        </h2>
+      </div>
+    </div>,
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 5fr",
+        // paddingTop: "20%",
+        // paddingBottom: "20%",
+      }}
+    >
+      <div style={{ padding: "50px", paddingLeft: "150px" }}>
+        <img width="150px" src={require(`./../assets/notification.png`)} />
+      </div>
+      <div style={{ paddingTop: "90px" }}>
+        <h2>Anytime there is match, you are notified.</h2>
+      </div>
+    </div>,
+
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 5fr",
+        // paddingTop: "20%",
+        // paddingBottom: "20%",
+      }}
+    >
+      <div
+        style={{ marginLeft: "-180px", padding: "50px", paddingLeft: "150px" }}
+      >
+        <img width="400px" src={require(`./../assets/mail.png`)} />
+      </div>
+      <div style={{ paddingTop: "90px" }}>
+        <h2>
+          If you are interested, we connect you with the hiring organization
+          <br />
+          (and drop out of the process).
+        </h2>
+      </div>
+    </div>,
 
     <Content
-      title={<h1>Key Aspects of Background Process</h1>}
+      title={
+        <h1 style={{ color: "white" }}>Key Aspects of Background Process</h1>
+      }
       subtitle={null}
       body={body}
     />,
