@@ -123,19 +123,19 @@ const Landing = () => {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "1fr 2fr",
+        gridTemplateRows: "1fr 2fr",
         // paddingTop: "20%",
-        paddingBottom: "20%",
+        paddingBottom: "0%",
       }}
     >
-      <div style={{}}>
-        <img width="70%" src={require(`./../assets/radar.png`)} />
-      </div>
-      <div style={{ paddingTop: "20%" }}>
+      <div style={{ paddingTop: "5%" }}>
         <h2>
           Background Process monitors the job market for opportunities which
           match precise criteria you specify.
         </h2>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <img width="50%" src={require(`./../assets/radar.png`)} />
       </div>
     </div>,
     <div
