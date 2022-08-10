@@ -27,7 +27,6 @@ const GeneralSelector = ({
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`,
       },
     }).then((res) => res.json());
   };
