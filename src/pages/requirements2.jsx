@@ -8,6 +8,9 @@ import LocationSelector from "../components/LocationSelector";
 import BPSwitch from "../components/bpswitch";
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
+import { Modal } from "../components/Modal";
+import Spec from "../components/Spec";
+import Signup from "../components/Signup";
 
 const SectionRight = ({
   isActive = true,
@@ -61,10 +64,13 @@ const SectionRight = ({
 };
 
 const Requirements = () => {
+  const newbie = localStorage.getItem("token") ? false : true;
   const [message, setMessage] = useOutletContext();
-  console.log(message);
   const [formState, setFormState] = useState(defaultStates);
   const [formChanged, setFormChanged] = useState(false);
+  const [showIntroModal, setShowIntroModal] = useState(newbie ? true : false);
+  const [showActivateModal, setShowActivateModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   const navigate = useNavigate();
 
   function updateState(id, values_) {
@@ -150,159 +156,29 @@ const Requirements = () => {
     );
   }
 
-  return (
-    <>
-      <Privilaged>
-        <div className="main-container">
+  function renderButtons() {
+    return (
+      <>
+        <div className="right-panel no-borders">
+          <SectionLeft
+            title=""
+            text={
+              formGood() ? (
+                ""
+              ) : (
+                <span style={{ color: "red" }}>
+                  Incomplete form: Role and TechStack are manditory fields
+                </span>
+              )
+            }
+          />
           <div>
-            <div className="right-panel no-borders">
-              <div className="double-subpanel">
-                <h1>Spec Your Dream Job</h1>
-                <ul>
-                  <li>
-                    Use the form below to precisely spec jobs you are willing to
-                    consider.
-                  </li>
-                  <li>
-                    Think of this form as a filter on the universe of jobs: you
-                    will be alerted to any opportunity that meets the criteria
-                    you spec here. All others will be filtered out.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="right-panel">
-              <SectionLeft
-                title="Role"
-                text="Enter the job roles you are willing to consider."
-              />
-              <SectionRight
-                selector={MakeSelector("Role", "Input one or more roles")}
-              />
-            </div>
-            <div className="right-panel">
-              <SectionLeft
-                title="Salary"
-                text="Enter your minimum acceptable salary. You will not be shown any opportunity that pays less than the value you input here."
-              />
-              <div>
-                <SectionRight
-                  selector={
-                    <SalarySelector
-                      value={formState["Salary"]["attributes"][0]}
-                      handleChange={(e) => updateState("Salary", e)}
-                    />
-                  }
-                />
-
-                <SectionRight
-                  subtitle="Tenure"
-                  selector={MakeSelector("Tenure", "Tenure(s)")}
-                />
-              </div>
-            </div>
-            <div className="right-panel">
-              <SectionLeft title="Work Model" text={workModelBlurb()} />
-              <div>
-                <SectionRight
-                  selector={MakeSelector(
-                    "WorkModel",
-                    "Enter the work models you would consider."
-                  )}
-                />
-                {showLocation() ? (
-                  <SectionRight
-                    subtitle="Location"
-                    selector={
-                      <LocationSelector
-                        isMulti={true}
-                        value={formState["Location"]["attributes"]}
-                        handleChange={(e) => updateState("Location", e)}
-                      />
-                    }
-                  />
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
-
-            <div className="right-panel">
-              <SectionLeft
-                title="Tech Stack"
-                text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
-              />
-              <SectionRight
-                placeholder="Input your tech stack"
-                selector={
-                  <TechStack
-                    attributes={formState["TechStack"]["attributes"]}
-                    handleChange={(e) => updateState("TechStack", e)}
-                  />
-                }
-              />
-            </div>
-
-            <div className="right-panel">
-              <SectionLeft
-                title="Organization"
-                text="Enter organizational characteristics and features that are important to you. Note: Experiential criteria are treated as must-haves. Matches decrease with the number of experential requirements you put in place."
-              />
-              <div>
-                <SectionRight
-                  subtitle="Size"
-                  canBeDisabled={true}
-                  isActive={formState["OrgSize"]["active"]}
-                  updateActive={(e) => updateActive("OrgSize", e)}
-                  selector={MakeSelector("OrgSize", "Set size")}
-                />
-                <SectionRight
-                  subtitle="Type"
-                  canBeDisabled={true}
-                  isActive={formState["OrgType"]["active"]}
-                  updateActive={(e) => updateActive("OrgType", e)}
-                  selector={MakeSelector("OrgType", "Org types")}
-                />
-                <SectionRight
-                  subtitle="Workplace Language"
-                  selector={MakeSelector("Language", "Workplace languages")}
-                />
-                <SectionRight
-                  subtitle="Experiential"
-                  canBeDisabled={true}
-                  isActive={formState["Experiential"]["active"]}
-                  updateActive={(e) => updateActive("Experiential", e)}
-                  selector={MakeSelector(
-                    "Experiential",
-                    "Experiential Requirements"
-                  )}
-                />
-                <SectionRight
-                  subtitle="Industry"
-                  canBeDisabled={true}
-                  isActive={formState["Industry"]["active"]}
-                  updateActive={(e) => updateActive("Industry", e)}
-                  selector={MakeSelector("Industry", "Industry Requirements")}
-                />
-              </div>
-            </div>
-
-            <div className="right-panel no-borders">
-              <SectionLeft
-                title=""
-                text={
-                  formGood() ? (
+            <div style={{ float: "right" }}>
+              {formChanged ? (
+                <>
+                  {newbie ? (
                     ""
                   ) : (
-                    <span style={{ color: "red" }}>
-                      Incomplete form: Role and TechStack are manditory fields
-                    </span>
-                  )
-                }
-              />
-              <div>
-                <div style={{ float: "right" }}>
-                  {formChanged ? (
                     <button
                       className="bp-button-secondary"
                       onClick={() => {
@@ -316,27 +192,264 @@ const Requirements = () => {
                     >
                       Cancel
                     </button>
-                  ) : (
-                    ""
                   )}
 
                   <button
                     className="bp-button"
                     disabled={formGood() && formChanged ? false : true}
-                    onClick={() => {
-                      formToServer(formState);
-                      showMessage(setMessage, "Spec updated");
-                      navigate("/home");
-                    }}
+                    onClick={
+                      newbie
+                        ? () => setShowActivateModal(true)
+                        : () => {
+                            formToServer(formState);
+                            showMessage(setMessage, "Spec updated");
+                            navigate("/home");
+                          }
+                    }
+                    // onClick={() => {
+                    //   formToServer(formState);
+                    //   showMessage(setMessage, "Spec updated");
+                    //   navigate("/home");
+                    // }}
                   >
-                    Save
+                    {newbie ? "Next" : "Save"}
                   </button>
-                </div>
-              </div>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
-      </Privilaged>
+        <Modal
+          title="Activation"
+          body={
+            <>
+              <p>
+                Here is the match logic that follows from what you have just
+                input:
+              </p>
+              <Spec formState={formState} />
+              <p>
+                When you activate, this logic will be applied to every job
+                requisite processed by Background Process. You will be notified
+                when matches occur.
+              </p>
+              <div className="align-center">
+                <button
+                  className="bp-button-secondary"
+                  onClick={() => {
+                    setShowActivateModal(false);
+                  }}
+                >
+                  Continue editing
+                </button>
+                <button
+                  onClick={() => {
+                    setShowActivateModal(false);
+                    setShowSignupModal(true);
+                  }}
+                  className="bp-button"
+                >
+                  Activate
+                </button>
+              </div>
+            </>
+          }
+          visible={showActivateModal}
+        />
+        <Modal
+          visible={showSignupModal}
+          title={`Signup`}
+          body={<Signup formState={formState} setMessage={setMessage} />}
+          // body={<Signup />}
+        />
+      </>
+    );
+  }
+
+  return (
+    <>
+      {/* <Privilaged> */}
+      <div className="main-container">
+        <div>
+          <div className="right-panel no-borders">
+            <div className="double-subpanel">
+              <h1 style={{ fontSize: "2.0em" }}>Set Your Criteria</h1>
+              <ul>
+                <li>
+                  Use the form below to precisely spec jobs you are willing to
+                  consider.
+                </li>
+                <li>
+                  You will be alerted to jobs that match the criteria you set
+                  here.
+                </li>
+                {/* <li>
+                  Think of this form as a filter on the universe of jobs: you
+                  will be alerted to any opportunity that meets the criteria you
+                  spec here. All others will be filtered out.
+                </li> */}
+              </ul>
+            </div>
+          </div>
+          <div className="right-panel">
+            <SectionLeft
+              title="Role"
+              text="Enter the job roles you are willing to consider."
+            />
+            <SectionRight
+              selector={MakeSelector("Role", "Input one or more roles")}
+            />
+          </div>
+          <div className="right-panel">
+            <SectionLeft
+              title="Salary"
+              text="Enter your minimum acceptable salary. You will not be shown any opportunity that pays less than the value you input here."
+            />
+            <div>
+              <SectionRight
+                selector={
+                  <SalarySelector
+                    value={formState["Salary"]["attributes"][0]}
+                    handleChange={(e) => updateState("Salary", e)}
+                  />
+                }
+              />
+
+              <SectionRight
+                subtitle="Tenure"
+                selector={MakeSelector("Tenure", "Tenure(s)")}
+              />
+            </div>
+          </div>
+          <div className="right-panel">
+            <SectionLeft title="Work Model" text={workModelBlurb()} />
+            <div>
+              <SectionRight
+                selector={MakeSelector(
+                  "WorkModel",
+                  "Enter the work models you would consider."
+                )}
+              />
+              {showLocation() ? (
+                <SectionRight
+                  subtitle="Location"
+                  selector={
+                    <LocationSelector
+                      isMulti={true}
+                      value={formState["Location"]["attributes"]}
+                      handleChange={(e) => updateState("Location", e)}
+                    />
+                  }
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
+          <div className="right-panel">
+            <SectionLeft
+              title="Tech Stack"
+              text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
+            />
+            <SectionRight
+              placeholder="Input your tech stack"
+              selector={
+                <TechStack
+                  attributes={formState["TechStack"]["attributes"]}
+                  handleChange={(e) => updateState("TechStack", e)}
+                />
+              }
+            />
+          </div>
+
+          <div className="right-panel">
+            <SectionLeft
+              title="Organization"
+              text="Enter organizational characteristics and features that are important to you. Note: Experiential criteria are treated as must-haves. Matches decrease with the number of experential requirements you put in place."
+            />
+            <div>
+              <SectionRight
+                subtitle="Size"
+                canBeDisabled={true}
+                isActive={formState["OrgSize"]["active"]}
+                updateActive={(e) => updateActive("OrgSize", e)}
+                selector={MakeSelector("OrgSize", "Set size")}
+              />
+              <SectionRight
+                subtitle="Type"
+                canBeDisabled={true}
+                isActive={formState["OrgType"]["active"]}
+                updateActive={(e) => updateActive("OrgType", e)}
+                selector={MakeSelector("OrgType", "Org types")}
+              />
+              <SectionRight
+                subtitle="Workplace Language"
+                selector={MakeSelector("Language", "Workplace languages")}
+              />
+              <SectionRight
+                subtitle="Experiential"
+                canBeDisabled={true}
+                isActive={formState["Experiential"]["active"]}
+                updateActive={(e) => updateActive("Experiential", e)}
+                selector={MakeSelector(
+                  "Experiential",
+                  "Experiential Requirements"
+                )}
+              />
+              <SectionRight
+                subtitle="Industry"
+                canBeDisabled={true}
+                isActive={formState["Industry"]["active"]}
+                updateActive={(e) => updateActive("Industry", e)}
+                selector={MakeSelector("Industry", "Industry Requirements")}
+              />
+            </div>
+          </div>
+
+          {renderButtons()}
+        </div>
+      </div>
+
+      <Modal
+        title="Describe the Job you Want"
+        body={
+          <div>
+            <ul>
+              <li>
+                Use the this form to describe characteristics of job(s) you
+                would consider.
+              </li>
+              <li>
+                For each attribute (role, org size, industry, etc) you can be
+                highly specific or completely indifferent
+              </li>
+              <li>
+                Once activated, Background Process will alert you if and when
+                there are opportunities that meet the criteria you input.
+              </li>
+            </ul>
+            <p>
+              Tip: If you like your current job, spec something similar at a
+              higher salary
+            </p>
+            <div className="align-center">
+              <button
+                onClick={() => {
+                  setShowIntroModal(false);
+                }}
+                className="bp-button"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        }
+        visible={showIntroModal}
+      />
+      {/* </Privilaged> */}
     </>
   );
 };
@@ -344,6 +457,7 @@ const Requirements = () => {
 export default Requirements;
 
 const defaultStates = {
+  active: true,
   Role: { active: true, attributes: [] },
   WorkModel: { active: true, attributes: [] },
   Language: { active: true, attributes: [] },

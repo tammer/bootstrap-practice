@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useOutletContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { showMessage } from "../helpers/helpers";
 
-const Signup = ({ onSuccess }) => {
+const Signup = ({
+  minimal = true,
+  requireInvite = false,
+  formState,
+  setMessage,
+}) => {
   const [email, setEmail] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [code, setCode] = useState();
   const [password, setPassword] = useState();
-  const [message, setMessage] = useState();
+
+  const navigate = useNavigate();
 
   function postSignup(formData) {
+    const payload = {
+      email: formData["email"],
+      password: formData["password"],
+      profile: formState,
+    };
+    console.log("post", payload);
     return fetch(process.env.REACT_APP_API + "/signup/", {
       method: "POST",
       headers: {
@@ -16,7 +30,7 @@ const Signup = ({ onSuccess }) => {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify(formData),
+      body: JSON.stringify(payload),
     });
   }
 
@@ -33,8 +47,13 @@ const Signup = ({ onSuccess }) => {
         if (res.status === 201) {
           res.json().then((j) => {
             localStorage.setItem("token", j["token"]);
-            localStorage.setItem("userName", firstName);
-            setMessage(localStorage.getItem("token"));
+            localStorage.setItem("userName", email);
+            setMessage(["Yes", null]);
+            showMessage(
+              setMessage,
+              "Welcome to the Platform.  You are signed up."
+            );
+            navigate("/home");
           });
         } else {
           res.json().then((j) => setMessage(j));
@@ -47,39 +66,62 @@ const Signup = ({ onSuccess }) => {
   };
 
   return (
-    <>
+    <div className="signup">
       <form onSubmit={handleSubmit}>
-        <label>
-          <p>email address</p>
-          <input type="text" onChange={(e) => setEmail(e.target.value)} />
-        </label>
-
-        <label>
-          <p>Password</p>
-          <input type="text" onChange={(e) => setPassword(e.target.value)} />
-        </label>
-
-        <label>
-          <p>First Name</p>
-          <input type="text" onChange={(e) => setFirstName(e.target.value)} />
-        </label>
-
-        <label>
-          <p>Last Name</p>
-          <input type="text" onChange={(e) => setLastName(e.target.value)} />
-        </label>
-
-        <label>
-          <p>Invite Code</p>
-          <input type="text" onChange={(e) => setCode(e.target.value)} />
-        </label>
+        <div>
+          <input
+            placeholder="email"
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
         <div>
-          <button type="submit">Submit</button>
+          <input
+            placeholder="password"
+            type="text"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        {minimal ? (
+          ""
+        ) : (
+          <>
+            <div>
+              <p>First Name</p>
+              <input
+                type="text"
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <p>Last Name</p>
+              <input
+                type="text"
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+          </>
+        )}
+
+        {requireInvite ? (
+          <div>
+            <p>Invite Code</p>
+            <input type="text" onChange={(e) => setCode(e.target.value)} />
+          </div>
+        ) : (
+          ""
+        )}
+
+        <div>
+          <button className="bp-button" type="submit">
+            Signup
+          </button>
         </div>
       </form>
-      {message}
-    </>
+    </div>
   );
 };
 

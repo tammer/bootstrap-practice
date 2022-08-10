@@ -11,6 +11,10 @@ $bootstrap-secondary: rgb(108, 117, 125);
 
 $bp: 850px;
 
+.align-center {
+  text-align: center;
+}
+
 body {
   background-color: $color1;
   font-family: "Inter";
@@ -526,8 +530,9 @@ h3 {
 }
 
 .bp-button:disabled {
-  background-color: #d0d7de;
+  background-color: #efebc0;
   pointer-events: none;
+  color: gray;
 }
 
 .no-borders {
@@ -669,19 +674,14 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 .bp-modal {
   // from: https://codepen.io/timothylong/pen/AJxrPR
   position: fixed;
-  background-color: rgba(125, 125, 125, 0.3);
+  background-color: rgba(125, 125, 125, 0.45);
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 999;
-  pointer-events: none;
+  z-index: 1;
   transition: all 0.3s;
-  &:target {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
+
   & > div {
     width: 500px;
     position: absolute;
@@ -699,4 +699,9 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
     font-size: 24px;
     margin: 0 0 15px;
   }
+}
+
+.signup div {
+  text-align: center;
+  padding: 20px 0px 0px 0px;
 }
