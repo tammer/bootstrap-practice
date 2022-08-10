@@ -134,7 +134,7 @@ const Landing = () => {
       <div style={{ paddingTop: "20%" }}>
         <h2>
           Background Process monitors the job market for opportunities which
-          match objective criteria you specify.
+          match precise criteria you specify.
         </h2>
       </div>
     </div>,
