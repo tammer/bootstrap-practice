@@ -59,8 +59,8 @@ const feature_page = [
     "24/7/365",
     "247.png",
     <p>
-      Organizations continually submit requirements for roles they need to fill.
-      Every one is checked against your spec.
+      Every minute of every day Background Process is checking job descriptins
+      against your spec.
     </p>,
   ],
   [
