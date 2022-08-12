@@ -1,6 +1,4 @@
-import { Modal } from "../components/Modal";
-
-const Sandbox = () => {
+const LearningCurve = () => {
   const color1 = "#000000";
   const img = (
     <svg
@@ -171,4 +169,4 @@ const Sandbox = () => {
   );
 };
 
-export default Sandbox;
+export default LearningCurve;

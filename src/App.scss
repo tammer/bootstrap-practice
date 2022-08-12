@@ -705,3 +705,53 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   text-align: center;
   padding: 20px 0px 0px 0px;
 }
+
+// $curve-height: 900px;
+$label-width: 100px;
+
+.learning-curve {
+  margin: 10px;
+  margin-left: 20px;
+  width: 360px;
+}
+
+.curve-axes {
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-color: darkgrey;
+}
+
+.x-axis-label {
+  padding-left: 20%;
+}
+
+.y-axis-label {
+  margin-left: -10px;
+}
+
+.curve-box {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.curve-labels {
+  // background-color: pink;
+  width: $label-width;
+  display: grid;
+  grid-template-rows: 4% 23% 22% 22% 23%;
+}
+
+.curve-labels > div {
+  margin-top: -7px;
+  padding-left: 10px;
+  // height: $label-height;
+}
+
+.curve-labels > div:nth-child(odd) {
+  // margin-top: 7%;
+  // background-color: #c0d7de;
+}
+
+.curve-labels > div:nth-child(even) {
+  // background-color: orange;
+}

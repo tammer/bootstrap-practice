@@ -11,6 +11,7 @@ import { useOutletContext } from "react-router-dom";
 import { Modal } from "../components/Modal";
 import Spec from "../components/Spec";
 import Signup from "../components/Signup";
+import LearningCurve from "../components/LearningCurve";
 
 const SectionRight = ({
   isActive = true,
@@ -352,7 +353,51 @@ const Requirements = () => {
           <div className="right-panel">
             <SectionLeft
               title="Tech Stack"
-              text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
+              // text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
+              text={
+                <div>
+                  <p>
+                    Enter the technologies you want to work with. Do not
+                    exhaustively list everything you know. Rather, list the
+                    technologies you want to use day to day. Hiring orgs spec
+                    the main technologies they are working with, (max 5). A
+                    match occurs when their list is a subset of yours. The
+                    longer your list, the more matches you will get.
+                  </p>
+                  <p>Level Definitions (hover for details)</p>
+                  <LearningCurve />
+                  <p>
+                    Novice: You have trialed the technology in sandbox
+                    environments or have been exposed to it in an educational
+                    setting. You have not used the technology in a professional
+                    setting.
+                  </p>
+                  <p>
+                    Capable: You have used this technology in a production
+                    environment though their are aspects of it you have not
+                    learned. You often make use of documentation and internet
+                    knowledge resources as you work. You probably don't use it
+                    every day or if you do you are continually improving.
+                  </p>
+                  <p>
+                    Proficient: You are highly productive with this technology.
+                    You can achieve anything the tech is capable of with no help
+                    from others. You consult knowledge bases only for special
+                    situations.
+                  </p>
+                  <p>
+                    Expert: You have mastered the technology. You are able to
+                    leverage the technology for any feasible purpose
+                    effeciently. You are probably the most knowledge person on
+                    this technology in your organization.
+                  </p>
+                  <p>
+                    Authority: You are not only an expert; you are part of the
+                    group of people who create, develop, maintain and evolve
+                    this technology.
+                  </p>
+                </div>
+              }
             />
             <SectionRight
               placeholder="Input your tech stack"
