@@ -10,22 +10,22 @@ const LearningCurve = () => {
       <g
         id="Page-1"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Group-4">
           <path
             d="M0,603 C199.067721,603 373.850149,498.059004 473,340"
             id="Path"
             stroke="#444444"
-            stroke-width="6"
+            strokeWidth="6"
           ></path>
           <path
             d="M527,266 C726.067721,266 900.850149,161.059004 1000,3"
             id="Path"
             stroke="#444444"
-            stroke-width="6"
+            strokeWidth="6"
             transform="translate(763.500000, 134.500000) scale(-1, -1) translate(-763.500000, -134.500000) "
           ></path>
           <line
@@ -35,13 +35,13 @@ const LearningCurve = () => {
             y2="265.527397"
             id="Line-10"
             stroke="#444444"
-            stroke-width="6"
-            stroke-linecap="square"
+            strokeWidth="6"
+            strokeLinecap="square"
           ></line>
           <ellipse
             id="Oval"
             stroke="#389E06"
-            stroke-width="3"
+            strokeWidth="3"
             cx="153"
             cy="583.5"
             rx="23.5"
@@ -50,7 +50,7 @@ const LearningCurve = () => {
           <ellipse
             id="Oval"
             stroke="#389E06"
-            stroke-width="3"
+            strokeWidth="3"
             cx="609"
             cy="163.5"
             rx="23.5"
@@ -59,7 +59,7 @@ const LearningCurve = () => {
           <ellipse
             id="Oval"
             stroke="#389E06"
-            stroke-width="3"
+            strokeWidth="3"
             cx="498"
             cy="300.5"
             rx="23.5"
@@ -68,7 +68,7 @@ const LearningCurve = () => {
           <ellipse
             id="Oval"
             stroke="#389E06"
-            stroke-width="3"
+            strokeWidth="3"
             cx="401"
             cy="434.5"
             rx="23.5"
@@ -77,7 +77,7 @@ const LearningCurve = () => {
           <ellipse
             id="Oval"
             stroke="#389E06"
-            stroke-width="3"
+            strokeWidth="3"
             cx="844"
             cy="24.5"
             rx="23.5"
@@ -87,8 +87,8 @@ const LearningCurve = () => {
             id="Line-13"
             transform="translate(178.000000, 583.000000)"
             stroke="#389E06"
-            stroke-linecap="square"
-            stroke-width="2"
+            strokeLinecap="square"
+            strokeWidth="2"
           >
             <line
               x1="0.930357143"
@@ -102,8 +102,8 @@ const LearningCurve = () => {
             id="Line-13"
             transform="translate(823.000000, 437.500000) scale(1, -1) translate(-823.000000, -437.500000) translate(426.000000, 434.000000)"
             stroke="#389E06"
-            stroke-linecap="square"
-            stroke-width="2"
+            strokeLinecap="square"
+            strokeWidth="2"
           >
             <line x1="0.708928571" y1="6.3" x2="794" y2="0" id="Line-12"></line>
           </g>
@@ -111,8 +111,8 @@ const LearningCurve = () => {
             id="Line-13"
             transform="translate(871.500000, 304.500000) scale(1, -1) translate(-871.500000, -304.500000) translate(523.000000, 304.000000)"
             stroke="#389E06"
-            stroke-linecap="square"
-            stroke-width="2"
+            strokeLinecap="square"
+            strokeWidth="2"
           >
             <line x1="0.622321429" y1="0.9" x2="697" y2="0" id="Line-12"></line>
           </g>
@@ -120,8 +120,8 @@ const LearningCurve = () => {
             id="Line-13"
             transform="translate(927.000000, 165.500000) scale(1, -1) translate(-927.000000, -165.500000) translate(634.000000, 165.000000)"
             stroke="#389E06"
-            stroke-linecap="square"
-            stroke-width="2"
+            strokeLinecap="square"
+            strokeWidth="2"
           >
             <line x1="0.523214286" y1="0.9" x2="586" y2="0" id="Line-12"></line>
           </g>
@@ -129,8 +129,8 @@ const LearningCurve = () => {
             id="Line-13"
             transform="translate(1044.500000, 25.000000) scale(1, -1) translate(-1044.500000, -25.000000) translate(869.000000, 24.000000)"
             stroke="#389E06"
-            stroke-linecap="square"
-            stroke-width="2"
+            strokeLinecap="square"
+            strokeWidth="2"
           >
             <line x1="0.327178467" y1="1.3" x2="351" y2="1" id="Line-12"></line>
           </g>
@@ -141,7 +141,7 @@ const LearningCurve = () => {
             y2="15.5"
             id="Line-11"
             stroke="#979797"
-            stroke-linecap="square"
+            strokeLinecap="square"
           ></line>
         </g>
       </g>
