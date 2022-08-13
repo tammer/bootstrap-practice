@@ -286,6 +286,7 @@ const Requirements = () => {
           visible={showActivateModal}
         />
         <Modal
+          onClose={() => setShowSignupModal(false)}
           visible={showSignupModal}
           title={`Signup`}
           body={<Signup formState={formState} setMessage={setMessage} />}
