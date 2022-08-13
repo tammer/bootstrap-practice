@@ -183,6 +183,22 @@ const Landing = () => {
       subtitle={null}
       body={body}
     />,
+    <Content
+      body={
+        <>
+          <div
+            className="align-center"
+            style={{ marginTop: "-100px", paddingBottom: "300px" }}
+          >
+            <a href="/requirements">
+              <button className="bp-button">
+                Try Background Process&raquo;
+              </button>
+            </a>
+          </div>
+        </>
+      }
+    />,
   ];
   return (
     <>
