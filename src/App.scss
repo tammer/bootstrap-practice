@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Inter");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200..900");
 
 // $color1: #f5f5f5; // background color
 $color1: white;
@@ -24,6 +24,10 @@ body {
   line-height: 15px;
   color: $color2;
   overscroll-behavior: none;
+}
+
+body strong {
+  font-variation-settings: "wght" 700;
 }
 
 /* Main Layout */
@@ -706,9 +710,6 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   padding: 20px 0px 0px 0px;
 }
 
-// $curve-height: 900px;
-$label-width: 100px;
-
 .learning-curve {
   margin: 10px;
   margin-left: 20px;
@@ -722,11 +723,11 @@ $label-width: 100px;
 }
 
 .x-axis-label {
-  padding-left: 20%;
+  padding-left: 40%;
 }
 
 .y-axis-label {
-  margin-left: -10px;
+  margin-left: -13px;
 }
 
 .curve-box {
@@ -736,7 +737,7 @@ $label-width: 100px;
 
 .curve-labels {
   // background-color: pink;
-  width: $label-width;
+  padding-left: -460px;
   display: grid;
   grid-template-rows: 4% 23% 22% 22% 23%;
 }
@@ -744,14 +745,18 @@ $label-width: 100px;
 .curve-labels > div {
   margin-top: -7px;
   padding-left: 10px;
-  // height: $label-height;
 }
 
-.curve-labels > div:nth-child(odd) {
-  // margin-top: 7%;
-  // background-color: #c0d7de;
+.bp-more {
+  // background-color: #00c0ff;
 }
 
-.curve-labels > div:nth-child(even) {
-  // background-color: orange;
+.bp-more a:not([href]):not([class]) {
+  // background-color: pink;
+  color: blue;
+  text-decoration: underline;
+}
+
+.bp-more a:hover {
+  cursor: pointer;
 }

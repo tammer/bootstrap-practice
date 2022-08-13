@@ -13,6 +13,31 @@ import Spec from "../components/Spec";
 import Signup from "../components/Signup";
 import LearningCurve from "../components/LearningCurve";
 
+const More = ({ body, teaser, showAll = false, setShowAll }) => {
+  return (
+    <span className="bp-more">
+      {showAll ? (
+        <>
+          <div>{body}</div>
+          <div className="align-center">
+            <a
+              onClick={(e) => {
+                setShowAll(false);
+              }}
+            >
+              &laquo;less
+            </a>
+          </div>
+        </>
+      ) : (
+        <div>
+          {teaser} <a onClick={(e) => setShowAll(true)}>more&raquo;</a>
+        </div>
+      )}
+    </span>
+  );
+};
+
 const SectionRight = ({
   isActive = true,
   updateActive,
@@ -72,6 +97,7 @@ const Requirements = () => {
   const [showIntroModal, setShowIntroModal] = useState(newbie ? true : false);
   const [showActivateModal, setShowActivateModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const navigate = useNavigate();
 
   function updateState(id, values_) {
@@ -353,49 +379,68 @@ const Requirements = () => {
           <div className="right-panel">
             <SectionLeft
               title="Tech Stack"
-              // text="Enter the technologies you want to work with. Do not exhaustively list everything you know. Rather, list the technologies you want to use day to day. Hiring orgs spec the main technologies they are working with, (max 5). A match occurs when their list is a subset of yours. The longer your list, the more matches you will get."
               text={
                 <div>
+                  <p>Enter the technologies you want to work with.</p>
                   <p>
-                    Enter the technologies you want to work with. Do not
-                    exhaustively list everything you know. Rather, list the
-                    technologies you want to use day to day. Hiring orgs spec
-                    the main technologies they are working with, (max 5). A
-                    match occurs when their list is a subset of yours. The
-                    longer your list, the more matches you will get.
+                    Do not exhaustively list everything you know; list the
+                    technologies you want to use day to day.
                   </p>
-                  <p>Level Definitions (hover for details)</p>
+
+                  <p>
+                    Hiring orgs spec the main technologies they are working
+                    with, (max 5). A match occurs when their list is a subset of
+                    yours.
+                  </p>
+                  <p>
+                    <strong>Level Definitions</strong>
+                  </p>
                   <LearningCurve />
-                  <p>
-                    Novice: You have trialed the technology in sandbox
-                    environments or have been exposed to it in an educational
-                    setting. You have not used the technology in a professional
-                    setting.
-                  </p>
-                  <p>
-                    Capable: You have used this technology in a production
-                    environment though their are aspects of it you have not
-                    learned. You often make use of documentation and internet
-                    knowledge resources as you work. You probably don't use it
-                    every day or if you do you are continually improving.
-                  </p>
-                  <p>
-                    Proficient: You are highly productive with this technology.
-                    You can achieve anything the tech is capable of with no help
-                    from others. You consult knowledge bases only for special
-                    situations.
-                  </p>
-                  <p>
-                    Expert: You have mastered the technology. You are able to
-                    leverage the technology for any feasible purpose
-                    effeciently. You are probably the most knowledge person on
-                    this technology in your organization.
-                  </p>
-                  <p>
-                    Authority: You are not only an expert; you are part of the
-                    group of people who create, develop, maintain and evolve
-                    this technology.
-                  </p>
+                  <More
+                    showAll={showAll}
+                    setShowAll={setShowAll}
+                    teaser={
+                      <span>
+                        <strong>Novice</strong>: You have trialed the technology
+                        in sandbox environments or have been exposed to it in
+                        an...
+                      </span>
+                    }
+                    body={
+                      <>
+                        <p>
+                          <strong>Novice:</strong> You have used the technology
+                          in sandbox environments or an educational setting, but
+                          not professionally.
+                        </p>
+                        <p>
+                          <strong>Capable</strong>: You have a working knowledge
+                          of the technology and can use it effectively. You
+                          probably consult internet resources often and and
+                          noticiably improving as you continue to use it.
+                        </p>
+                        <p>
+                          <strong>Proficient</strong>: You are highly productive
+                          with this technology. You can achieve anything the
+                          tech is capable of with no help from others.
+                          Occationally, you consult knowledge bases for special
+                          situations.
+                        </p>
+                        <p>
+                          <strong>Expert:</strong> You have mastered the
+                          technology. You are able to leverage the technology
+                          for any feasible purpose effeciently. You are probably
+                          the most knowledge person on this technology in your
+                          organization.
+                        </p>
+                        <p>
+                          <strong>Authority:</strong> You are not only an
+                          expert; you are part of the group of people who
+                          create, develop, maintain and evolve this technology.
+                        </p>
+                      </>
+                    }
+                  />
                 </div>
               }
             />
@@ -413,7 +458,19 @@ const Requirements = () => {
           <div className="right-panel">
             <SectionLeft
               title="Organization"
-              text="Enter organizational characteristics and features that are important to you. Note: Experiential criteria are treated as must-haves. Matches decrease with the number of experential requirements you put in place."
+              text={
+                <>
+                  <p>
+                    Enter organizational characteristics and features that are
+                    important to you.
+                  </p>
+                  <p>
+                    Experiential criteria are treated as must-haves. Matches
+                    decrease with the number of experential requirements you put
+                    in place.
+                  </p>
+                </>
+              }
             />
             <div>
               <SectionRight
