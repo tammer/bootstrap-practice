@@ -113,6 +113,10 @@ const Home = () => {
                   The frequency of alerts will depend on how particular your
                   spec is. You can modify it any time.
                 </li>
+                <li>
+                  You are anonymous. We share nothing you submitted here with
+                  anyone.
+                </li>
               </ul>
               <div className="align-center">
                 <button
