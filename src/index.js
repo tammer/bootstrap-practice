@@ -27,9 +27,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="sandbox" element={<Sandbox />} />
-        <Route path="/l" element={<Landing />} />
         <Route path="/" element={<App />}>
-          <Route path="" element={<Home />} />
+          <Route path="" element={<Landing />} />
           <Route path="home" element={<Home />} />
           <Route path="requirements" element={<Requirements />} />
           <Route path="opps" element={<Opps />} />

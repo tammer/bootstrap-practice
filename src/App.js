@@ -28,16 +28,25 @@ function App() {
   return (
     <>
       <Navbar expand="md">
-        <Navbar.Brand href="/home">&nbsp;&nbsp;BP</Navbar.Brand>
+        <Navbar.Brand href={localStorage.getItem("token") ? "/home" : "/"}>
+          &nbsp;&nbsp;BP
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto main-area">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/requirements">Spec</Nav.Link>
+            {localStorage.getItem("token") ? (
+              <>
+                <Nav.Link href="/home">Home</Nav.Link>
+                <Nav.Link href="/requirements">Spec</Nav.Link>
+              </>
+            ) : (
+              ""
+            )}
+
             {/* <Nav.Link href="/skills">My Skillset</Nav.Link> */}
             {/* <Nav.Link href="/opps">My Opportunities</Nav.Link> */}
           </Nav>
-          <Nav.Link href="/requirements">About</Nav.Link>
+          {/* <Nav.Link href="/l">About</Nav.Link> */}
           {localStorage.getItem("token") ? (
             <NavDropdown title={userName} id="basic-nav-dropdown">
               {/* <NavDropdown.Divider /> */}
