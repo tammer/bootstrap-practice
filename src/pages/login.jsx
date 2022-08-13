@@ -45,26 +45,30 @@ const Login = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <div>
-          <button type="submit">Submit</button>
+        <div style={{ textAlign: "center", marginTop: "100px" }}>
+          <div>
+            <input
+              placeholder="email address"
+              type="text"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
+          <br />
+          <div>
+            <input
+              placeholder="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <br />
+          <div>
+            <button className="bp-button" type="submit">
+              Sign in
+            </button>
+          </div>
         </div>
       </form>
-      <br />
-      {token}
-
-      <h3>signup</h3>
-      <Signup onSuccess={(e) => console.log("OK!")} />
     </>
   );
 };
