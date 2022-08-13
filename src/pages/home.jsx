@@ -107,7 +107,7 @@ const Home = () => {
                 </li>
                 <li>
                   If you like it, we will connect you the hiring organization
-                  (and then we drop out of the process).
+                  (and then drop out of the process).
                 </li>
                 <li>
                   The frequency of alerts will depend on how particular your
