@@ -22,7 +22,6 @@ const Signup = ({
       password: formData["password"],
       profile: formState,
     };
-    console.log("post", payload);
     return fetch(process.env.REACT_APP_API + "/signup/", {
       method: "POST",
       headers: {
@@ -48,11 +47,7 @@ const Signup = ({
           res.json().then((j) => {
             localStorage.setItem("token", j["token"]);
             localStorage.setItem("userName", email);
-            setMessage(["Yes", null]);
-            showMessage(
-              setMessage,
-              "Welcome to the Platform.  You are signed up."
-            );
+            localStorage.setItem("newbie", true);
             navigate("/home");
           });
         } else {

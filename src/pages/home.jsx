@@ -4,9 +4,14 @@ import BPSwitch from "../components/bpswitch";
 import { useNavigate } from "react-router-dom";
 import { formFromServer, formToServer } from "../helpers/helpers";
 import { useState, useEffect } from "react";
+import { Modal } from "../components/Modal";
 
 const Home = () => {
+  console.log("home newbie", localStorage.getItem("newbie"));
   const [formState, setFormState] = useState(null);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(
+    localStorage.getItem("newbie")
+  );
   useEffect(() => {
     formFromServer(setFormState);
   }, []);
@@ -68,19 +73,61 @@ const Home = () => {
             <div className="left-subpanel">
               <h1>Opportunities</h1>
               <p>
-                This list updates in real time as hiring organizations submit
-                jobs.
+                This list is updated each time a job posting matches your spec.
               </p>
               <p>
-                An alert is sent to {localStorage.getItem("userName")} when
-                items are added to this list.
+                An alert is sent to {localStorage.getItem("userName")} when that
+                happens.
               </p>
             </div>
             <div className="right-subpanel">
-              <div className="attribute-section"></div>
+              <div className="attribute-section">
+                <div className="align-center">
+                  <br />
+                  <br />
+                  No current matches.
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <Modal
+          title="Your background process is running"
+          body={
+            <>
+              <p>What happens now:</p>
+
+              <p>
+                You don't need to anything more. Every job requirement submitted
+                to this platform will be matched against your spec.
+              </p>
+              <p>
+                When there is match, you will be alerted and shown the full job
+                description.
+              </p>
+              <p>
+                If you like it, we will connect you the hiring organization (and
+                then we drop out of the process).
+              </p>
+              <p>
+                The frequency of alerts your get will depend on how particular
+                your spec is. You can modify it any time.
+              </p>
+              <div className="align-center">
+                <button
+                  onClick={() => {
+                    setShowWelcomeModal(false);
+                    localStorage.removeItem("newbie");
+                  }}
+                  className="bp-button"
+                >
+                  Got it
+                </button>
+              </div>
+            </>
+          }
+          visible={showWelcomeModal}
+        />
       </Privilaged>
     </>
   );

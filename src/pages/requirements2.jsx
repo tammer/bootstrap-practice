@@ -259,8 +259,8 @@ const Requirements = () => {
               <Spec formState={formState} />
               <p>
                 When you activate, this logic will be applied to every job
-                requisite processed by Background Process. You will be notified
-                when matches occur.
+                requisite processed by this platform. You will be notified when
+                matches occur.
               </p>
               <div className="align-center">
                 <button
@@ -415,16 +415,16 @@ const Requirements = () => {
                         </p>
                         <p>
                           <strong>Capable</strong>: You have a working knowledge
-                          of the technology and can use it effectively. You
-                          probably consult internet resources often and and
-                          noticeably improving as you continue to use it.
+                          of the technology and can be effective with it. You
+                          probably consult internet resources often and and are
+                          noticeably improving as your usage continues.
                         </p>
                         <p>
                           <strong>Proficient</strong>: You are highly productive
-                          with this technology. You can achieve anything the
-                          tech is capable of with no help from others.
-                          Occasionally, you consult knowledge bases for special
-                          situations.
+                          with this technology, using it effectively and
+                          efficiently with only occasional use of internet
+                          resources for help on advanced aspects or for edge
+                          cases.
                         </p>
                         <p>
                           <strong>Expert:</strong> You have mastered the
@@ -521,22 +521,34 @@ const Requirements = () => {
           <div>
             <ul>
               <li>
-                Use the this form to describe characteristics of job(s) you
-                would consider.
+                Using 9 attributes, this form allows you to describe your ideal
+                job opportunity.
               </li>
               <li>
-                For each attribute (role, org size, industry, etc) you can be
-                highly specific or completely indifferent
+                Every job requirement processed by this platform is reduced to
+                these same 9 attributes and then matched against what you
+                specify here.
               </li>
               <li>
-                Once activated, Background Process will alert you if and when
-                there are opportunities that meet the criteria you input.
+                When there is match you are notified and shown the complete job
+                description.
               </li>
             </ul>
-            <p>
-              Tip: If you like your current job, spec something similar at a
-              higher salary
-            </p>
+            <p>Tips:</p>
+            <ul>
+              <li>
+                Be highly particular on attributes that are important to you;
+                leave ones that don't matter to you blank. This ensures all the
+                jobs you see are ones you could be interested in and you are
+                never shown jobs you won't want.
+              </li>
+              <li>
+                If you love your current job then spec something similar to that
+                with a higher salary or better experiential factors. Or, if you
+                are ready for a change, be less particular on some attributes to
+                ensure you see more opportunities.
+              </li>
+            </ul>
             <div className="align-center">
               <button
                 onClick={() => {

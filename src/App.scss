@@ -663,17 +663,17 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   background-color: $bootstrap-secondary;
 }
 
-.bp-modal1 {
-  position: absolute;
-  margin-top: 100px;
-  // top: 50px;
-  // left: 50px;
-  width: 100%;
-  // margin: 25%;
-  border: 1px solid black;
-  // width: 50%;
-  // margin: 0 auto;
-}
+// .bp-modal1 {
+//   position: absolute;
+//   margin-top: 100px;
+//   // top: 50px;
+//   // left: 50px;
+//   width: 100%;
+//   // margin: 25%;
+//   border: 1px solid black;
+//   // width: 50%;
+//   // margin: 0 auto;
+// }
 
 .bp-modal {
   // from: https://codepen.io/timothylong/pen/AJxrPR
@@ -689,7 +689,7 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   & > div {
     width: 500px;
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
