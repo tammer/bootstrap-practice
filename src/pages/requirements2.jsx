@@ -388,9 +388,9 @@ const Requirements = () => {
                   </p>
 
                   <p>
-                    Hiring orgs spec the main technologies they are working
-                    with, (max 5). A match occurs when their list is a subset of
-                    yours.
+                    Hiring orgs spec the main technologies they are working with
+                    and the skill levels they need. A match occurs when their
+                    list is a subset of yours and levels are compatible.
                   </p>
                   <p>
                     <strong>Level Definitions</strong>
@@ -417,19 +417,19 @@ const Requirements = () => {
                           <strong>Capable</strong>: You have a working knowledge
                           of the technology and can use it effectively. You
                           probably consult internet resources often and and
-                          noticiably improving as you continue to use it.
+                          noticeably improving as you continue to use it.
                         </p>
                         <p>
                           <strong>Proficient</strong>: You are highly productive
                           with this technology. You can achieve anything the
                           tech is capable of with no help from others.
-                          Occationally, you consult knowledge bases for special
+                          Occasionally, you consult knowledge bases for special
                           situations.
                         </p>
                         <p>
                           <strong>Expert:</strong> You have mastered the
                           technology. You are able to leverage the technology
-                          for any feasible purpose effeciently. You are probably
+                          for any feasible purpose efficiently. You are probably
                           the most knowledge person on this technology in your
                           organization.
                         </p>
