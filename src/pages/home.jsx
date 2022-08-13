@@ -96,23 +96,24 @@ const Home = () => {
           body={
             <>
               <p>What happens now:</p>
-
-              <p>
-                You don't need to anything more. Every job requirement submitted
-                to this platform will be matched against your spec.
-              </p>
-              <p>
-                When there is match, you will be alerted and shown the full job
-                description.
-              </p>
-              <p>
-                If you like it, we will connect you the hiring organization (and
-                then we drop out of the process).
-              </p>
-              <p>
-                The frequency of alerts your get will depend on how particular
-                your spec is. You can modify it any time.
-              </p>
+              <ul>
+                <li>
+                  You don't need to do anything more. Every job requirement
+                  submitted to this platform will be matched against your spec.
+                </li>
+                <li>
+                  When there is match, you will be alerted and shown the full
+                  job description.
+                </li>
+                <li>
+                  If you like it, we will connect you the hiring organization
+                  (and then we drop out of the process).
+                </li>
+                <li>
+                  The frequency of alerts will depend on how particular your
+                  spec is. You can modify it any time.
+                </li>
+              </ul>
               <div className="align-center">
                 <button
                   onClick={() => {

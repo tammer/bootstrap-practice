@@ -663,18 +663,6 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   background-color: $bootstrap-secondary;
 }
 
-// .bp-modal1 {
-//   position: absolute;
-//   margin-top: 100px;
-//   // top: 50px;
-//   // left: 50px;
-//   width: 100%;
-//   // margin: 25%;
-//   border: 1px solid black;
-//   // width: 50%;
-//   // margin: 0 auto;
-// }
-
 .bp-modal {
   // from: https://codepen.io/timothylong/pen/AJxrPR
   position: fixed;
@@ -702,6 +690,9 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   h1 {
     font-size: 24px;
     margin: 0 0 15px;
+  }
+  li {
+    margin-bottom: 10px;
   }
 }
 
