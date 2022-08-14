@@ -14,9 +14,9 @@ const Concept = () => {
 There are basically two tasks:
 
 1) trial the service. (I'll drop you on the landing page with minimal info to see what happens.)
-2) give me feedback (via a survey monkey form)
+2) give me feedback (via a google form)
 
-This exercise will take between 10 an 15 minutes.
+
 
 Please use a computer ( since there is no mobile UX yet.)
 
@@ -26,7 +26,15 @@ Thank you!!!!
         `}</ReactMarkdown>
 
         <a href="/" target={"none"}>
-          <button>I'm ready to trial it >></button>
+          <button
+            onClick={() =>
+              alert(
+                "You are being sent to the landing page now. Please time how long it takes you to complete this trial."
+              )
+            }
+          >
+            I'm ready to trial it >>
+          </button>
         </a>
         <br />
         <br />
