@@ -20,6 +20,7 @@ import Sandbox from "./pages/sandbox_basic2";
 import Landing from "./pages/landing";
 import Home from "./pages/home";
 import Opps from "./pages/opps";
+import Concept from "./pages/concept";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,6 +28,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="sandbox" element={<Sandbox />} />
+        <Route path="test-home" element={<Concept />} />
         <Route path="/" element={<App />}>
           <Route path="" element={<Landing />} />
           <Route path="home" element={<Home />} />
