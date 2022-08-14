@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  const [errorMsg, setErrorMsg] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg(null);
     const res = await loginUser({ username: username, password: password });
     if (res.ok) {
       res.json().then((j) => {
@@ -36,7 +38,7 @@ const Login = () => {
       });
     } else {
       res.json().then((j) => {
-        setToken(j["non_field_errors"][0]);
+        setErrorMsg("Unable to login with the credentials provided");
       });
     }
   };
@@ -63,8 +65,11 @@ const Login = () => {
           <br />
           <div>
             <button className="bp-button" type="submit">
-              Sign in
+              Log in
             </button>
+            <br />
+            <br />
+            <div style={{ color: "red" }}>{errorMsg}</div>
           </div>
         </div>
       </form>
