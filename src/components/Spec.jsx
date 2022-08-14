@@ -47,14 +47,14 @@ const Spec = ({ formState }) => {
     }
 
     if (id === "OrgSize") {
-      return <div>blah</div>;
+      const operator = formState[id]["attributes"][0]["name"].substring(0, 1);
       return (
         <div>
-          {JD}.org_size &lt;&nbsp;
+          {JD}.org_size {operator}&nbsp;
           <span className="attribute">
             {formState[id]["attributes"][0]["name"].substring(2)}
           </span>
-          &nbsp;&amp;&amp;
+          &nbsp;{AND}
         </div>
       );
     }
