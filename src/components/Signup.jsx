@@ -13,6 +13,7 @@ const Signup = ({
   const [lastName, setLastName] = useState();
   const [code, setCode] = useState();
   const [password, setPassword] = useState();
+  const [errorMsg, setErrorMsg] = useState();
 
   const navigate = useNavigate();
 
@@ -35,6 +36,7 @@ const Signup = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg(null);
     postSignup({
       email: email,
       password: password,
@@ -51,7 +53,7 @@ const Signup = ({
             navigate("/home");
           });
         } else {
-          res.json().then((j) => setMessage(j));
+          setErrorMsg("An account already exists for that email address");
         }
       },
       (res) => {
@@ -67,7 +69,10 @@ const Signup = ({
           <input
             placeholder="email"
             type="text"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setErrorMsg(null);
+            }}
           />
         </div>
 
@@ -114,6 +119,8 @@ const Signup = ({
           <button className="bp-button" type="submit">
             Signup
           </button>
+          <br />
+          <div style={{ color: "red" }}>{errorMsg}</div>
         </div>
       </form>
     </div>
