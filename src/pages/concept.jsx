@@ -30,7 +30,10 @@ Thank you!!!!
         </a>
         <br />
         <br />
-        <a href="#" target={"none"}>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdMdQM4BnsL4baEWQy-HHGzSPdcDInio5jsPA0YE1kIzgyisQ/viewform?usp=sf_link"
+          target={"none"}
+        >
           <button>I'm ready to give feedback >></button>
         </a>
       </div>

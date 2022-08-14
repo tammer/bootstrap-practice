@@ -770,3 +770,13 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 .bp-more a:hover {
   cursor: pointer;
 }
+
+.plain {
+  all: revert;
+  * {
+    all: revert;
+  }
+  // background-color: pink;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+}
