@@ -113,8 +113,8 @@ const Home = () => {
                   spec is. You can modify it any time.
                 </li>
                 <li>
-                  You are anonymous. We share nothing you submitted here with
-                  anyone.
+                  You are anonymous and your data is private. Not a single byte
+                  of the spec you just created will be shared with anyone.
                 </li>
               </ul>
               <div className="align-center">
