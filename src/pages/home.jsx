@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { Modal } from "../components/Modal";
 
 const Home = () => {
-  console.log("home newbie", localStorage.getItem("newbie"));
   const [formState, setFormState] = useState(null);
   const [showWelcomeModal, setShowWelcomeModal] = useState(
     localStorage.getItem("newbie")
