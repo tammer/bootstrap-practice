@@ -1,3 +1,5 @@
+import image from "./../assets/vortex.png";
+
 const Feature = ({ title, copy, src }) => {
   return (
     <>
@@ -183,6 +185,62 @@ const Landing = () => {
       subtitle={null}
       body={body}
     />,
+    <div
+      style={{
+        height: "700px",
+        backgroundImage: `url(${image})`,
+        fontSize: "30px",
+        lineHeight: "40px",
+      }}
+    >
+      <div style={{ padding: "40px", paddingBottom: "0px", fontSize: "60px" }}>
+        Background Process is a Black Hole
+      </div>
+      <div style={{ padding: "40px", paddingTop: "10px", fontSize: "40px" }}>
+        No data you put here ever leaves this platform.
+      </div>
+      <div style={{ padding: "40px" }}>
+        We use the data you share to find matches. <br /> That's all.
+      </div>
+      <div style={{ padding: "40px", width: "750px", fontSize: "22px" }}>
+        When there is a match that you approve, we introduce you to the hiring
+        organization. Even then we don't share a single byte of your data.
+        (Whatever you decide to share, you'll send yourself, off platform.)
+      </div>
+    </div>,
+    <Content
+      title={
+        <h1 style={{ color: "white" }}>
+          Background Process is Better for Everyone
+        </h1>
+      }
+      subtitle={null}
+      body={
+        <div
+          style={{
+            paddingBottom: "100px",
+            paddingRight: "14%",
+            paddingLeft: "14%",
+            fontSize: "2em",
+          }}
+        >
+          <p style={{ textAlign: "center", marginBottom: "40px" }}>
+            When a job opportunity matches your spec <br /> <b>and</b> <br />{" "}
+            you choose to connect with the hiring org:
+          </p>
+          <p>
+            You meet an organization offering exactly what you are looking for.
+          </p>
+          <div style={{ textAlign: "center", padding: "40px" }}>
+            <img width="250px" src={require("./../assets/yingyang.png")} />
+          </div>
+          <p>
+            The organization meets someone who brings exactly what they are
+            looking for.
+          </p>
+        </div>
+      }
+    />,
     <Content
       body={
         <>
@@ -190,10 +248,17 @@ const Landing = () => {
             className="align-center"
             style={{ marginTop: "-100px", paddingBottom: "300px" }}
           >
+            <h1>Passive, Totally Automated Job Search</h1>
+            <br />
+            <br />
+            <br />
+            <h2>Ready to spawn your background process?</h2>
+            <br />
+            <br />
+            <br />
+            <br />
             <a href="/requirements">
-              <button className="bp-button">
-                Try Background Process&raquo;
-              </button>
+              <button className="bp-button">Try it&raquo;</button>
             </a>
           </div>
         </>
