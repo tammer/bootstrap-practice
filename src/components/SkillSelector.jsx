@@ -11,7 +11,7 @@ const SkillSelector = ({ handleChange, value, isMulti }) => {
     return fetch(process.env.REACT_APP_API + "/skills/", {
       method: "POST",
       headers: {
-        Authorization: `Token ${localStorage.getItem("token")}`,
+        // Authorization: `Token ${localStorage.getItem("token")}`,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
