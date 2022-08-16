@@ -577,9 +577,9 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 }
 
 .level-slider-inner-box {
-  // background-color: cornflowerblue;
-  max-height: 365px;
-  overflow: scroll;
+  // had to comment out the next two lines because creating some dumb extra gray space
+  // max-height: 365px;
+  // overflow: scroll;
 }
 
 .level-slider-body {
