@@ -1,32 +1,18 @@
-import { useState } from "react";
-
-const More = ({ body, teaser }) => {
-  const [showAll, setShowAll] = useState(false);
-  return showAll ? (
-    <div>
-      {body}{" "}
-      <a href="#" onClick={(e) => setShowAll(false)}>
-        less
-      </a>
-    </div>
-  ) : (
-    <div>
-      {teaser}{" "}
-      <a href="#" onClick={(e) => setShowAll(true)}>
-        more
-      </a>
-    </div>
-  );
-};
+import { Endorsement } from "../components/Endorsement";
 
 const Sandbox = () => {
-  const text =
-    "hello here is a lot of texxt.  I mean a great dal.  with rifa.  I cant really know what this is saysing.";
-  const teaser = text.substring(0, 40);
+  const skills = [
+    ["python", "e"],
+    ["django", "p"],
+    ["c++", "p"],
+  ];
   return (
-    <>
-      <More body={text} teaser={teaser} />
-    </>
+    <div>
+      {/* <Endorsement who="Sam Power" skills={skills} /> */}
+      <Endorsement who="Ross Barclay" skills={skills} />
+      <Endorsement who="Paul Keating" skills={skills.slice(2, 3)} />
+      <Endorsement who="Sam Power" skills={skills.slice(1, 3)} />
+    </div>
   );
 };
 

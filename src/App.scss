@@ -785,3 +785,83 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   font-family: "Times New Roman", Times, serif;
   font-size: 17px;
 }
+
+.badge-box {
+  border: 1px solid #dbdde0;
+  // opacity: 0.5;
+  border-radius: 6px;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  grid-template-rows: 5px 14px 17px 13px auto;
+  padding-left: 10px;
+  padding-top: 10px;
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+.technology-badge {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+$badge-radius: 4px;
+
+.technology-badge-left {
+  border: 0px solid green;
+  border-radius: $badge-radius 0px 0px $badge-radius;
+  padding: 5px 5px 5px 5px;
+  background-color: #585858;
+  display: inline-block;
+  color: white;
+  text-shadow: 0px 1px #393939;
+}
+
+.technology-badge-right,
+.technology-badge-right-c,
+.technology-badge-right-p,
+.technology-badge-right-e,
+.technology-badge-right-a {
+  border: 0px solid green;
+  background-color: pink;
+  display: inline-block;
+  border-radius: 0px $badge-radius $badge-radius 0px;
+  padding: 5px 5px 5px 5px;
+  color: white;
+}
+
+.technology-badge-right-p {
+  background-color: #cca419;
+  text-shadow: 0px 1px #8f7310;
+}
+
+.technology-badge-right-e {
+  background-color: #e57132;
+  text-shadow: 0px 1px #a25226;
+}
+
+.technology-badge-right-a {
+  background-color: #0c7cbc;
+  text-shadow: 0px 1px #075784;
+}
+
+.technology-badge-right-c {
+  background-color: #9b9b9b;
+  text-shadow: 0px 1px #666666;
+}
+
+.badge-box > div:nth-child(2),
+.badge-box > div:nth-child(4) {
+  font-size: 10px;
+}
+
+.badge-box > div:nth-child(3) {
+  font-size: 17px;
+}
+
+.badge-box > div:nth-child(5) {
+  padding-top: 10px;
+  // overflow: auto;
+}
