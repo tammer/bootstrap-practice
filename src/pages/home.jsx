@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { formFromServer, formToServer } from "../helpers/helpers";
 import { useState, useEffect } from "react";
 import { Modal } from "../components/Modal";
+import { Endorsement } from "../components/Endorsement";
 
 const Home = () => {
   const [formState, setFormState] = useState(null);
@@ -68,6 +69,40 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          <div className="right-panel">
+            <div className="left-subpanel">
+              <h1>Credibility</h1>
+              <p>
+                This list is updated each time a job posting matches your spec.
+              </p>
+              <p>
+                An alert is sent to {localStorage.getItem("userName")} when that
+                happens.
+              </p>
+            </div>
+            <div className="right-subpanel">
+              <div className="attribute-section">
+                <Endorsement who="Ross Barclay" skills={[["c++", "p"]]} />
+                <Endorsement
+                  who="Doug Henderson"
+                  skills={[
+                    ["python", "e"],
+                    ["c++", "p"],
+                  ]}
+                />
+                <Endorsement
+                  who="Sarah Palin"
+                  skills={[
+                    ["python", "e"],
+                    ["django", "p"],
+                    ["c++", "p"],
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="right-panel">
             <div className="left-subpanel">
               <h1>Opportunities</h1>
