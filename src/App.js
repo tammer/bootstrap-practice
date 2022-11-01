@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import HttpsRedirect from "react-https-redirect";
 
 function App() {
   const [message, setMessage] = useState(["", null]);
@@ -26,7 +27,7 @@ function App() {
   }
 
   return (
-    <>
+    <HttpsRedirect>
       <Navbar expand="md">
         <Navbar.Brand href={localStorage.getItem("token") ? "/home" : "/"}>
           &nbsp;&nbsp;BP
@@ -74,7 +75,7 @@ function App() {
       )}
 
       <Outlet context={[message, setMessage]} />
-    </>
+    </HttpsRedirect>
   );
 }
 
