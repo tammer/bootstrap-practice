@@ -192,24 +192,35 @@ const Landing = () => {
     />,
     <div
       style={{
-        height: "700px",
+        // height: "700px",
         backgroundImage: `url(${image})`,
         fontSize: "30px",
         lineHeight: "40px",
+        textAlign: "center",
       }}
     >
-      <div style={{ padding: "40px", paddingBottom: "0px", fontSize: "60px" }}>
-        Background Process is a Black Hole
-      </div>
-      <div style={{ padding: "40px", paddingTop: "10px", fontSize: "40px" }}>
+      <div
+        style={{
+          padding: "40px",
+          paddingTop: "10px",
+          fontSize: "40px",
+        }}
+      >
+        <br />
+        <br />
         No data you put here ever leaves this platform.
+        <br />
+        <br />
       </div>
       <div style={{ padding: "40px" }}>
         We use the data you share to find matches. <br /> That's all.
       </div>
-      <div style={{ padding: "40px", width: "750px", fontSize: "22px" }}>
+      <div style={{ padding: "40px", fontSize: "22px" }}>
         When there is a match that you approve, we introduce you to the hiring
-        organization. Even then we don't share a single byte of your data.
+        organization.
+        <br />
+        Even then we don't share a single byte of your data.
+        <br />
         (Whatever you decide to share, you'll send yourself, off platform.)
       </div>
     </div>,
@@ -224,8 +235,8 @@ const Landing = () => {
         <div
           style={{
             paddingBottom: "100px",
-            paddingRight: "14%",
-            paddingLeft: "14%",
+            // paddingRight: "14%",
+            // paddingLeft: "14%",
             fontSize: "2em",
           }}
         >
@@ -233,13 +244,13 @@ const Landing = () => {
             When a job opportunity matches your spec <br /> <b>and</b> <br />{" "}
             you choose to connect with the hiring org:
           </p>
-          <p>
+          <p style={{ textAlign: "center" }}>
             You meet an organization offering exactly what you are looking for.
           </p>
           <div style={{ textAlign: "center", padding: "40px" }}>
             <img width="250px" src={require("./../assets/yingyang.png")} />
           </div>
-          <p>
+          <p style={{ textAlign: "center" }}>
             The organization meets someone who brings exactly what they are
             looking for.
           </p>
