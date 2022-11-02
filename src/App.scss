@@ -564,6 +564,22 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   padding-bottom: 14px;
 }
 
+.level-slider-header > div:nth-child(2) {
+  opacity: 0;
+}
+.level-slider-header > div:nth-child(4) {
+  opacity: 0;
+}
+
+@media (min-width: $bp) {
+  .level-slider-header > div:nth-child(2) {
+    opacity: 100;
+  }
+  .level-slider-header > div:nth-child(4) {
+    opacity: 100;
+  }
+}
+
 .level-slider-outer,
 .level-slider-outer-header {
   display: grid;
