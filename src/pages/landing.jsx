@@ -142,40 +142,45 @@ const Landing = () => {
     </div>,
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 5fr",
-        // paddingTop: "20%",
-        // paddingBottom: "20%",
+        paddingTop: "20%",
+        paddingBottom: "10%",
       }}
     >
-      <div style={{ padding: "50px", paddingLeft: "150px" }}>
-        <img width="150px" src={require(`./../assets/notification.png`)} />
+      <div
+        style={{
+          width: "10%",
+          margin: "0 auto",
+        }}
+      >
+        <img
+          style={{ maxHeight: "100%", maxWidth: "100%" }}
+          src={require(`./../assets/notification.png`)}
+        />
       </div>
-      <div style={{ paddingTop: "90px" }}>
+      <div style={{ paddingTop: "10px" }}>
         <h2>Anytime there is match, you are notified.</h2>
       </div>
     </div>,
 
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 5fr",
-        // paddingTop: "20%",
-        // paddingBottom: "20%",
-      }}
-    >
+    <div>
       <div
-        style={{ marginLeft: "-180px", padding: "50px", paddingLeft: "150px" }}
+        style={{
+          width: "40%",
+          margin: "0 auto",
+          paddingRight: "50px",
+        }}
       >
-        <img width="400px" src={require(`./../assets/mail.png`)} />
+        <img
+          style={{ maxHeight: "100%", maxWidth: "100%" }}
+          src={require(`./../assets/mail.png`)}
+        />
       </div>
-      <div style={{ paddingTop: "90px" }}>
+      <div style={{ paddingTop: "10px" }}>
         <h2>
           If you are interested, we connect you with the hiring organization
-          <br />
-          (and drop out of the process).
         </h2>
       </div>
+      <br />
     </div>,
 
     <Content
