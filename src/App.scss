@@ -685,10 +685,12 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
   transition: all 0.3s;
 
   & > div {
-    width: 300px;
+    width: 90%;
+    height: 500px;
+    overflow: scroll;
     position: absolute;
     top: 60px;
-    left: 10px;
+    left: 5%;
     padding: 2em;
     background: white;
     border-radius: 7px;
@@ -707,6 +709,7 @@ $innerLevelSliderHeight: $levelSliderHeight - 20px;
 
 @media (min-width: $bp) {
   .bp-modal > div {
+    height: auto;
     width: 500px;
     top: 35%;
     left: 50%;
