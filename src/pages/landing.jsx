@@ -37,7 +37,7 @@ const feature_page = [
     <p>
       You spec the job(s) you would consider using 9 attributes: role, tech
       stack, salary, work model, location, industry, org type, org size and
-      experential factors.
+      experiential factors.
     </p>,
   ],
   [
