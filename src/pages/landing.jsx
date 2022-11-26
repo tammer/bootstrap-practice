@@ -1,4 +1,17 @@
 import image from "./../assets/vortex.png";
+import { useSearchParams } from "react-router-dom";
+
+async function callHome(message) {
+  return fetch(process.env.REACT_APP_API + "/log/", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({ value: message }),
+  });
+}
 
 const Feature = ({ title, copy, src }) => {
   return (
@@ -281,6 +294,11 @@ const Landing = () => {
       }
     />,
   ];
+
+  const [searchParams] = useSearchParams();
+  const message = searchParams.keys().next().value;
+  message && callHome(message);
+
   return (
     <>
       <div className="scontainer">
